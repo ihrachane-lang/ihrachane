@@ -1,0 +1,41 @@
+/* app/partners/partners.css */
+
+/* Continuous left → right seamless marquee */
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.animate-marquee {
+  animation: marquee-right 5s linear infinite;
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive speed */
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation: marquee-right 5s linear infinite;
+  }
+}
+
+@media (max-width: 480px) {
+  .animate-marquee {
+    animation: marquee-right 3s linear infinite;
+  }
+}
