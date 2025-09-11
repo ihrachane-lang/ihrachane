@@ -6,8 +6,10 @@ import { uploadToCloudinaryClient } from "@/utils/uploadToCloudinaryClient";
 
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { getClientUser } from "@/utils/getClientUser";
 
 const CreateTestimonialForm = () => {
+  const { user } = getClientUser();
   const [formData, setFormData] = useState({
     companyName: "",
     clientLogo: null,
@@ -70,6 +72,7 @@ const CreateTestimonialForm = () => {
         clientName: formData.clientName,
         clientDesignation: formData.clientDesignation,
         clientFeedback: formData.clientFeedback,
+        creatorInfo: user?.id,
       };
 
       // --- Send to API ---

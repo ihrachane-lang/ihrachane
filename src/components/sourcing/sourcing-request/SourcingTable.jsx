@@ -3,12 +3,15 @@ import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { getData } from "@/utils/axiosPublic";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const SourcingTable = () => {
   const [data, setData] = useState([]);
   const [meta, setMeta] = useState({});
   const [page, setPage] = useState(1);
   const limit = 5; // per page requests
+
+  const [reload, setReload] = useState(false);
 
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openDetailModal, setOpenDetailModal] = useState(false);
@@ -23,12 +26,13 @@ const SourcingTable = () => {
         );
         setData(res?.data || []);
         setMeta(res?.meta || {});
+        console.log(reload);
       } catch (err) {
         console.error("Failed to fetch sourcing requests:", err);
       }
     }
     fetchData();
-  }, [page]);
+  }, [page, reload]);
 
   const handleDelete = async () => {
     try {
@@ -47,26 +51,21 @@ const SourcingTable = () => {
   const handleStatusChange = async (itemId, newStatus) => {
     try {
       // console.log(newStatus);
-      await axios.put(
+      const res = await axios.put(
         `/api/contacts/sourcing-requests/update-status/${itemId}`,
         {
           status: newStatus,
         }
       );
-
-      // Update local state
-      setData((prev) =>
-        prev.map((item) =>
-          item._id === itemId ? { ...item, status: newStatus } : item
-        )
-      );
-
-      // Clear the status update state
-      setStatusUpdates((prev) => {
-        const newState = { ...prev };
-        delete newState[itemId];
-        return newState;
-      });
+      if (res.status === 200) {
+        toast.success("Status Updated");
+        setReload(!reload);
+        setStatusUpdates((prev) => {
+          const newState = { ...prev };
+          delete newState[itemId];
+          return newState;
+        });
+      }
     } catch (error) {
       console.error("Status update failed", error);
     }

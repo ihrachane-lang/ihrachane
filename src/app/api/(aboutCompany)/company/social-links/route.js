@@ -6,10 +6,7 @@ import SocialLink from "@/models/SocialLink";
 export async function GET() {
   try {
     await dbConnect();
-    const socialLinks = await SocialLink.find({}).populate({
-      path: "creatorInfo",
-      select: "-password -email",
-    });
+    const socialLinks = await SocialLink.find({})
     return NextResponse.json({ success: true, data: socialLinks });
   } catch (error) {
     return NextResponse.json(

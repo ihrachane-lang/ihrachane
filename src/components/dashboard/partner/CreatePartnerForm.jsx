@@ -5,8 +5,10 @@ import { useState } from "react";
 import axios from "axios";
 import { uploadToCloudinaryClient } from "@/utils/uploadToCloudinaryClient"; // same helper you already made
 import toast from "react-hot-toast";
+import { getClientUser } from "@/utils/getClientUser";
 
 const CreatePartnerForm = () => {
+  const { user } = getClientUser();
   const [formData, setFormData] = useState({
     partnerName: "",
     partnerLogo: null,
@@ -62,6 +64,7 @@ const CreatePartnerForm = () => {
       const res = await axios.post("/api/partners/create", {
         partnerName: formData.partnerName,
         partnerImage: imageUrl,
+        creatorInfo: user?.id,
       });
 
       if (res?.data?.success) {

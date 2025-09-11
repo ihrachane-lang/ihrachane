@@ -6,8 +6,10 @@ import { uploadToCloudinaryClient } from "@/utils/uploadToCloudinaryClient";
 import { getData } from "@/utils/axiosPublic";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { getClientUser } from "@/utils/getClientUser";
 
 const CreateSubCategoryForm = () => {
+  const { user } = getClientUser();
   const [formData, setFormData] = useState({
     subCategoryTitle: "",
     selectedCategory: "",
@@ -87,6 +89,7 @@ const CreateSubCategoryForm = () => {
         selectedCategory: formData.selectedCategory,
         bannerImg: imageUrl,
         description: formData.subTitle,
+        creatorInfo: user?.id,
       });
 
       toast.success("Sub Category Added Successfully");
@@ -114,7 +117,9 @@ const CreateSubCategoryForm = () => {
     <div className="bg-white rounded-xl shadow-lg p-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#19203c] to-[#1e1e30] p-6 rounded-t-xl -mx-8 -mt-8 mb-6">
-        <h1 className="text-2xl font-bold text-white">Create New Sub Category</h1>
+        <h1 className="text-2xl font-bold text-white">
+          Create New Sub Category
+        </h1>
         <p className="text-sm text-gray-300">
           Add a new sub category under your selected main category
         </p>
@@ -206,9 +211,7 @@ const CreateSubCategoryForm = () => {
               <p className="text-gray-600 text-sm">
                 Click to upload or drag and drop
               </p>
-              <p className="text-xs text-gray-400">
-                PNG, JPG, GIF (MAX. 5MB)
-              </p>
+              <p className="text-xs text-gray-400">PNG, JPG, GIF (MAX. 5MB)</p>
               <span className="mt-2 text-sm text-gray-500">
                 {formData.bannerImage
                   ? formData.bannerImage.name

@@ -4,6 +4,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { getClientUser } from "@/utils/getClientUser";
+import toast from "react-hot-toast";
 
 const CreateSocialMediaForm = () => {
   const [formData, setFormData] = useState({
@@ -28,17 +30,18 @@ const CreateSocialMediaForm = () => {
     setLoading(true);
 
     try {
+      console.log(formData);
       const { data } = await axios.post(
         "/api/company/social-links/create",
         formData
       );
 
-      // console.log("✅ Response:", data);
-      alert("Social media created successfully!");
+      console.log("✅ Response:", data);
+      toast.success("Social media created successfully!");
       router.back(); // back to previous page
     } catch (error) {
       console.error("❌ Error:", error);
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -93,7 +96,7 @@ const CreateSocialMediaForm = () => {
               value={formData.socialIcon}
               onChange={handleChange}
               className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm p-3"
-             placeholder='Enter SVG code here, e.g., <svg width="..." height="..." viewBox="...">...</svg>'
+              placeholder='Enter SVG code here, e.g., <svg width="..." height="..." viewBox="...">...</svg>'
               required
             />
             <p className="mt-1 text-sm text-gray-500">

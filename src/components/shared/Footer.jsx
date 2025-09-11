@@ -1,15 +1,16 @@
 "use client";
 import { getData } from "@/utils/axiosPublic";
+import { getClientUser } from "@/utils/getClientUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import LogOutBtn from "./LogOutBtn";
 
 export default function Footer() {
+  const { user } = getClientUser();
   const [social, setSocial] = useState([]);
   const [about, setAbout] = useState({});
-  
+
   useEffect(() => {
     async function fetchData() {
       const { data } = await getData("/api/company/social-links");
@@ -46,11 +47,11 @@ export default function Footer() {
           <div className="flex space-x-4 text-lg">
             {social?.map((item) => (
               <Link href={item?.socialLink} key={item?._id}>
-                <div 
+                <div
                   className="social-icon-container"
-                  dangerouslySetInnerHTML={{ 
-                    __html: processSvg(item?.socialIcon) 
-                  }} 
+                  dangerouslySetInnerHTML={{
+                    __html: processSvg(item?.socialIcon),
+                  }}
                 />
               </Link>
             ))}
@@ -79,14 +80,31 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-2">Explore</h4>
           <ul className="text-sm space-y-1">
-            <li>Contact Us</li>
+            <li>
+              <Link href="#contact">Contact US</Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-semibold mb-2">Corporate</h4>
           <ul className="text-sm space-y-1">
-            <li>About Us</li>
+            {user && (
+              <li>
+                {" "}
+                <Link href="/dashboard">Dashboard</Link>{" "}
+              </li>
+            )}
+            {user ? (
+              <li className="my-6">
+                {" "}
+                <LogOutBtn />{" "}
+              </li>
+            ) : (
+              <li>
+                <Link className="my-4" href="/login">login</Link>{" "}
+              </li>
+            )}
           </ul>
         </div>
       </div>

@@ -1,14 +1,17 @@
 "use client";
 
+import { getClientUser } from "@/utils/getClientUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 const CreateServiceForm = () => {
+  const { user } = getClientUser();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    creatorInfo: user?.id,
   });
 
   const router = useRouter();

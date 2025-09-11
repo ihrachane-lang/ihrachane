@@ -14,11 +14,6 @@ const socialLinkSchema = new mongoose.Schema(
       type: String, // social media profile/page link
       required: true,
     },
-    creatorInfo: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
   },
   { timestamps: true }
 );

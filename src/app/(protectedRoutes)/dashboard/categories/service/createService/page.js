@@ -6,8 +6,10 @@ import { uploadToCloudinaryClient } from "@/utils/uploadToCloudinaryClient";
 import { getData } from "@/utils/axiosPublic";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { getClientUser } from "@/utils/getClientUser";
 
 const CreateSubCategoryService = () => {
+  const { user } = getClientUser();
   const [formData, setFormData] = useState({
     serviceName: "",
     selectedSubCategory: "",
@@ -86,6 +88,7 @@ const CreateSubCategoryService = () => {
         selectedSubCategory: formData.selectedSubCategory,
         bannerImg: imageUrl,
         description: formData.description,
+        creatorInfo: user?.id,
       });
       toast.success("Service added Successfully");
       setSuccessMsg("✅ Sub Category Service created successfully!");
