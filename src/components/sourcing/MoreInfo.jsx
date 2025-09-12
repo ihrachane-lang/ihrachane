@@ -13,6 +13,7 @@ const MoreInfo = () => {
     fetchData();
   }, []);
 
+  // console.log(about);
  
   const features = [
     {
