@@ -79,7 +79,7 @@ export default function Privacy() {
                 
                 <div className="prose max-w-none">
                   <p className="text-lg text-gray-700 mb-6">
-                    İhracHane is committed to maintaining the privacy and security of all clients' personal and business information. We comply with international data protection regulations, including GDPR, and apply strict policies for data handling.
+                    İhracHane is committed to maintaining the privacy and security of all clients personal and business information. We comply with international data protection regulations, including GDPR, and apply strict policies for data handling.
                   </p>
 
                   <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4 border-b pb-2">Information We Collect</h3>

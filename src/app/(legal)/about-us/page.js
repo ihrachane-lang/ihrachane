@@ -180,7 +180,7 @@ export default function About() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Long-Term Partnerships</h3>
-                    <p className="text-gray-600">We're committed to building lasting relationships that support your business growth.</p>
+                    <p className="text-gray-600">Were committed to building lasting relationships that support your business growth.</p>
                   </div>
                 </div>
               </div>
