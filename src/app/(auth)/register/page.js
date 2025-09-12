@@ -303,12 +303,7 @@ export default function Register() {
                   htmlFor='agreeToTerms'
                   className='font-medium text-gray-700'>
                   I agree to the{" "}
-                  <Link
-                    href='/terms'
-                    className='text-orange-600 hover:text-orange-500'>
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
+                  
                   <Link
                     href='/privacy'
                     className='text-orange-600 hover:text-orange-500'>
