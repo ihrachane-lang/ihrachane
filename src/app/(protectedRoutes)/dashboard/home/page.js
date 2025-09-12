@@ -94,10 +94,10 @@ const UpdatePostForm = () => {
         {/* Header */}
         <div className="bg-gradient-to-b from-[#19203c] via-[#3b3b5f] to-[#1e1e30] p-5">
           <h1 className="text-2xl font-semibold text-white text-center">
-            Update Post
+            Update Hero Section
           </h1>
           <p className="text-sm text-orange-100 text-center">
-            Add or update your post details below
+            Add or update your hero section details below
           </p>
         </div>
 
