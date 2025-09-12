@@ -83,6 +83,9 @@ export default function Footer() {
             <li>
               <Link href="#contact">Contact US</Link>
             </li>
+            <li>
+              <Link href="/about-us">About US</Link>
+            </li>
           </ul>
         </div>
 
@@ -102,7 +105,9 @@ export default function Footer() {
               </li>
             ) : (
               <li>
-                <Link className="my-4" href="/login">login</Link>{" "}
+                <Link className="my-4" href="/login">
+                  login
+                </Link>{" "}
               </li>
             )}
           </ul>
