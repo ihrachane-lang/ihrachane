@@ -116,7 +116,7 @@ export default function SourcingPage() {
   return (
     <div
       id="contact"
-      className="container mx-auto bg-gradient-to-b from-orange-50 to-white py-12 px-4 sm:px-6 lg:px-8 rounded-2xl"
+      className="container mx-auto bg-gradient-to-b from-orange-50 to-white py-12 px-4 sm:px-6 lg:px-8 rounded-2xl mt-8 md:mt-10 lg:mt-12"
     >
       {/* Top Section */}
       <Header />

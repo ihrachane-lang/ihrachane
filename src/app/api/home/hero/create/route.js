@@ -1,10 +1,18 @@
 import dbConnect from "@/lib/mongodb";
 import HomeHero from "@/models/HomeHero";
+import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
     await dbConnect();
+    const isAdmin = await isAdminCheck();
+    if (!isAdmin) {
+      return NextResponse.json(
+        { success: false, error: "Forbidden: Admin access only" },
+        { status: 403 }
+      );
+    }
 
     const { slug, title, description, image } = await request.json();
 

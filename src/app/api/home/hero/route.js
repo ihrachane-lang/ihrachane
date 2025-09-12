@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await dbConnect();
-
+   
     const post = await HomeHero.findOne();
 
     if (!post) {
