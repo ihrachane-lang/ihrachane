@@ -78,7 +78,7 @@ const SubCategoryServicePage = () => {
           </h2>
           <Link href={"/dashboard/categories/service/createService"}>
             <button className="bg-gradient-to-b from-[#19203c] via-[#3b3b5f] to-[#1e1e30]  cursor-pointer text-white px-4 py-2 rounded-lg shadow">
-              Add Sub Category
+              Add Sub Category Service
             </button>
           </Link>
         </div>
