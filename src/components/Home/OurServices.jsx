@@ -3,6 +3,8 @@ import Service from "@/models/Service";
 import Link from "next/link";
 import SingleService from "./SingleService";
 
+export const dynamic = "force-dynamic";
+
 const ServiceCard = async () => {
   await dbConnect();
   const services = await Service.find();
