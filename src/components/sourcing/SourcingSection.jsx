@@ -235,7 +235,7 @@ export default function SourcingPage() {
                 >
                   {countries.map((country) => (
                     <option key={country.code} value={country.phone}>
-                      {country.phone}
+                      {`${country.code}  ${country.phone}`}
                     </option>
                   ))}
                 </select>
