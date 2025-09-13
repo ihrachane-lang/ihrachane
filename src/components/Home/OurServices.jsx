@@ -4,10 +4,12 @@ import Link from "next/link";
 import SingleService from "./SingleService";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0; // always fresh
+export const fetchCache = "force-no-store"; // disable route cache
 
 const ServiceCard = async () => {
   await dbConnect();
-  const services = await Service.find();
+  const services = await Service.find().lean(); // lean added
 
   return (
     <div
