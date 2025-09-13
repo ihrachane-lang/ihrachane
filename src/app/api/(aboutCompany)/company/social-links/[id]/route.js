@@ -7,10 +7,7 @@ export async function GET(request, { params }) {
   try {
     await dbConnect();
     const { id } = await params;
-    const socialLink = await SocialLink.findById(id).populate({
-      path: "creatorInfo",
-      select: "-password -email",
-    });
+    const socialLink = await SocialLink.findById(id)
 
     if (!socialLink) {
       return NextResponse.json(
