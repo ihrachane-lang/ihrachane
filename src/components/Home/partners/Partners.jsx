@@ -9,7 +9,7 @@ export const fetchCache = "force-no-store"; // disable route cache
 
 async function getPartners() {
   await dbConnect();
-  const partners = await Partner.find().populate("creatorInfo", "name");
+  const partners = await Partner.find()
   return partners;
 }
 
