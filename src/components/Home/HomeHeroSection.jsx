@@ -1,11 +1,17 @@
-import React from "react";
+"use client";
 import Hero from "../shared/Hero";
-import dbConnect from "@/lib/mongodb";
-import HomeHero from "@/models/HomeHero";
+import { useEffect, useState } from "react";
 
-const HomeHeroSection = async () => {
-  await dbConnect();
-  const data = await HomeHero.findOne();
+const HomeHeroSection = () => {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/home/hero");
+      const result = await res.json();
+      setData(result);
+    }
+    fetchData();
+  }, []);
   return (
     <Hero
       img={data?.image}
