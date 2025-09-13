@@ -244,7 +244,7 @@ const Testimonials = () => {
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">
-                  15+
+                  {experience()}+
                 </div>
                 <div className="text-orange-800 text-sm font-medium">
                   Years Experience
@@ -267,3 +267,12 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+
+function experience() {
+  const startYear = 2021;
+  const currentYear = new Date().getFullYear();
+  const difference = currentYear - startYear;
+  return difference;
+}
+
+
