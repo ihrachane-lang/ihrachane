@@ -22,7 +22,7 @@ export default function Supplier() {
               {/* Main image container */}
               <div className="relative z-10 bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-8 transform transition-transform duration-500 group-hover:scale-105">
                 <Image
-                  src={"/supplier.png"}
+                  src={"/partners.png"}
                   alt="Supplier Illustration"
                   width={500}
                   height={400}
