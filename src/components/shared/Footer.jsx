@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import LogOutBtn from "./LogOutBtn";
+import Image from "next/image";
 
 export default function Footer() {
   const { user } = getClientUser();
@@ -41,7 +42,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Left Side - Logo & Info */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold">İHRAÇHANE</h2>
+          <Image
+            src={"/logo/siteLogo/sidebarLogo.svg"}
+            height={50}
+            width={150}
+            alt=""
+          />
 
           {/* Social Icons */}
           <div className="flex space-x-4 text-lg">
