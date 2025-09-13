@@ -25,7 +25,7 @@ const Hero = ({ img, info }) => {
                 href="#contact"
                 className="bg-black text-white font-semibold py-3 px-8 rounded-full hover:scale-3d transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                Get Started
+                Get Offer
               </Link>
             </div>
           </div>

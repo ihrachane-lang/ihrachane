@@ -28,6 +28,16 @@ export default function Footer() {
     fetchData();
   }, []);
 
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/categories/categoriesName");
+      const data = await res.json();
+      setCategories(data?.data);
+    }
+    fetchData();
+  }, []);
+  
   // Function to process SVG content and add styling
   const processSvg = (svgContent) => {
     // Add width, height and style to the SVG element
@@ -78,8 +88,14 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-2">Services</h4>
           <ul className="text-sm space-y-1">
-            <li>Sourcing</li>
-            <li>Dropshipping</li>
+            <Link href="/shipping-partners">
+              <li>SHIPPING PARTNERS</li>
+            </Link>
+            {categories?.map((cat, index) => (
+              <Link key={index} href={`/home/${cat?.name}`}>
+                <li>{cat?.name.toUpperCase()}</li>
+              </Link>
+            ))}
           </ul>
         </div>
 

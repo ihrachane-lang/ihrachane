@@ -94,12 +94,13 @@ export default function NavbarClient({ menus }) {
                 onClick={goToContact}
                 className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-full text-lg font-medium transition-colors duration-200 shadow-sm"
               >
-                Contact Us
+                Get Offer
               </button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
+              <button className="bg-black px-3 py-1 rounded-xl text-white">Get Offer</button>
               <button
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-orange-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500 transition-colors duration-200"
@@ -174,6 +175,7 @@ export default function NavbarClient({ menus }) {
                       width={120}
                     />
                   </Link>
+
                   <button
                     onClick={toggleMenu}
                     className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
@@ -238,7 +240,7 @@ export default function NavbarClient({ menus }) {
                         : `${menus.length * 50}ms`,
                     }}
                   >
-                    Contact Us
+                    Get Offer
                   </button>
                 </div>
               </div>

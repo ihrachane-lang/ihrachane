@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "IHRACHANE - Single Center from Supply to Delivery",
+    default: "Single Center from Supply to Delivery",
     
   },
   description: "IHRACHANE delivers end-to-end supply chain management, procurement, and global sourcing solutions for businesses seeking efficiency and growth.",
@@ -36,7 +36,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "IHRACHANE - Single Center from Supply to Delivery",
+    title: "Single Center from Supply to Delivery",
     description: "End-to-end supply chain management, procurement, and global sourcing solutions for businesses.",
     url: 'https://www.ihrachane.com', // Replace with your actual domain
     siteName: 'IHRACHANE',
@@ -45,7 +45,7 @@ export const metadata = {
         url: '/logo/siteLogo/logo.svg', // Replace with your actual OG image path
         width: 1200,
         height: 630,
-        alt: 'IHRACHANE - Supply Chain Solutions',
+        alt: 'Supply Chain Solutions',
       },
     ],
     locale: 'en_US',
@@ -53,7 +53,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IHRACHANE - Single Center from Supply to Delivery',
+    title: 'Single Center from Supply to Delivery',
     description: 'End-to-end supply chain management solutions for businesses.',
     images: ['/logo/siteLogo/logo.svg'], // Replace with your actual Twitter image path
     creator: '@ihrachane', // Replace with your actual Twitter handle
