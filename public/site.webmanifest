@@ -1,0 +1,17 @@
+{
+  "name": "IHRACHANE - Single Center from Supply to Delivery",
+  "short_name": "IHRACHANE",
+  "description": "Powerful sourcing and supply chain management service",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/logo/siteLogo/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

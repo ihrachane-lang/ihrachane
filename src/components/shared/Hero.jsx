@@ -32,7 +32,7 @@ const Hero = ({ img, info }) => {
         </div>
 
         {/* Right Side: Image (always bottom aligned) */}
-        <div className="flex items-end justify-center md:justify-end">
+        <div className="flex justify-center md:justify-end">
           {img && (
             <Image
               src={img}

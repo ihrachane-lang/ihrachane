@@ -14,7 +14,7 @@ const MoreInfo = () => {
   }, []);
 
   // console.log(about);
- 
+
   const features = [
     {
       icon: <FaUserShield className="w-6 h-6 text-orange-600" />,

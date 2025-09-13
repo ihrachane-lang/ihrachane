@@ -202,5 +202,3 @@ export const countries = [
   { name: "Zambia", code: "ZM", phone: "+260" },
   { name: "Zimbabwe", code: "ZW", phone: "+263" },
 ];
-
-console.log(countries.length);
