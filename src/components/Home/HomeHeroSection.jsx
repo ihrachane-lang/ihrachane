@@ -1,17 +1,14 @@
-"use client";
+import React from "react";
 import Hero from "../shared/Hero";
-import { useEffect, useState } from "react";
+import dbConnect from "@/lib/mongodb";
+import HomeHero from "@/models/HomeHero";
 
-const HomeHeroSection = () => {
-  const [data, setData] = useState({});
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/api/home/hero");
-      const result = await res.json();
-      setData(result);
-    }
-    fetchData();
-  }, []);
+// 👇 Add this line
+export const dynamic = "force-dynamic";
+
+const HomeHeroSection = async () => {
+  await dbConnect();
+  const data = await HomeHero.findOne();
   return (
     <Hero
       img={data?.image}
