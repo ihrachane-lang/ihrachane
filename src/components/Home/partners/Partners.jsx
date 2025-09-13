@@ -4,6 +4,8 @@ import Partner from "@/models/Partner";
 import "./partners.css";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;               // always fresh
+export const fetchCache = "force-no-store"; // disable route cache
 
 async function getPartners() {
   await dbConnect();
