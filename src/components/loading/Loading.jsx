@@ -8,7 +8,7 @@ const Loading = () => {
       <div className="loading-content">
 
         <div className="loading-title">
-          IHRCHANE
+          IHRACHANE
           <div className="title-underline"></div>
           <div className="title-underline-ping"></div>
         </div>
