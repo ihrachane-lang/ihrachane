@@ -4,11 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "./navbar.css";
+import { useRouter } from "next/navigation";
 
 export default function NavbarClient({ menus }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const router = useRouter();
+
+  function goToContact() {
+    router.push("/#contact");
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,12 +90,12 @@ export default function NavbarClient({ menus }) {
               ))}
 
               {/* Contact Button */}
-              <Link
-                href="/contact"
+              <button
+                onClick={goToContact}
                 className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-full text-lg font-medium transition-colors duration-200 shadow-sm"
               >
                 Contact Us
-              </Link>
+              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -215,14 +222,16 @@ export default function NavbarClient({ menus }) {
 
                 {/* Contact button at bottom */}
                 <div className="p-6 border-t">
-                  <Link
-                    href="/contact"
+                  <button
                     className={`contact-button ${
                       isAnimating
                         ? "contact-button-closing"
                         : "contact-button-opening"
                     }`}
-                    onClick={toggleMenu}
+                    onClick={() => {
+                      toggleMenu();
+                      goToContact();
+                    }}
                     style={{
                       animationDelay: isAnimating
                         ? "0ms"
@@ -230,7 +239,7 @@ export default function NavbarClient({ menus }) {
                     }}
                   >
                     Contact Us
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

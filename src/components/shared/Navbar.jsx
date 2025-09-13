@@ -5,6 +5,7 @@ import Category from "@/models/Category";
 
 const staticMenus = [
   { url: "/", path: "Home" },
+  { url: "/shipping-partners", path: "SHIPPING PARTNERS" },
 ];
 
 const fetchCategories = async () => {
