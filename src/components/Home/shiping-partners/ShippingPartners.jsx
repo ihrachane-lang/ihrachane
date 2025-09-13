@@ -73,23 +73,7 @@ const ShippingPartners = ({ partners }) => {
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {partner.partnerName}
                     </h3>
-                    <div className="flex items-center text-gray-600 text-sm mb-4">
-                      <svg
-                        className="w-4 h-4 mr-1 text-orange-500"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        ></path>
-                      </svg>
-                      <span>Added by: {partner.creatorInfo.name}</span>
-                    </div>
+                   
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-medium bg-orange-100 text-orange-800 px-3 py-1 rounded-full">
                         Verified Partner
