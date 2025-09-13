@@ -8,11 +8,6 @@ export const revalidate = 0; // always fresh
 export const fetchCache = "force-no-store"; // disable route cache
 
 const ServiceCard = async () => {
-  // This forces request to be considered unique → breaks cache
-  const requestHeaders = headers();
-  requestHeaders.get("x-no-cache"); // just reading it busts cache
-
-  
   await dbConnect();
   const services = await Service.find().lean(); // lean added
 
