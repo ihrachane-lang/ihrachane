@@ -3,6 +3,8 @@ import dbConnect from "@/lib/mongodb";
 import Partner from "@/models/Partner";
 import "./partners.css";
 
+export const dynamic = "force-dynamic";
+
 async function getPartners() {
   await dbConnect();
   const partners = await Partner.find().populate("creatorInfo", "name");
@@ -11,9 +13,6 @@ async function getPartners() {
 
 export default async function Partners() {
   const partners = await getPartners();
-  
-  // Duplicate partners for seamless marquee animation
-  const duplicatedPartners = partners.length > 0 ? [...partners, ...partners] : [];
 
   return (
     <div className="bg-gradient-to-br from-orange-50 to-orange-100 py-16 px-4 flex items-center justify-center">
