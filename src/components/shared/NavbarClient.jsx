@@ -207,7 +207,7 @@ export default function NavbarClient({ menus }) {
                             : `${index * 50}ms`,
                         }}
                       >
-                        {menu.path}
+                        {menu.path.toUpperCase()}
                       </Link>
                     ))}
                   </div>
