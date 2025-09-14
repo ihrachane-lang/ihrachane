@@ -54,7 +54,7 @@ const UpdateSubCategoryService = ({ serviceId }) => {
       setPreview(url);
     } catch (error) {
       console.error("Upload failed:", error);
-      alert("Image upload failed!");
+      toast.error("Image upload failed!");
     } finally {
       setUploading(false);
     }

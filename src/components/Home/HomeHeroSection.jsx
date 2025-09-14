@@ -3,12 +3,9 @@ import Hero from "../shared/Hero";
 import dbConnect from "@/lib/mongodb";
 import HomeHero from "@/models/HomeHero";
 
-// 👇 Add this line
-export const dynamic = "force-dynamic";
-
 const HomeHeroSection = async () => {
   await dbConnect();
-  const data = await HomeHero.findOne();
+  const data = await HomeHero.findOne().lean()
   return (
     <Hero
       img={data?.image}

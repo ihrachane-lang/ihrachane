@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { uploadToCloudinaryClient } from "@/utils/uploadToCloudinaryClient";
+import toast from "react-hot-toast";
 
 const UpdateCategories = ({ categoryId }) => {
   const router = useRouter();
@@ -63,7 +64,7 @@ const UpdateCategories = ({ categoryId }) => {
       setFormData((prev) => ({ ...prev, [field]: url }));
     } catch (error) {
       console.error("Upload error:", error);
-      alert("Image upload failed!");
+      toast.error("Image upload failed!");
     } finally {
       setLoading(false);
     }
@@ -79,10 +80,10 @@ const UpdateCategories = ({ categoryId }) => {
     });
     const data = await res.json();
     if (data.success) {
-      alert("Category updated successfully!");
+      toast.success("Category updated successfully!");
       router.push("/dashboard/categories/list");
     } else {
-      alert(data.error || "Error updating category");
+      toast.success(data.error || "Error updating category");
     }
   };
 

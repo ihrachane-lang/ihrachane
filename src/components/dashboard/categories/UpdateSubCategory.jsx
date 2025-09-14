@@ -57,7 +57,7 @@ const UpdateSubCategory = ({ subCatId }) => {
     } catch (error) {
       console.error("Upload failed:", error);
       setUploading(false);
-      alert("Image upload failed!");
+      toast.error("Image upload failed!");
     }
   };
 
@@ -79,11 +79,11 @@ const UpdateSubCategory = ({ subCatId }) => {
         toast.success("Sub-category updated successfully!");
         router.push("/dashboard/categories/sub-list");
       } else {
-        alert(data.error || "Error updating sub-category");
+        toast.error(data.error || "Error updating sub-category");
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     }
   };
 

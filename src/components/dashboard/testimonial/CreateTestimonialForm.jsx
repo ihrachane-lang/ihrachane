@@ -51,7 +51,7 @@ const CreateTestimonialForm = () => {
     e.preventDefault();
     const errorMsg = validateForm();
     if (errorMsg) {
-      alert(errorMsg);
+      toast.error(errorMsg);
       return;
     }
 
