@@ -83,7 +83,7 @@ const UpdateCategories = ({ categoryId }) => {
       toast.success("Category updated successfully!");
       router.push("/dashboard/categories/list");
     } else {
-      toast.success(data.error || "Error updating category");
+      toast.error(data.error || "Error updating category");
     }
   };
 
