@@ -19,6 +19,9 @@ let isConnected = false;
 const dbConnect = async () => {
   if (isConnected) return;
   try {
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is missing in environment variables (.env)");
+    }
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "ihrfaset",
     });
@@ -26,7 +29,7 @@ const dbConnect = async () => {
     // console.log("✅ MongoDB Connected");
   } catch (error) {
     console.error("❌ MongoDB connection error:", error);
-    throw new Error("MongoDB connection failed");
+    throw new Error(`MongoDB connection failed: ${error.message}`);
   }
 };
 

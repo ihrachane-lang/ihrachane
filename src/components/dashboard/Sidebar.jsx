@@ -8,18 +8,22 @@ import { menuItems } from "@/utils/dashboardMenu";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const pathname = usePathname();
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [openSubmenus, setOpenSubmenus] = useState({});
 
   // Expand relevant submenu if URL matches
   useEffect(() => {
-    if (pathname?.startsWith("/dashboard/categories")) {
-      setIsCategoriesOpen(true);
-    }
-    if (pathname?.startsWith("/dashboard/about")) {
-      setIsAboutOpen(true);
-    }
+    menuItems.forEach((item) => {
+      if (item.hasSubmenu && item.subItems) {
+        if (item.subItems.some((sub) => pathname?.startsWith(sub.path))) {
+          setOpenSubmenus((prev) => ({ ...prev, [item.name]: true }));
+        }
+      }
+    });
   }, [pathname]);
+
+  const toggleSubmenu = (name) => {
+    setOpenSubmenus((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
 
   const isActive = (path) => pathname === path;
   const isSubItemActive = (subItems) =>
@@ -76,12 +80,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 ) : item.hasSubmenu ? (
                   <div>
                     <button
-                      onClick={() => {
-                        if (item.name === "Categories")
-                          setIsCategoriesOpen(!isCategoriesOpen);
-                        if (item.name === "About Company")
-                          setIsAboutOpen(!isAboutOpen);
-                      }}
+                      onClick={() => toggleSubmenu(item.name)}
                       className={`w-full flex items-center p-2 rounded-lg transition-colors ${
                         isSubItemActive(item.subItems)
                           ? "bg-[#3b3b5f] border-l-4 border-gray-500"
@@ -91,8 +90,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                       <span className="mr-3">{item.icon}</span>
                       <span className="flex-1 text-left">{item.name}</span>
                       <span className="ml-auto">
-                        {(item.name === "Categories" && isCategoriesOpen) ||
-                        (item.name === "About Company" && isAboutOpen) ? (
+                        {openSubmenus[item.name] ? (
                           // Chevron Up
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -120,8 +118,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                       </span>
                     </button>
 
-                    {(item.name === "Categories" && isCategoriesOpen) ||
-                    (item.name === "About Company" && isAboutOpen) ? (
+                    {openSubmenus[item.name] ? (
                       <ul className="ml-6 mt-1 space-y-1">
                         {item.subItems.map((subItem) => (
                           <li key={subItem.name}>

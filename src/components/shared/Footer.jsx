@@ -37,7 +37,7 @@ export default function Footer() {
     }
     fetchData();
   }, []);
-  
+
   // Function to process SVG content and add styling
   const processSvg = (svgContent) => {
     // Add width, height and style to the SVG element
@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Right Side - Links */}
         <div>
-          <h4 className="font-semibold mb-2">Services</h4>
+          <h4 className="font-semibold mb-2">Quick Links</h4>
           <ul className="text-sm space-y-1">
             <Link href="/shipping-partners">
               <li>SHIPPING PARTNERS</li>

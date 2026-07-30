@@ -5,7 +5,7 @@ import Cta from "./Cta";
 const ShippingPartners = ({ partners }) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-orange-50">
-      <HomeHeroSection />
+      <HomeHeroSection slug="shipping-partners" />
 
       {/* Partners Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
