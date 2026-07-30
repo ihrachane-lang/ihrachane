@@ -1,17 +1,21 @@
 import React from "react";
+import SectionIntro from "../shared/SectionIntro";
 
 const Header = () => {
   return (
-    <div className="max-w-4xl mx-auto text-center mb-12">
-      <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-        Tell Us Your <span className="text-orange-600">Sourcing Needs</span>
-      </h1>
-      <p className="mt-4 text-gray-700 text-lg sm:text-xl max-w-3xl mx-auto">
-        Submit your product requirements and we'll connect you with verified
-        suppliers worldwide. Get competitive quotes and streamline your supply
-        chain.
-      </p>
-    </div>
+    <SectionIntro
+      badge="Sourcing Request"
+      title={
+        <>
+          Tell Us Your{" "}
+          <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+            Sourcing Needs
+          </span>
+        </>
+      }
+      description="Submit your product requirements and our team will review supplier options, logistics constraints, and next steps for a practical quote."
+      className="mb-12 max-w-4xl"
+    />
   );
 };
 

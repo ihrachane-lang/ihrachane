@@ -34,9 +34,9 @@ const MoreInfo = () => {
   ];
   return (
     <div className="space-y-6">
-      <div className="bg-white shadow-lg rounded-2xl p-8 border border-orange-100 max-w-xl mx-auto">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-          <span className="bg-orange-100 text-orange-600 p-2 rounded-full">
+      <div className="site-panel max-w-xl rounded-[2rem] p-8">
+        <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
+          <span className="rounded-full bg-orange-100 p-2 text-orange-600">
             <HiOutlineGlobeAlt className="w-8 h-8" />
           </span>
           Why Choose Us?
@@ -44,22 +44,22 @@ const MoreInfo = () => {
         <ul className="space-y-5">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-4">
-              <div className="bg-orange-50 p-2 rounded-full shadow-sm">
+              <div className="rounded-full bg-orange-50 p-2 shadow-sm">
                 {feature.icon}
               </div>
               <div>
-                <h4 className="font-semibold text-gray-800 text-lg">
+                <h4 className="text-lg font-semibold text-slate-800">
                   {feature.title}
                 </h4>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <p className="text-sm leading-7 text-slate-600">{feature.description}</p>
               </div>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-xl rounded-2xl p-6">
-        <h3 className="text-xl font-bold mb-4">Need Help?</h3>
+      <div className="rounded-[2rem] bg-gradient-to-br from-orange-500 via-orange-600 to-amber-500 p-6 text-white shadow-[0_24px_60px_-32px_rgba(249,115,22,0.9)]">
+        <h3 className="mb-4 text-xl font-bold">Need Help?</h3>
         <p className="mb-4 text-orange-100">
           Our sourcing experts are available 24/7 to assist you with your
           requirements.

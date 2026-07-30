@@ -9,11 +9,13 @@ import toast from "react-hot-toast";
 
 export default function SourcingPage() {
   const [formData, setFormData] = useState({
-    name: "", // Changed from firstName/lastName to match backend
+    name: "",
     email: "",
     company: "",
     country: "",
-    phone: "", // Will combine phoneCode and phoneNumber
+    phone: "",
+    phoneCode: "+1",
+    phoneNumber: "",
     preferredContactMethod: "",
     productRequirements: {
       expectedQuantity: "",
@@ -32,7 +34,6 @@ export default function SourcingPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Handle nested productRequirements fields
     if (name.startsWith("productRequirements.")) {
       const requirementField = name.split(".")[1];
       setFormData((prev) => ({
@@ -54,28 +55,21 @@ export default function SourcingPage() {
     setSubmitStatus({ success: null, message: "" });
 
     try {
-      // Prepare data for API (combine phone code and number)
       const submitData = {
         ...formData,
         phone: `${formData.phoneCode}${formData.phoneNumber}`,
-        // Remove temporary fields not needed by API
         phoneCode: undefined,
         phoneNumber: undefined,
       };
-      // // console.log(submitData);
-      // Make API request
 
-      
       const response = await axios.post(
         "/api/contacts/sourcing-requests/create",
         submitData
       );
-      // // console.log(response);
 
       if (response.data.success) {
         setSubmitStatus({ success: true, message: response.data.message });
-        toast.success("Request send successfully");
-        // Reset form on successful submission
+        toast.success("Sourcing request submitted successfully!");
         setFormData({
           name: "",
           email: "",
@@ -93,15 +87,14 @@ export default function SourcingPage() {
           },
         });
       } else {
-        toast.error("Failed to submit form");
+        toast.error("Failed to submit sourcing request.");
         setSubmitStatus({
           success: false,
           message: response.data.error || "Failed to submit form",
         });
       }
     } catch (error) {
-      // console.error("Submission error:", error);
-      toast.error(error);
+      toast.error(error.response?.data?.error || "An error occurred");
       setSubmitStatus({
         success: false,
         message:
@@ -114,246 +107,262 @@ export default function SourcingPage() {
   };
 
   return (
-    <div
-      id="contact"
-      className="container mx-auto bg-gradient-to-b from-orange-50 to-white py-12 px-4 sm:px-6 lg:px-8 rounded-2xl mt-8 md:mt-10 lg:mt-12"
-    >
-      {/* Top Section */}
-      <Header />
+    <div id="contact" className="site-section-muted relative overflow-hidden">
+      <div className="site-container relative z-10">
+        <Header />
 
-      {/* Status Message */}
-      {submitStatus.message && (
-        <div
-          className={`max-w-6xl mx-auto mb-6 p-4 rounded-lg text-center ${
-            submitStatus.success
-              ? "bg-green-100 text-green-800 border border-green-400"
-              : "bg-red-100 text-red-800 border border-red-400"
-          }`}
-        >
-          {submitStatus.message}
-        </div>
-      )}
-
-      {/* Main Form & Info Section */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {/* Form */}
-        <form
-          className="lg:col-span-2 bg-white shadow-xl rounded-2xl p-10 space-y-8 border border-orange-100"
-          onSubmit={handleSubmit}
-        >
-          {/* Form Heading */}
-          <div className="pb-4 border-b border-orange-200">
-            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-              Product Sourcing Request
-            </h2>
-            <p className="text-gray-600 text-base mt-2">
-              Submit your product requirements and we'll connect you with{" "}
-              <span className="font-medium text-orange-600">
-                verified suppliers worldwide.
-              </span>
-            </p>
+        {submitStatus.message && (
+          <div
+            className={`mx-auto mb-8 max-w-6xl rounded-2xl border p-4 text-center text-sm font-semibold shadow-sm ${
+              submitStatus.success
+                ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                : "bg-rose-50 text-rose-800 border border-rose-200"
+            }`}
+          >
+            {submitStatus.message}
           </div>
+        )}
 
-          {/* Name */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              name="name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-            />
-          </div>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mt-8">
+          <form
+            className="site-panel lg:col-span-8 space-y-8 rounded-[2rem] p-8 sm:p-12"
+            onSubmit={handleSubmit}
+          >
+            <div className="pb-6 border-b border-slate-200/80 space-y-2">
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Product Sourcing Request
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Provide your product specifications below. Our sourcing specialists will verify supplier options and return a customized quote within 24 hours.
+              </p>
+            </div>
 
-          {/* Company & Country */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Company *
+            <div className="space-y-2">
+              <label className="site-label">
+                Full Name *
               </label>
               <input
                 type="text"
-                name="company"
+                name="name"
                 required
-                value={formData.company}
+                value={formData.name}
                 onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                placeholder="Jane Doe"
+                className="site-input"
               />
             </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Country *
-              </label>
-              <select
-                name="country"
-                required
-                value={formData.country}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-3 w-full bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-              >
-                <option disabled value="">
-                  Select your country
-                </option>
-                {countries.map((country) => (
-                  <option key={country.code} value={country.name}>
-                    {country.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
 
-          {/* Email & Phone */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Email *
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Phone Number *
-              </label>
-              <div className="flex">
-                <select
-                  name="phoneCode"
-                  value={formData.phoneCode || "+1"}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="site-label">
+                  Company Name *
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  value={formData.company}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-l-xl px-3 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                  placeholder="Acme Global Ltd."
+                  className="site-input"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="site-label">
+                  Destination Country *
+                </label>
+                <select
+                  name="country"
+                  required
+                  value={formData.country}
+                  onChange={handleChange}
+                  className="site-select"
                 >
+                  <option disabled value="">
+                    Select your country
+                  </option>
                   {countries.map((country) => (
-                    <option key={country.code} value={country.phone}>
-                      {`${country.code}  ${country.phone}`}
+                    <option key={country.code} value={country.name}>
+                      {country.name}
                     </option>
                   ))}
                 </select>
-                <input
-                  type="tel"
-                  name="phoneNumber"
-                  required
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  className="border border-gray-300 border-l-0 rounded-r-xl px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                  placeholder="123 456 7890"
-                />
               </div>
             </div>
-          </div>
 
-          {/* Preferred Contact */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Preferred Contact Method *
-            </label>
-            <div className="flex items-center gap-6">
-              {["Phone", "WhatsApp", "Email"].map((method) => (
-                <label
-                  key={method}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="radio"
-                    name="preferredContactMethod"
-                    value={method.toLowerCase()}
-                    checked={
-                      formData.preferredContactMethod === method.toLowerCase()
-                    }
-                    onChange={handleChange}
-                    className="text-orange-600 focus:ring-orange-500"
-                    required
-                  />
-                  <span className="text-gray-700">{method}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="site-label">
+                  Work Email *
                 </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Product Requirements */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-3">
-              Product Requirements
-            </label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-              <div>
                 <input
-                  type="text"
-                  name="productRequirements.expectedQuantity"
-                  placeholder="Expected Quantity e.g., 1000 units"
-                  value={formData.productRequirements.expectedQuantity}
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                  placeholder="jane@company.com"
+                  className="site-input"
                 />
               </div>
-              <div>
-                <select
-                  name="productRequirements.budgetRange"
-                  value={formData.productRequirements.budgetRange}
+
+              <div className="space-y-2">
+                <label className="site-label">
+                  Phone Number *
+                </label>
+                <div className="flex">
+                  <select
+                    name="phoneCode"
+                    value={formData.phoneCode || "+1"}
+                    onChange={handleChange}
+                    className="rounded-l-2xl border border-r-0 border-slate-300 bg-slate-50 px-3 py-3.5 text-xs font-bold text-slate-900 outline-none transition-all focus:border-orange-500"
+                  >
+                    {countries.map((country) => (
+                      <option key={country.code} value={country.phone}>
+                        {`${country.code} ${country.phone}`}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    required
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    className="site-input rounded-l-none rounded-r-2xl"
+                    placeholder="555-0199"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <label className="site-label">
+                Preferred Contact Method *
+              </label>
+              <div className="flex flex-wrap gap-4 sm:gap-6">
+                {["Phone", "WhatsApp", "Email"].map((method) => (
+                  <label
+                    key={method}
+                    className="inline-flex cursor-pointer items-center gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-orange-200 hover:bg-orange-50/60"
+                  >
+                    <input
+                      type="radio"
+                      name="preferredContactMethod"
+                      value={method.toLowerCase()}
+                      checked={
+                        formData.preferredContactMethod === method.toLowerCase()
+                      }
+                      onChange={handleChange}
+                      className="text-orange-600 focus:ring-orange-500"
+                      required
+                    />
+                    <span>{method}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6 pt-4 border-t border-slate-200/80">
+              <h3 className="text-base font-extrabold text-slate-900">
+                Product Requirements & Specifications
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="site-label">
+                    Expected Quantity
+                  </label>
+                  <input
+                    type="text"
+                    name="productRequirements.expectedQuantity"
+                    placeholder="e.g., 5,000 units"
+                    value={formData.productRequirements.expectedQuantity}
+                    onChange={handleChange}
+                    className="site-input"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="site-label">
+                    Target Budget Range
+                  </label>
+                  <select
+                    name="productRequirements.budgetRange"
+                    value={formData.productRequirements.budgetRange}
+                    onChange={handleChange}
+                    className="site-select"
+                  >
+                    <option disabled value="">
+                      Select target budget
+                    </option>
+                    <option value="<$1000">&lt;$1,000</option>
+                    <option value="$1000-$5000">$1,000 - $5,000</option>
+                    <option value=">$5000">&gt;$5,000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="site-label">
+                  Product Description & Material Specs *
+                </label>
+                <textarea
+                  name="productRequirements.productDescription"
+                  placeholder="Detail your product specifications, target dimensions, material requirements, or packaging guidelines..."
+                  required
+                  value={formData.productRequirements.productDescription}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                  rows={4}
+                  className="site-textarea min-h-36"
+                ></textarea>
+              </div>
+
+              <div className="space-y-2">
+                <label className="site-label">
+                  Required Timeline
+                </label>
+                <select
+                  name="productRequirements.requiredTimeline"
+                  value={formData.productRequirements.requiredTimeline}
+                  onChange={handleChange}
+                  className="site-select"
                 >
                   <option disabled value="">
-                    Select budget range
+                    Estimated deadline
                   </option>
-                  <option value="<$1000">&lt;$1000</option>
-                  <option value="$1000-$5000">$1000-$5000</option>
-                  <option value=">$5000">&gt;$5000</option>
+                  <option value="1-2 weeks">Urgent (1-2 weeks)</option>
+                  <option value="1 month">Standard (1 month)</option>
+                  <option value="2+ months">Flexible (2+ months)</option>
                 </select>
               </div>
             </div>
-            <div className="mb-4">
-              <textarea
-                name="productRequirements.productDescription"
-                placeholder="Product Description *"
-                required
-                value={formData.productRequirements.productDescription}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-3 w-full h-32 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-              ></textarea>
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Required Timeline
-              </label>
-              <select
-                name="productRequirements.requiredTimeline"
-                value={formData.productRequirements.requiredTimeline}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-3 w-full bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-              >
-                <option disabled value="">
-                  When do you need this?
-                </option>
-                <option value="1-2 weeks">1-2 weeks</option>
-                <option value="1 month">1 month</option>
-                <option value="2+ months">2+ months</option>
-              </select>
-            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="site-button-primary w-full rounded-2xl py-4 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {isSubmitting ? (
+                <span className="animate-pulse">Submitting Request...</span>
+              ) : (
+                <>
+                  <span>Submit Sourcing Request</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="lg:col-span-4">
+            <MoreInfo />
           </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg font-semibold py-4 px-6 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? "Submitting..." : "Submit Sourcing Request"}
-          </button>
-        </form>
-
-        {/* Right Info Section */}
-        <MoreInfo />
+        </div>
       </div>
     </div>
   );
 }
+

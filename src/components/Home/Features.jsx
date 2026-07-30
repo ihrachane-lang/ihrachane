@@ -1,85 +1,68 @@
-// components/Features.jsx
 import { FaUsers, FaShieldAlt, FaLock, FaSearch } from "react-icons/fa";
+import SectionIntro from "../shared/SectionIntro";
 
 const features = [
   {
-    icon: <FaUsers className="text-3xl" />,
+    icon: <FaUsers className="text-2xl sm:text-3xl" />,
     title: "Customer First",
-    description: "We prioritize your needs with personalized solutions"
+    description: "We prioritize your strategic goals with tailored sourcing and dedicated expert support."
   },
   {
-    icon: <FaShieldAlt className="text-3xl" />,
-    title: "100% Risk Free",
-    description: "Complete protection with our satisfaction guarantee"
+    icon: <FaShieldAlt className="text-2xl sm:text-3xl" />,
+    title: "100% Risk Protected",
+    description: "End-to-end quality assurance, verified suppliers, and full transaction guarantees."
   },
   {
-    icon: <FaLock className="text-3xl" />,
-    title: "Privacy",
-    description: "Your data remains secure with our advanced encryption"
+    icon: <FaLock className="text-2xl sm:text-3xl" />,
+    title: "Data Privacy & Compliance",
+    description: "Strict confidentiality and bank-grade data security across all operations."
   },
   {
-    icon: <FaSearch className="text-3xl" />,
-    title: "Due Diligence",
-    description: "Thorough research ensures the best outcomes for you"
+    icon: <FaSearch className="text-2xl sm:text-3xl" />,
+    title: "Rigorous Due Diligence",
+    description: "Comprehensive factory audits, sample verification, and transparent reporting."
   },
 ];
 
 export default function Features() {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-orange-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-4">
-            Why Choose Us
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            We are committed to excellence and dedicated to your success
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="site-section-muted overflow-hidden">
+      <div className="site-orb left-0 top-0 h-80 w-80 bg-orange-500/8" />
+      <div className="site-container relative z-10">
+        <SectionIntro
+          badge="Trust Layer"
+          title={
+            <>
+              Why Leading Businesses{" "}
+              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                Choose IHRACHANE
+              </span>
+            </>
+          }
+          description="A premium sourcing partner should feel dependable before the first shipment. These are the standards we keep visible in every engagement."
+          className="mb-16"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl shadow-lg overflow-hidden 
-                         border border-orange-100 hover:shadow-xl transition-all duration-300
-                         flex flex-col items-center text-center p-8"
+              className="site-panel site-card-hover group relative flex flex-col items-center rounded-[2rem] p-8 text-center"
             >
-              {/* Hover effect background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 
-                            opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
-              
-              {/* Icon container with attractive design */}
               <div className="relative mb-6">
-                <div className="absolute inset-0 bg-orange-100 rounded-full transform 
-                              scale-110 group-hover:scale-125 transition-transform duration-300" />
-                <div className="relative z-10 w-20 h-20 rounded-full bg-orange-500 
-                              flex items-center justify-center text-white
-                              group-hover:bg-orange-600 transition-colors duration-300">
+                <div className="flex h-20 w-20 items-center justify-center rounded-[1.75rem] bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-[0_18px_50px_-20px_rgba(249,115,22,0.7)] transition-transform duration-500 group-hover:scale-110">
                   {feature.icon}
                 </div>
               </div>
-              
-              {/* Content */}
-              <h3 className="text-xl font-bold text-black mb-3 group-hover:text-orange-600 transition-colors duration-300">
+
+              <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-sm leading-7 text-slate-600">
                 {feature.description}
               </p>
-              
-              {/* Decorative element */}
-              <div className="mt-6 w-12 h-1 bg-orange-500 rounded-full 
-                            group-hover:w-16 transition-all duration-300" />
             </div>
           ))}
-        </div>
-        
-        {/* Bottom decorative element */}
-        <div className="mt-16 text-center">
-          <div className="inline-block h-1 w-24 bg-orange-500 rounded-full"></div>
-          <div className="inline-block h-1 w-6 bg-orange-300 rounded-full mx-2"></div>
-          <div className="inline-block h-1 w-12 bg-orange-400 rounded-full"></div>
         </div>
       </div>
     </section>

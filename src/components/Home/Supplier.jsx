@@ -2,58 +2,59 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import SectionIntro from "../shared/SectionIntro";
 
 export default function Supplier() {
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-            WE ARE MORE THAN A SUPPLIER
-          </h2>
-          <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
-        </div>
+    <section className="site-section-soft">
+      <div className="site-container">
+        <SectionIntro
+          badge="Beyond Sourcing"
+          title={
+            <>
+              We Are{" "}
+              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                More Than a Supplier
+              </span>
+            </>
+          }
+          description="A strong sourcing partner should improve margin protection, product confidence, and operational speed at the same time."
+          className="mb-16"
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Image Section - Redesigned */}
-          <div className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="relative group">
-              {/* Main image container */}
-              <div className="relative z-10 bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-8 transform transition-transform duration-500 group-hover:scale-105">
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
+
+              <div className="site-panel relative p-6 sm:p-8 transition-all duration-500 group-hover:scale-[1.01]">
                 <Image
                   src={"/partners.png"}
-                  alt="Supplier Illustration"
+                  alt="Supplier Partnership Network"
                   width={500}
                   height={400}
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="w-full h-auto object-contain rounded-2xl"
                 />
               </div>
 
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full rounded-xl border-2 border-orange-200 -z-0 group-hover:border-orange-300 transition-colors duration-500"></div>
-
-              {/* Floating elements */}
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-orange-100 rounded-full opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-orange-200 rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-
-              {/* Stats badge */}
-              <div className="absolute -top-4 -right-4 bg-orange-500 text-white py-2 px-4 rounded-lg shadow-md z-20">
-                <div className="text-center">
-                  <div className="font-bold text-lg">500+</div>
-                  <div className="text-xs">Partners</div>
+              <div className="absolute -right-4 -top-4 z-20 flex items-center gap-3 rounded-[1.5rem] bg-gradient-to-r from-orange-500 to-amber-500 p-4 text-white shadow-[0_20px_55px_-25px_rgba(249,115,22,0.95)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 text-lg font-black">
+                  500+
+                </div>
+                <div>
+                  <div className="font-bold text-sm leading-none">Verified</div>
+                  <div className="text-xs text-orange-100 font-medium">Global Partners</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Content Section */}
-          <div className="order-1 lg:order-2 space-y-6">
-            <div className="flex items-start">
-              <div className="bg-orange-500 p-2 rounded-lg mr-4 flex-shrink-0">
+          <div className="lg:col-span-6 order-1 lg:order-2 space-y-8">
+            <div className="flex items-start gap-4 group">
+              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-white"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -66,23 +67,21 @@ export default function Supplier() {
                   />
                 </svg>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  Exclusive Pricing and Favorable Terms
+              <div className="space-y-1">
+                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                  Exclusive Pricing & Flexible Terms
                 </h3>
-                <p className="text-gray-700">
-                  Your dedicated sourcing specialist will work with you and
-                  handle any of your requests, ensuring you collaborate
-                  seamlessly with the Ihracphane team.
+                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                  Your dedicated sourcing specialist negotiates optimal unit pricing and volume discounts directly with vetted manufacturers.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start">
-              <div className="bg-orange-500 p-2 rounded-lg mr-4 flex-shrink-0">
+            <div className="flex items-start gap-4 group">
+              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-white"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -95,23 +94,21 @@ export default function Supplier() {
                   />
                 </svg>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  Stable Quality and Priority Delivery
+              <div className="space-y-1">
+                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                  Rigorous Quality Control & Expedited Freight
                 </h3>
-                <p className="text-gray-700">
-                  By working with the Ihracphane supply chain network, we will
-                  help you to achieve cost savings, higher quality products, and
-                  faster delivery.
+                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                  By leveraging the IHRACHANE network, we ensure strict quality compliance, defect reduction, and priority shipping schedules.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start">
-              <div className="bg-orange-500 p-2 rounded-lg mr-4 flex-shrink-0">
+            <div className="flex items-start gap-4 group">
+              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-white"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -124,35 +121,26 @@ export default function Supplier() {
                   />
                 </svg>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-black mb-2">
-                  Streamlined Procurement Process
+              <div className="space-y-1">
+                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                  Risk-Free Procurement Guarantee
                 </h3>
-                <p className="text-gray-700">
-                  Ihracphane will bear all your buying risks instead of you. You
-                  do not need to worry about your payment security, bad quality,
-                  and late delivery when you work with Ihracphane.
+                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                  IHRACHANE absorbs procurement risks. Protect your capital against payment fraud, sub-standard batches, or unexpected logistics delays.
                 </p>
               </div>
             </div>
 
             <div className="pt-4">
-              <Link href={"#services"}>
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 flex items-center">
-                  Discover Our Services
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-2"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
+              <Link href={"#services"} className="site-button-primary">
+                <span>Discover Our Services</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </Link>
             </div>
           </div>
@@ -161,3 +149,4 @@ export default function Supplier() {
     </section>
   );
 }
+
