@@ -43,23 +43,31 @@ export default function NavbarClient({ menus }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      setIsScrolled(window.scrollY > 30);
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        toggleMenu();
+      }
+    };
+
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
     } else {
       document.body.style.overflow = "unset";
     }
 
     return () => {
       document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen]);
 
@@ -80,32 +88,57 @@ export default function NavbarClient({ menus }) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "border-b border-orange-100/80 bg-white/90 py-3.5 text-slate-800 shadow-[0_16px_50px_-28px_rgba(15,23,42,0.28)] backdrop-blur-xl"
-            : "bg-gradient-to-b from-slate-950/90 via-orange-950/95 to-slate-950 py-5 text-white"
+            ? "py-3.5 text-slate-800 shadow-[0_16px_50px_-28px_rgba(15,23,42,0.28)]"
+            : "py-5 text-white"
         }`}
       >
-        <div className="site-container">
+        {/* Unscrolled dark background layer */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-slate-950/90 via-orange-950/95 to-slate-950 transition-opacity duration-500 pointer-events-none ${
+            isScrolled ? "opacity-0" : "opacity-100"
+          }`}
+        />
+
+        {/* Scrolled white glass background layer */}
+        <div
+          className={`absolute inset-0 border-b border-orange-100/80 bg-white/90 backdrop-blur-xl transition-opacity duration-500 pointer-events-none ${
+            isScrolled ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        <div className="site-container relative z-10">
           <div className="flex items-center justify-between gap-6">
-            <Link href="/" className="flex items-center transition-transform duration-300 hover:scale-[1.02]">
-              <Image
-                src={
-                  isScrolled
-                    ? "/logo/siteLogo/logo.svg"
-                    : "/logo/siteLogo/sidebarLogo.svg"
-                }
-                alt="IHRACHANE"
-                height={40}
-                width={160}
-                className="h-9 sm:h-10 w-auto object-contain transition-opacity duration-300"
-                priority
-              />
+            <Link
+              href="/"
+              className="flex items-center transition-transform duration-300 hover:scale-[1.02]"
+            >
+              <div className="relative h-9 sm:h-10 w-40">
+                <Image
+                  src="/logo/siteLogo/sidebarLogo.svg"
+                  alt="IHRACHANE"
+                  fill
+                  className={`object-contain transition-opacity duration-500 ${
+                    isScrolled ? "opacity-0" : "opacity-100"
+                  }`}
+                  priority
+                />
+                <Image
+                  src="/logo/siteLogo/logo.svg"
+                  alt="IHRACHANE"
+                  fill
+                  className={`object-contain transition-opacity duration-500 ${
+                    isScrolled ? "opacity-100" : "opacity-0"
+                  }`}
+                  priority
+                />
+              </div>
             </Link>
 
             <div className="hidden lg:flex items-center gap-2">
               <div
-                className={`flex items-center gap-1 rounded-full border px-2 py-1.5 ${
+                className={`flex items-center gap-1 rounded-full border px-2 py-1.5 transition-all duration-500 ${
                   isScrolled
                     ? "border-slate-200 bg-white/80 shadow-sm"
                     : "border-white/10 bg-white/5 backdrop-blur-md"
@@ -117,7 +150,7 @@ export default function NavbarClient({ menus }) {
                     <Link
                       key={menu.url}
                       href={menu.url}
-                      className={`rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
+                      className={`rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                         isScrolled
                           ? isActive
                             ? "bg-orange-50 text-orange-700"
@@ -135,7 +168,7 @@ export default function NavbarClient({ menus }) {
                 {categoryMenus?.length ? (
                   <div className="relative group">
                     <button
-                      className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ${
+                      className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                         isScrolled
                           ? isSolutionsRoute
                             ? "bg-orange-50 text-orange-700"
@@ -176,7 +209,7 @@ export default function NavbarClient({ menus }) {
                                   : "text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                               }`}
                             >
-                               {menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}
+                              {menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}
                             </Link>
                           );
                         })}
@@ -208,7 +241,7 @@ export default function NavbarClient({ menus }) {
               </button>
               <button
                 onClick={toggleMenu}
-                className={`rounded-2xl p-2.5 transition-colors duration-200 ${
+                className={`rounded-2xl p-2.5 transition-colors duration-500 ${
                   isScrolled
                     ? "text-slate-800 hover:bg-slate-100"
                     : "text-white hover:bg-white/10"
@@ -251,155 +284,148 @@ export default function NavbarClient({ menus }) {
             </div>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Overlay */}
-        {(isMenuOpen || isAnimating) && (
-          <div
-            className={`lg:hidden fixed inset-0 z-40 ${
-              isAnimating ? "menu-overlay-closing" : "menu-overlay-opening"
+      {/* Mobile Menu Overlay */}
+      {(isMenuOpen || isAnimating) && (
+        <div
+          className={`lg:hidden fixed inset-0 z-50 ${isAnimating ? "menu-overlay-closing" : "menu-overlay-opening"
             }`}
-            onClick={toggleMenu}
-          >
-            <div
-              className={`absolute right-0 top-0 h-full w-80 max-w-[88vw] overflow-hidden ${
-                isAnimating ? "menu-panel-closing" : "menu-panel-opening"
+          onClick={toggleMenu}
+        >
+          <div
+            className={`absolute right-0 top-0 h-full w-80 max-w-[88vw] overflow-hidden ${isAnimating ? "menu-panel-closing" : "menu-panel-opening"
               }`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex h-full flex-col border-l border-orange-100 bg-white/95 backdrop-blur-xl">
-                <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
-                  <Link
-                    href="/"
-                    className="flex items-center"
-                    onClick={toggleMenu}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex h-full flex-col border-l border-orange-100 bg-white/95 backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
+                <Link
+                  href="/"
+                  className="flex items-center"
+                  onClick={toggleMenu}
+                >
+                  <Image
+                    src="/logo/siteLogo/logo.svg"
+                    alt="IHRACHANE"
+                    height={32}
+                    width={130}
+                    className="h-8 w-auto object-contain"
+                  />
+                </Link>
+
+                <button
+                  onClick={toggleMenu}
+                  className="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <Image
-                      src="/logo/siteLogo/logo.svg"
-                      alt="IHRACHANE"
-                      height={32}
-                      width={130}
-                      className="h-8 w-auto object-contain"
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
                     />
-                  </Link>
+                  </svg>
+                </button>
+              </div>
 
-                  <button
-                    onClick={toggleMenu}
-                    className="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-                  >
-                    <svg
-                      className="h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto px-4 py-6">
-                  <div className="space-y-1">
-                    {primaryMenus.map((menu, index) => {
-                      const isActive = pathname === menu.url;
-                      return (
-                        <Link
-                          key={menu.url}
-                          href={menu.url}
-                          className={`menu-item ${
-                            isAnimating
-                              ? "menu-item-closing"
-                              : "menu-item-opening"
-                          } block rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${
-                            isActive
-                              ? "bg-orange-50 text-orange-700"
-                              : "text-slate-700 hover:bg-slate-50 hover:text-orange-700"
+              <div className="flex-1 overflow-y-auto px-4 py-6">
+                <div className="space-y-1">
+                  {primaryMenus.map((menu, index) => {
+                    const isActive = pathname === menu.url;
+                    return (
+                      <Link
+                        key={menu.url}
+                        href={menu.url}
+                        className={`menu-item ${isAnimating
+                            ? "menu-item-closing"
+                            : "menu-item-opening"
+                          } block rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${isActive
+                            ? "bg-orange-50 text-orange-700"
+                            : "text-slate-700 hover:bg-slate-50 hover:text-orange-700"
                           }`}
-                          onClick={toggleMenu}
-                          style={{
-                            animationDelay: isAnimating
-                              ? "0ms"
-                              : `${index * 40}ms`,
-                          }}
-                        >
-                          {menu.path}
-                        </Link>
-                      );
-                    })}
-                  </div>
-
-                  {categoryMenus?.length ? (
-                    <div className="mt-6 rounded-[1.5rem] border border-orange-100 bg-orange-50/60 p-3">
-                      <button
-                        className="flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-bold text-slate-900"
-                        onClick={() => setIsSolutionsOpen((prev) => !prev)}
-                        aria-expanded={isSolutionsOpen}
+                        onClick={toggleMenu}
+                        style={{
+                          animationDelay: isAnimating
+                            ? "0ms"
+                            : `${index * 40}ms`,
+                        }}
                       >
-                        <span>Solutions</span>
-                        <svg
-                          className={`h-4 w-4 transition-transform ${
-                            isSolutionsOpen ? "rotate-180" : ""
+                        {menu.path}
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {categoryMenus?.length ? (
+                  <div className="mt-6 rounded-[1.5rem] border border-orange-100 bg-orange-50/60 p-3">
+                    <button
+                      className="flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-bold text-slate-900"
+                      onClick={() => setIsSolutionsOpen((prev) => !prev)}
+                      aria-expanded={isSolutionsOpen}
+                    >
+                      <span>Solutions</span>
+                      <svg
+                        className={`h-4 w-4 transition-transform ${isSolutionsOpen ? "rotate-180" : ""
                           }`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2.2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2.2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
 
-                      {isSolutionsOpen ? (
-                        <div className="mt-2 grid gap-1">
-                          {categoryMenus.map((menu) => {
-                            const isActive = pathname === menu.url;
-                            return (
-                              <Link
-                                key={menu.url}
-                                href={menu.url}
-                                className={`rounded-2xl px-3 py-3 text-sm font-semibold ${
-                                  isActive
-                                    ? "bg-white text-orange-700 shadow-sm"
-                                    : "text-slate-700 hover:bg-white hover:text-orange-700"
+                    {isSolutionsOpen ? (
+                      <div className="mt-2 grid gap-1">
+                        {categoryMenus.map((menu) => {
+                          const isActive = pathname === menu.url;
+                          return (
+                            <Link
+                              key={menu.url}
+                              href={menu.url}
+                              className={`rounded-2xl px-3 py-3 text-sm font-semibold ${isActive
+                                  ? "bg-white text-orange-700 shadow-sm"
+                                  : "text-slate-700 hover:bg-white hover:text-orange-700"
                                 }`}
-                                onClick={toggleMenu}
-                              >
-                                <span className="bg-white border border-amber-50 px-3 rounded-md block ">{menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      ) : null}
-                    </div>
-                  ) : null}
-                </div>
+                              onClick={toggleMenu}
+                            >
+                              <span className="bg-white border border-amber-50 px-3 rounded-md block ">{menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
 
-                <div className="border-t border-slate-100 bg-slate-50/80 p-6">
-                  <button
-                    className={`contact-button ${
-                      isAnimating
-                        ? "contact-button-closing"
-                        : "contact-button-opening"
+              <div className="border-t border-slate-100 bg-slate-50/80 p-6">
+                <button
+                  className={`contact-button ${isAnimating
+                      ? "contact-button-closing"
+                      : "contact-button-opening"
                     } w-full`}
-                    onClick={goToContact}
-                  >
-                    Get Custom Offer
-                  </button>
-                </div>
+                  onClick={goToContact}
+                >
+                  Get Custom Offer
+                </button>
               </div>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </>
   );
 }

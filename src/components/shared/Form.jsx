@@ -12,17 +12,66 @@ const Form = () => {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const validateField = (name, value) => {
+    let error = "";
+    if (!value.trim()) {
+      error = "This field is required";
+    } else if (name === "email" && !/^\S+@\S+\.\S+$/.test(value)) {
+      error = "Please enter a valid email address";
+    } else if (name === "phone" && value.replace(/\D/g, "").length < 6) {
+      error = "Please enter a valid phone number";
+    }
+    return error;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({ ...prev, [name]: error }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const validateAll = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      const err = validateField(key, formData[key]);
+      if (err) newErrors[key] = err;
+    });
+    setErrors(newErrors);
+    setTouched({
+      firstName: true,
+      lastName: true,
+      phone: true,
+      email: true,
+      message: true,
+    });
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateAll()) {
+      toast.error("Please fill in all required fields correctly.");
+      return;
+    }
 
     const data = {
       name: `${formData.firstName} ${formData.lastName}`,
@@ -45,6 +94,8 @@ const Form = () => {
           email: "",
           message: "",
         });
+        setErrors({});
+        setTouched({});
       } else {
         toast.error("Something went wrong, please try again later.");
       }
@@ -127,7 +178,7 @@ const Form = () => {
             </div>
 
             <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="firstName" className="site-label">
@@ -139,10 +190,17 @@ const Form = () => {
                       type="text"
                       value={formData.firstName}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Jane"
-                      className="site-input"
-                      required
+                      className={`site-input ${
+                        errors.firstName
+                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                          : ""
+                      }`}
                     />
+                    {errors.firstName && (
+                      <p className="text-xs text-red-500 font-medium">{errors.firstName}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -155,10 +213,17 @@ const Form = () => {
                       type="text"
                       value={formData.lastName}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Doe"
-                      className="site-input"
-                      required
+                      className={`site-input ${
+                        errors.lastName
+                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                          : ""
+                      }`}
                     />
+                    {errors.lastName && (
+                      <p className="text-xs text-red-500 font-medium">{errors.lastName}</p>
+                    )}
                   </div>
                 </div>
 
@@ -173,10 +238,17 @@ const Form = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="+1 (555) 000-0000"
-                      className="site-input"
-                      required
+                      className={`site-input ${
+                        errors.phone
+                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                          : ""
+                      }`}
                     />
+                    {errors.phone && (
+                      <p className="text-xs text-red-500 font-medium">{errors.phone}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -189,10 +261,17 @@ const Form = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="jane@company.com"
-                      className="site-input"
-                      required
+                      className={`site-input ${
+                        errors.email
+                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                          : ""
+                      }`}
                     />
+                    {errors.email && (
+                      <p className="text-xs text-red-500 font-medium">{errors.email}</p>
+                    )}
                   </div>
                 </div>
 
@@ -205,11 +284,18 @@ const Form = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Provide brief details regarding your products, estimated quantity, or shipping timeline..."
                     rows={4}
-                    className="site-textarea min-h-36"
-                    required
+                    className={`site-textarea min-h-36 ${
+                      errors.message
+                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                        : ""
+                    }`}
                   ></textarea>
+                  {errors.message && (
+                    <p className="text-xs text-red-500 font-medium">{errors.message}</p>
+                  )}
                 </div>
 
                 <div className="space-y-4">
@@ -219,7 +305,13 @@ const Form = () => {
                     className="site-button-primary w-full rounded-2xl py-4 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {loading ? (
-                      <span className="animate-pulse">Submitting Inquiry...</span>
+                      <div className="flex items-center justify-center gap-2">
+                        <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Submitting Inquiry...</span>
+                      </div>
                     ) : (
                       <>
                         <span>Submit Inquiry</span>
@@ -244,4 +336,3 @@ const Form = () => {
 };
 
 export default Form;
-

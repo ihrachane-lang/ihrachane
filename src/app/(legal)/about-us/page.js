@@ -1,48 +1,58 @@
-// app/about/page.jsx
-'use client';
+import Link from "next/link";
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+export const metadata = {
+  title: "About Us | IHRACHANE Global Sourcing & Logistics Partner",
+  description:
+    "Learn about IHRACHANE - your trusted global sourcing, factory verification, quality control, and logistics partner. Hakkımızda - Küresel tedarik zinciri ve satın alma ortağınız.",
+  keywords: [
+    "about ihrachane",
+    "ihrachane company",
+    "global sourcing partner",
+    "china procurement team",
+    "factory inspection services",
+    "hakkımızda",
+    "ihrachane şirket bilgisi",
+    "küresel tedarik ortağı",
+    "çin satın alma ekibi",
+  ],
+  alternates: {
+    canonical: "https://www.ihrachane.com/about-us",
+  },
+};
 
 export default function About() {
-  const router = useRouter();
-
   const serviceHighlights = [
     {
-      title: 'Product Research & Market Analysis',
+      title: "Product Research & Market Analysis",
       description:
-        'We help validate demand, evaluate sourcing feasibility, and shortlist suppliers with the right production fit.',
+        "We help validate demand, evaluate sourcing feasibility, and shortlist suppliers with the right production fit.",
     },
     {
-      title: 'Factory Sourcing & Visits',
+      title: "Factory Sourcing & Visits",
       description:
-        'We identify reliable factories, conduct on-site checks, and verify production capabilities before you commit.',
+        "We identify reliable factories, conduct on-site checks, and verify production capabilities before you commit.",
     },
     {
-      title: 'Warehousing & Fulfillment in China',
+      title: "Warehousing & Fulfillment in China",
       description:
-        'We coordinate storage, consolidation, packaging, and dispatch preparation for international fulfillment.',
+        "We coordinate storage, consolidation, packaging, and dispatch preparation for international fulfillment.",
     },
     {
-      title: 'Global Shipping & Logistics',
+      title: "Global Shipping & Logistics",
       description:
-        'We manage export coordination, shipping partners, and visibility across the delivery journey.',
+        "We manage export coordination, shipping partners, and visibility across the delivery journey.",
     },
   ];
 
   const trustPoints = [
-    'Local sourcing expertise with international business understanding',
-    'Transparent process management and commercially practical guidance',
-    'Long-term partnership approach focused on repeatable operational value',
+    "Local sourcing expertise with international business understanding",
+    "Transparent process management and commercially practical guidance",
+    "Long-term partnership approach focused on repeatable operational value",
   ];
-
-  const handleContactClick = () => {
-    router.push('/#contact');
-  };
 
   return (
     <div className="min-h-screen">
-      <section className="site-section-dark overflow-hidden">
+      <section className="site-section-dark overflow-hidden pt-28 sm:pt-32 lg:pt-36">
         <div className="site-container relative z-10">
           <div className="mb-8">
             <Link href="/" className="site-button-dark">
@@ -60,9 +70,9 @@ export default function About() {
                 IHRACHANE helps simplify global trade by connecting businesses with reliable manufacturers, disciplined quality control, and coordinated international logistics.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <button onClick={handleContactClick} className="site-button-primary">
+                <Link href="/#contact" className="site-button-primary">
                   Contact Us Today
-                </button>
+                </Link>
                 <Link href="/shipping-partners" className="site-button-dark">
                   Explore Shipping Partners
                 </Link>

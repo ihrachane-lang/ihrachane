@@ -1,7 +1,7 @@
 export default function HeroSkeleton() {
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.16),transparent_24%),linear-gradient(180deg,#171717_0%,#09090b_100%)] text-white">
-      <div className="site-container relative z-10 py-16 sm:py-20 lg:py-28">
+      <div className="site-container relative z-10 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-7">
             <div className="h-8 w-40 animate-pulse rounded-full bg-white/10" />

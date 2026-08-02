@@ -14,40 +14,28 @@ export default function Footer() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchFooterData() {
       try {
-        const { data } = await getData("/api/company/social-links");
-        if (Array.isArray(data)) setSocial(data);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    fetchData();
-  }, []);
+        const [socialRes, companyRes, categoryRes] = await Promise.allSettled([
+          getData("/api/company/social-links"),
+          getData("/api/company/details"),
+          fetch("/api/categories/categoriesName").then((r) => r.json()),
+        ]);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const { data } = await getData("/api/company/details");
-        if (data) setAbout(data);
+        if (socialRes.status === "fulfilled" && Array.isArray(socialRes.value?.data)) {
+          setSocial(socialRes.value.data);
+        }
+        if (companyRes.status === "fulfilled" && companyRes.value?.data) {
+          setAbout(companyRes.value.data);
+        }
+        if (categoryRes.status === "fulfilled" && categoryRes.value?.data) {
+          setCategories(categoryRes.value.data);
+        }
       } catch (e) {
-        console.error(e);
+        console.error("Error fetching footer data:", e);
       }
     }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/categories/categoriesName");
-        const data = await res.json();
-        if (data?.data) setCategories(data.data);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    fetchData();
+    fetchFooterData();
   }, []);
 
   const processSvg = (svgContent) => {

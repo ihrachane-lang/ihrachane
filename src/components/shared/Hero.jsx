@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Hero = ({
   img,
@@ -10,13 +12,14 @@ const Hero = ({
   secondaryHref = "#services",
   secondaryLabel = "Explore Services",
 }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.16),transparent_24%),linear-gradient(180deg,#171717_0%,#09090b_100%)] text-white">
       <div className="site-orb -left-10 top-16 h-72 w-72 bg-orange-500/18" />
       <div className="site-orb right-0 top-20 h-[26rem] w-[26rem] bg-amber-500/12" />
       <div className="site-grid-overlay absolute inset-0 opacity-40" />
 
-      <div className="site-container relative z-10 py-16 sm:py-20 lg:py-28">
+      <div className="site-container relative z-10 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="space-y-8 text-center lg:col-span-7 lg:text-left">
             {info?.span && info?.span !== "undefined" && (
@@ -73,12 +76,18 @@ const Hero = ({
                 <div className="absolute -inset-3 rounded-[2.25rem] bg-gradient-to-r from-orange-500/35 to-amber-500/20 blur-3xl" />
                 <div className="site-panel-dark relative overflow-hidden rounded-[2rem] border-white/10 p-4 sm:p-6">
                   <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/60 to-transparent" />
+                  {!isImageLoaded && (
+                    <div className="h-64 sm:h-80 w-full animate-pulse rounded-[1.5rem] bg-white/10" />
+                  )}
                   <Image
                     src={img}
                     alt={info?.title || "Hero Image"}
                     width={550}
                     height={420}
-                    className="h-auto w-full rounded-[1.5rem] object-cover animate-float"
+                    onLoad={() => setIsImageLoaded(true)}
+                    className={`h-auto w-full rounded-[1.5rem] object-cover transition-opacity duration-500 ${
+                      isImageLoaded ? "opacity-100 animate-float" : "opacity-0 absolute"
+                    }`}
                     priority
                   />
 
