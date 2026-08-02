@@ -1,7 +1,5 @@
 import ShippingPartners from "@/components/Home/shiping-partners/ShippingPartners";
-import dbConnect from "@/lib/mongodb";
-import Partner from "@/models/Partner";
-import React from "react";
+import { getPartners } from "@/lib/data/public-data";
 
 export const metadata = {
   title: "Global Shipping & Freight Partners | IHRACHANE Logistics Network",
@@ -23,13 +21,8 @@ export const metadata = {
   },
 };
 
-const page = async () => {
-    await dbConnect()
-    const partners = await Partner.find()
-    
-    return (
-        <ShippingPartners partners={partners}/>
-    );
-};
+export default async function ShippingPartnersPage() {
+  const partners = await getPartners();
 
-export default page;
+  return <ShippingPartners partners={partners} />;
+}

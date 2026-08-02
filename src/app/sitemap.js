@@ -1,10 +1,13 @@
-import dbConnect from "@/lib/mongodb";
-import Category from "@/models/Category";
+import {
+  getCategories,
+  getSubCategoriesForSitemap,
+} from "@/lib/data/public-data";
+
+export const revalidate = 86400;
 
 export default async function sitemap() {
   const baseUrl = "https://www.ihrachane.com";
 
-  // Static routes
   const staticRoutes = [
     {
       url: `${baseUrl}`,
@@ -32,24 +35,31 @@ export default async function sitemap() {
     },
   ];
 
-  // Dynamic Category / Solutions routes
   let dynamicCategoryRoutes = [];
-  try {
-    await dbConnect();
-    const categories = await Category.find().select("name updatedAt").lean();
+  let dynamicSubCategoryRoutes = [];
 
-    dynamicCategoryRoutes = categories.map((cat) => {
-      const slug = cat.name.toLowerCase().replace(/\s+/g, "-");
-      return {
-        url: `${baseUrl}/home/${slug}`,
-        lastModified: cat.updatedAt ? new Date(cat.updatedAt) : new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-      };
-    });
+  try {
+    const [categories, subCategories] = await Promise.all([
+      getCategories(),
+      getSubCategoriesForSitemap(),
+    ]);
+
+    dynamicCategoryRoutes = categories.map((cat) => ({
+      url: `${baseUrl}/home/${cat.slug}`,
+      lastModified: cat.updatedAt ? new Date(cat.updatedAt) : new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    }));
+
+    dynamicSubCategoryRoutes = subCategories.map((sub) => ({
+      url: `${baseUrl}/home/${sub.slug}/${sub.id}`,
+      lastModified: sub.updatedAt ? new Date(sub.updatedAt) : new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    }));
   } catch (error) {
     console.error("Error generating dynamic sitemap:", error);
   }
 
-  return [...staticRoutes, ...dynamicCategoryRoutes];
+  return [...staticRoutes, ...dynamicCategoryRoutes, ...dynamicSubCategoryRoutes];
 }

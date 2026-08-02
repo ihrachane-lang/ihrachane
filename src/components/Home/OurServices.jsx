@@ -1,20 +1,16 @@
-import dbConnect from "@/lib/mongodb";
-import Service from "@/models/Service";
 import Link from "next/link";
 import SingleService from "./SingleService";
 import SectionIntro from "../shared/SectionIntro";
+import { getServices } from "@/lib/data/public-data";
 
-const ServiceCard = async () => {
-  await dbConnect();
-  const services = await Service.find().lean();
+export default async function OurServices() {
+  const services = await getServices();
 
   return (
     <section
       id="services"
       className="site-section-dark my-10 overflow-hidden relative"
     >
-      {/* গ্লো ইফেক্ট সম্পূর্ণ রিমুভ করা হয়েছে */}
-
       <div className="site-container relative z-10">
         <SectionIntro
           badge="Capabilities"
@@ -77,6 +73,4 @@ const ServiceCard = async () => {
       </div>
     </section>
   );
-};
-
-export default ServiceCard;
+}

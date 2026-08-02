@@ -3,6 +3,7 @@ import SubCategory from "@/models/SubCategory";
 import SubCategoryService from "@/models/SubCategoryService";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateForSubCategoryId } from "@/lib/revalidate-helpers";
 
 export async function POST(request) {
   try {
@@ -34,6 +35,8 @@ export async function POST(request) {
       subCategoryService._id,
     ];
     await subCategory.save();
+
+    await revalidateForSubCategoryId(selectedSubCategory);
 
     return NextResponse.json(
       { success: true,

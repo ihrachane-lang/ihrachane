@@ -1,14 +1,8 @@
-import dbConnect from "@/lib/mongodb";
-import Partner from "@/models/Partner";
+import Image from "next/image";
 import Link from "next/link";
 import "./partners.css";
 import SectionIntro from "../../shared/SectionIntro";
-
-async function getPartners() {
-  await dbConnect();
-  const partners = await Partner.find().lean();
-  return partners;
-}
+import { getPartners } from "@/lib/data/public-data";
 
 export default async function Partners() {
   const partners = await getPartners();
@@ -42,10 +36,22 @@ export default async function Partners() {
                   className="site-panel site-card-hover flex h-40 w-52 flex-shrink-0 flex-col items-center justify-center rounded-[1.5rem] p-6 group"
                 >
                   <div className="relative w-full h-20 mb-3 flex items-center justify-center p-2">
-                    <img
+                    <Image
                       src={partner.partnerImage}
-                      alt={partner.partnerName}
-                      className="object-contain max-h-full max-w-full group-hover:scale-105 transition-transform duration-300"
+                      alt={
+                        partner.partnerName
+                          ? `${partner.partnerName} strategic partner logo`
+                          : "Strategic partner logo"
+                      }
+                      fill
+                      sizes="208px"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                      unoptimized={
+                        typeof partner.partnerImage === "string" &&
+                        (partner.partnerImage.startsWith("http") ||
+                          partner.partnerImage.startsWith("blob:") ||
+                          partner.partnerImage.startsWith("data:"))
+                      }
                     />
                   </div>
                   <h3 className="text-xs font-bold text-slate-800 group-hover:text-orange-600 transition-colors text-center truncate w-full">
@@ -72,18 +78,14 @@ export default async function Partners() {
           </div>
 
           <div className="site-stat">
-            <div className="mb-1 text-3xl font-black text-orange-600">
-              15+
-            </div>
+            <div className="mb-1 text-3xl font-black text-orange-600">15+</div>
             <div className="text-xs font-bold uppercase tracking-wider text-slate-600">
               Specialized Industries
             </div>
           </div>
 
           <div className="site-stat">
-            <div className="mb-1 text-3xl font-black text-orange-600">
-              100%
-            </div>
+            <div className="mb-1 text-3xl font-black text-orange-600">100%</div>
             <div className="text-xs font-bold uppercase tracking-wider text-slate-600">
               Fulfillment Guarantee
             </div>
@@ -101,9 +103,7 @@ export default async function Partners() {
             </svg>
           </Link>
         </div>
-
       </div>
     </section>
   );
 }
-

@@ -1,18 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 
-const Hero = ({
+export default function Hero({
   img,
   info,
   primaryHref = "#contact",
   primaryLabel = "Request a Custom Offer",
   secondaryHref = "#services",
   secondaryLabel = "Explore Services",
-}) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+}) {
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.16),transparent_24%),linear-gradient(180deg,#171717_0%,#09090b_100%)] text-white">
       <div className="site-orb -left-10 top-16 h-72 w-72 bg-orange-500/18" />
@@ -25,9 +21,7 @@ const Hero = ({
             {info?.span && info?.span !== "undefined" && (
               <div className="site-badge-dark">
                 <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse" />
-                <span className="text-orange-200">
-                  {info?.span}
-                </span>
+                <span className="text-orange-200">{info?.span}</span>
               </div>
             )}
 
@@ -36,7 +30,8 @@ const Hero = ({
                 {info?.title || "Global Supply Chain & Sourcing Solutions"}
               </h1>
               <p className="mx-auto max-w-2xl text-base leading-8 text-slate-300 sm:text-lg lg:mx-0 lg:text-xl">
-                {info?.details || "Streamlining end-to-end procurement, supplier management, and global delivery for modern growth-focused businesses."}
+                {info?.details ||
+                  "Streamlining end-to-end procurement, supplier management, and global delivery for modern growth-focused businesses."}
               </p>
             </div>
 
@@ -76,18 +71,12 @@ const Hero = ({
                 <div className="absolute -inset-3 rounded-[2.25rem] bg-gradient-to-r from-orange-500/35 to-amber-500/20 blur-3xl" />
                 <div className="site-panel-dark relative overflow-hidden rounded-[2rem] border-white/10 p-4 sm:p-6">
                   <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/60 to-transparent" />
-                  {!isImageLoaded && (
-                    <div className="h-64 sm:h-80 w-full animate-pulse rounded-[1.5rem] bg-white/10" />
-                  )}
                   <Image
                     src={img}
                     alt={info?.title || "Hero Image"}
                     width={550}
                     height={420}
-                    onLoad={() => setIsImageLoaded(true)}
-                    className={`h-auto w-full rounded-[1.5rem] object-cover transition-opacity duration-500 ${
-                      isImageLoaded ? "opacity-100 animate-float" : "opacity-0 absolute"
-                    }`}
+                    className="h-auto w-full rounded-[1.5rem] object-cover animate-float"
                     priority
                   />
 
@@ -116,7 +105,4 @@ const Hero = ({
       </div>
     </section>
   );
-};
-
-export default Hero;
-
+}

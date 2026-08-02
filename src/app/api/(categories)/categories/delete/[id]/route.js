@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Category from "@/models/Category";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateCategories } from "@/lib/revalidate-public";
 
 export async function DELETE(request, { params }) {
   try {
@@ -22,6 +23,8 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateCategories(deletedCategory.name);
 
     return NextResponse.json({
       success: true,
