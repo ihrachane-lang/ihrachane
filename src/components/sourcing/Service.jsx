@@ -50,7 +50,7 @@ export default function Service({ subCategories, contentSideImg, slug }) {
           <div className="lg:col-span-7 flex flex-col gap-4">
             {subCategories?.map((subCategory) => (
               <Link
-                href={`/home/${slug}/${subCategory?._id}`}
+                href={`/${slug}/${subCategory?.slug || (subCategory?.title || "").toString().toLowerCase().replace(/\s+/g, '-')}`}
                 key={subCategory?._id}
                 className="site-panel site-card-hover group flex items-start gap-5 rounded-[1.75rem] p-6 sm:p-7"
               >

@@ -4,7 +4,7 @@ function safeJson(value) {
   return JSON.stringify(value);
 }
 
-export function websiteJsonLd({ searchPath = "/search?q=" } = {}) {
+export function websiteJsonLd() {
   const graph = [
     {
       "@type": "WebSite",
@@ -12,14 +12,7 @@ export function websiteJsonLd({ searchPath = "/search?q=" } = {}) {
       url: SITE_URL,
       name: BRAND_NAME,
       publisher: { "@id": `${SITE_URL}/#organization` },
-      inLanguage: ["en-US", "tr-TR"],
-      potentialAction: [
-        {
-          "@type": "SearchAction",
-          target: `${absoluteUrl(searchPath)}{search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
-      ],
+      inLanguage: "en",
     },
   ];
   return safeJson({ "@context": "https://schema.org", "@graph": graph });

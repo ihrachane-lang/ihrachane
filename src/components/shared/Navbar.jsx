@@ -9,7 +9,7 @@ const staticMenus = [
 export default async function Navbar() {
   const categories = await getCategoryNames();
   const categoryMenus = categories.map((cat) => ({
-    url: `/home/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`,
+    url: `/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`,
     path: cat.name,
   }));
   const menus = [...staticMenus, ...categoryMenus];

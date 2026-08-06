@@ -38,7 +38,7 @@ export default async function OurServices() {
         </div>
 
         <div className="mt-20">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-orange-400/90 to-amber-400/80 p-8 text-center shadow-[0_30px_80px_-32px_rgba(249,115,22,0.9)] sm:p-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-orange-600/90 via-orange-700 to-amber-600/80 p-8 text-center shadow-[0_30px_80px_-32px_rgba(249,115,22,0.9)] sm:p-12">
             <div className="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
             <h3 className="mb-4 text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">

@@ -9,7 +9,7 @@ export default function SubCategoryPageContent({ data, slug }) {
   if (slug) {
     breadcrumbItems.push({
       label: slugToTitle(slug),
-      href: `/home/${slug}`,
+      href: `/${slug}`,
     });
   }
 
