@@ -3,6 +3,7 @@ import Category from "@/models/Category";
 import SubCategory from "@/models/SubCategory";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateForSubCategoryDoc } from "@/lib/revalidate-helpers";
 
 export async function POST(request) {
   try {
@@ -33,6 +34,8 @@ export async function POST(request) {
       subCategory._id,
     ];
     await category.save();
+
+    await revalidateForSubCategoryDoc(subCategory);
 
     return NextResponse.json(
       {

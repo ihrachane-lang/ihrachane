@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Client from "@/models/Client";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateClients } from "@/lib/revalidate-public";
 
 // POST a new client
 export async function POST(request) {
@@ -16,6 +17,7 @@ export async function POST(request) {
     }
     const body = await request.json();
     const client = await Client.create(body);
+    revalidateClients();
     return NextResponse.json(
       { success: true, message: "Client Create Successfully!", data: client },
       { status: 201 }

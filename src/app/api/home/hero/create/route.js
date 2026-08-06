@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import HomeHero from "@/models/HomeHero";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateHomeHero } from "@/lib/revalidate-public";
 
 export async function POST(request) {
   try {
@@ -34,6 +35,8 @@ export async function POST(request) {
 
       await post.save();
 
+      revalidateHomeHero(slug);
+
       return NextResponse.json(
         { message: "Post updated successfully", post },
         { status: 200 }
@@ -41,6 +44,7 @@ export async function POST(request) {
     } else {
       // Create new post for this slug
       post = await HomeHero.create({ slug, title, description, image });
+      revalidateHomeHero(slug);
       return NextResponse.json(
         { message: "Post created successfully", post },
         { status: 201 }

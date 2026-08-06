@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Service from "@/models/Service";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateServices } from "@/lib/revalidate-public";
 
 // PUT update a service
 export async function PUT(request, { params }) {
@@ -27,6 +28,8 @@ export async function PUT(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateServices();
 
     return NextResponse.json({
       success: true,

@@ -1,8 +1,10 @@
 import { Schema, models, model } from "mongoose";
+import { slugify } from "@/lib/slug";
 
 const categorySchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, index: true },
+    slug: { type: String, sparse: true },
     bannerImg: { type: String, required: true },
     contentSideImg: { type: String },
     contentTitle: { type: String, required: true },
@@ -23,6 +25,18 @@ const categorySchema = new Schema(
     },
   },
   { timestamps: true }
+);
+
+categorySchema.pre("save", async function (next) {
+  if (!this.slug || this.isModified("name")) {
+    this.slug = slugify(this.name);
+  }
+  next();
+});
+
+categorySchema.index(
+  { slug: 1 },
+  { unique: true, partialFilterExpression: { slug: { $exists: true } } }
 );
 
 const Category = models.Category || model("Category", categorySchema);

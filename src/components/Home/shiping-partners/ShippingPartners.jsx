@@ -1,33 +1,33 @@
 import HomeHeroSection from "../HomeHeroSection";
 import Image from "next/image";
 import Cta from "./Cta";
+import SectionIntro from "@/components/shared/SectionIntro";
 
 const ShippingPartners = ({ partners }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-orange-50">
+    <div className="min-h-screen">
       <HomeHeroSection slug="shipping-partners" />
 
-      {/* Partners Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our <span className="text-orange-600">Shipping Partners</span>
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              We collaborate with the world&apos;s leading shipping providers to
-              ensure your packages are delivered safely and on time, no matter
-              where they need to go.
-            </p>
-            <div className="w-24 h-1 bg-orange-500 mx-auto mt-6 rounded-full"></div>
-          </div>
+      <section className="site-section-soft">
+        <div className="site-container">
+          <SectionIntro
+            badge="Shipping Network"
+            title={
+              <>
+                Our{" "}
+                <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                  Shipping Partners
+                </span>
+              </>
+            }
+            description="We work with established carriers and logistics partners to keep deliveries secure, predictable, and globally connected."
+            className="mb-16"
+          />
 
-          {/* Partners Grid */}
           {partners.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="py-12 text-center">
+              <div className="site-panel mx-auto max-w-md rounded-[2rem] p-8">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100">
                   <svg
                     className="w-8 h-8 text-orange-500"
                     fill="none"
@@ -43,10 +43,10 @@ const ShippingPartners = ({ partners }) => {
                     ></path>
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">
                   No Partners Yet
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-slate-600">
                   Check back later for our shipping partners.
                 </p>
               </div>
@@ -56,9 +56,9 @@ const ShippingPartners = ({ partners }) => {
               {partners.map((partner) => (
                 <div
                   key={partner._id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  className="site-panel site-card-hover overflow-hidden rounded-[1.75rem]"
                 >
-                  <div className="relative h-48 bg-gradient-to-r from-orange-50 to-orange-100 flex items-center justify-center p-6">
+                  <div className="relative flex h-48 items-center justify-center bg-gradient-to-r from-orange-50 to-orange-100 p-6">
                     <div className="relative w-40 h-32">
                       <Image
                         src={partner.partnerImage}
@@ -70,15 +70,15 @@ const ShippingPartners = ({ partners }) => {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="mb-2 text-xl font-bold text-slate-900">
                       {partner.partnerName}
                     </h3>
-                   
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-medium bg-orange-100 text-orange-800 px-3 py-1 rounded-full">
+
+                    <div className="flex items-center justify-between">
+                      <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-medium text-orange-800">
                         Verified Partner
                       </span>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-slate-500">
                         {new Date(partner.createdAt).toLocaleDateString()}
                       </span>
                     </div>
@@ -88,17 +88,16 @@ const ShippingPartners = ({ partners }) => {
             </div>
           )}
 
-          {/* Stats Section */}
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl shadow-lg mt-16 p-8 text-white">
+          <div className="mt-16 rounded-[2rem] bg-gradient-to-r from-orange-500 via-orange-600 to-amber-500 p-8 text-white shadow-[0_28px_70px_-34px_rgba(249,115,22,0.85)]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">
+                <div className="mb-2 text-4xl font-bold md:text-5xl">
                   {partners.length}+
                 </div>
                 <div className="text-lg">Trusted Partners</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">
+                <div className="mb-2 text-4xl font-bold md:text-5xl">
                   Worldwide
                 </div>
                 <div className="text-lg">Global Coverage</div>
@@ -110,7 +109,6 @@ const ShippingPartners = ({ partners }) => {
             </div>
           </div>
 
-          {/* CTA Section */}
           <Cta />
         </div>
       </section>

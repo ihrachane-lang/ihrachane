@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import SubCategoryService from "@/models/SubCategoryService";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateForSubCategoryId } from "@/lib/revalidate-helpers";
 
 export async function DELETE(request, { params }) {
   try {
@@ -23,6 +24,8 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+
+    await revalidateForSubCategoryId(deletedSubCategoryService.selectedSubCategory);
 
     return NextResponse.json({
       success: true,

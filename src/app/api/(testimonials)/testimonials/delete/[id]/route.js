@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Testimonial from "@/models/Testimonial";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateTestimonials } from "@/lib/revalidate-public";
 
 // DELETE a testimonial
 export async function DELETE(request, { params }) {
@@ -23,6 +24,8 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateTestimonials();
 
     return NextResponse.json({
       success: true,
