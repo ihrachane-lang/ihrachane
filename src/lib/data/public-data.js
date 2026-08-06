@@ -17,16 +17,23 @@ import {
 } from "@/lib/cache-tags";
 import { nameFromSlug, slugify } from "@/lib/slug";
 
+// Mongoose's lean documents can still contain ObjectIds and other values that
+// cannot cross a Server Component -> Client Component boundary. Convert the
+// cached public data to JSON-safe primitives at the data-access layer.
+function toPublicData(value) {
+  return value == null ? value : JSON.parse(JSON.stringify(value));
+}
+
 async function fetchCategories() {
   await dbConnect();
   const docs = await Category.find({}, { name: 1, slug: 1, updatedAt: 1 }).lean();
-  return docs.map((d) => ({ ...d, slug: d.slug || slugify(d.name) }));
+  return toPublicData(docs.map((d) => ({ ...d, slug: d.slug || slugify(d.name) })));
 }
 
 async function fetchCategoryNames() {
   await dbConnect();
   const docs = await Category.find({}, { name: 1, slug: 1 }).lean();
-  return docs.map((d) => ({ ...d, slug: d.slug || slugify(d.name) }));
+  return toPublicData(docs.map((d) => ({ ...d, slug: d.slug || slugify(d.name) })));
 }
 
 async function fetchCategoryBySlug(slug) {
@@ -51,12 +58,12 @@ async function fetchCategoryBySlug(slug) {
     category.slug = slugify(category.name);
   }
 
-  return category;
+  return toPublicData(category);
 }
 
 async function fetchSubCategoryById(id) {
   await dbConnect();
-  return SubCategory.findById(id).populate("subCategoryServices").lean();
+  return toPublicData(await SubCategory.findById(id).populate("subCategoryServices").lean());
 }
 
 async function fetchSubCategoriesWithCategories() {
@@ -65,14 +72,14 @@ async function fetchSubCategoriesWithCategories() {
     .populate("selectedCategory", "name slug")
     .lean();
 
-  return subCategories
+  return toPublicData(subCategories
     .filter((sub) => sub.selectedCategory?.name)
     .map((sub) => ({
       id: sub._id.toString(),
       subSlug: sub.slug || slugify(sub.title),
       categorySlug: sub.selectedCategory.slug || slugify(sub.selectedCategory.name),
       updatedAt: sub.updatedAt,
-    }));
+    })));
 }
 
 async function fetchSubCategoryBySlugs(categorySlug, subCategorySlug) {
@@ -116,42 +123,42 @@ async function fetchSubCategoryBySlugs(categorySlug, subCategorySlug) {
     subCategory.slug = slugify(subCategory.title);
   }
 
-  return subCategory;
+  return toPublicData(subCategory);
 }
 
 async function fetchTestimonials() {
   await dbConnect();
-  return Testimonial.find().lean();
+  return toPublicData(await Testimonial.find().lean());
 }
 
 async function fetchClients() {
   await dbConnect();
-  return Client.find().lean();
+  return toPublicData(await Client.find().lean());
 }
 
 async function fetchPartners() {
   await dbConnect();
-  return Partner.find().lean();
+  return toPublicData(await Partner.find().lean());
 }
 
 async function fetchServices() {
   await dbConnect();
-  return Service.find().lean();
+  return toPublicData(await Service.find().lean());
 }
 
 async function fetchHomeHero(slug) {
   await dbConnect();
-  return HomeHero.findOne({ slug }).lean();
+  return toPublicData(await HomeHero.findOne({ slug }).lean());
 }
 
 async function fetchCompanyDetails() {
   await dbConnect();
-  return CompanyDetails.findOne().lean();
+  return toPublicData(await CompanyDetails.findOne().lean());
 }
 
 async function fetchSocialLinks() {
   await dbConnect();
-  return SocialLink.find().lean();
+  return toPublicData(await SocialLink.find().lean());
 }
 
 export const getCategories = unstable_cache(fetchCategories, ["categories"], {

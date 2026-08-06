@@ -11,41 +11,52 @@ export function sitemapChanged() {
   pingGoogleSitemap();
 }
 
+function revalidatePublicLayout() {
+  // Navbar and footer consume dynamic public data on every public page.
+  revalidatePath("/", "layout");
+}
+
 export function revalidateHome() {
-  revalidateTag(CACHE_TAGS.hero);
+  revalidateTag(CACHE_TAGS.homeHero);
   revalidateTag(CACHE_TAGS.partners);
   revalidateTag(CACHE_TAGS.services);
   revalidateTag(CACHE_TAGS.testimonials);
   revalidateTag(CACHE_TAGS.clients);
   revalidatePath("/");
+  revalidatePublicLayout();
 }
 
-export function revalidateHomeHero() {
-  revalidateTag(CACHE_TAGS.hero);
+export function revalidateHomeHero(slug) {
+  revalidateTag(CACHE_TAGS.homeHero);
   revalidatePath("/");
+  revalidatePublicLayout();
   sitemapChanged();
 }
 
 export function revalidateServices() {
   revalidateTag(CACHE_TAGS.services);
   revalidatePath("/");
+  revalidatePublicLayout();
 }
 
 export function revalidatePartners() {
   revalidateTag(CACHE_TAGS.partners);
   revalidatePath("/");
   revalidatePath("/shipping-partners");
+  revalidatePublicLayout();
   sitemapChanged();
 }
 
 export function revalidateTestimonials() {
   revalidateTag(CACHE_TAGS.testimonials);
   revalidatePath("/");
+  revalidatePublicLayout();
 }
 
 export function revalidateClients() {
   revalidateTag(CACHE_TAGS.clients);
   revalidatePath("/");
+  revalidatePublicLayout();
 }
 
 export function revalidateCategories(categoryName) {
@@ -56,6 +67,7 @@ export function revalidateCategories(categoryName) {
   revalidatePath("/about-us");
   revalidatePath("/privacy");
   revalidatePath("/sitemap.xml");
+  revalidatePublicLayout();
   if (categoryName) {
     revalidatePath(`/${slugify(categoryName)}`);
   }
@@ -64,10 +76,9 @@ export function revalidateCategories(categoryName) {
 
 export function revalidateSubCategories({ subCategoryId, categoryName, subCategoryTitle } = {}) {
   revalidateTag(CACHE_TAGS.subCategories);
-  revalidateTag(CACHE_TAGS.subCategoriesWithCategories);
-  revalidateTag(CACHE_TAGS.subCategoryNames);
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
+  revalidatePublicLayout();
   if (categoryName) {
     revalidatePath(`/${slugify(categoryName)}`);
   }
@@ -83,7 +94,7 @@ export function revalidateSubCategoryServices({
   categoryName,
   subCategoryTitle,
 } = {}) {
-  revalidateTag(CACHE_TAGS.subCategoryServices);
+  revalidateTag(CACHE_TAGS.subCategories);
   revalidatePath("/");
   if (categoryName && (subCategoryId || subCategoryTitle)) {
     const subSlug = subCategoryTitle ? slugify(subCategoryTitle) : subCategoryId;
@@ -91,6 +102,7 @@ export function revalidateSubCategoryServices({
   } else if (categoryName) {
     revalidatePath(`/${slugify(categoryName)}`);
   }
+  revalidatePublicLayout();
 }
 
 export async function revalidateForSubCategoryDoc(doc) {
@@ -151,6 +163,7 @@ export function revalidateCompanyDetails() {
   revalidatePath("/about-us");
   revalidatePath("/privacy");
   revalidatePath("/sitemap.xml");
+  revalidatePublicLayout();
 }
 
 export function revalidateSocialLinks() {
@@ -159,4 +172,5 @@ export function revalidateSocialLinks() {
   revalidatePath("/shipping-partners");
   revalidatePath("/about-us");
   revalidatePath("/privacy");
+  revalidatePublicLayout();
 }
