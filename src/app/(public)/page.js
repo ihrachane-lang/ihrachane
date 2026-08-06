@@ -9,6 +9,7 @@ import Testimonials from "@/components/Home/Testimonials";
 import Partners from "@/components/Home/partners/Partners";
 import HomeHeroSection from "@/components/Home/HomeHeroSection";
 import HeroSkeleton from "@/components/shared/HeroSkeleton";
+import BilingualSeoSection from "@/components/shared/BilingualSeoSection";
 import {
   clampTitle,
   clampDescription,
@@ -22,13 +23,16 @@ import {
   faqJsonLd,
 } from "@/lib/seo/jsonld";
 
+export const revalidate = 3600;
+
 const pageTitle = clampTitle(
   "Global Supply Chain, Product Sourcing & Logistics",
   "",
 );
 const pageDescription = clampDescription(
-  "Single center from supply to delivery. IHRACHANE offers managed factory sourcing, supplier inspection, China warehousing, and global shipping logistics. Küresel tedarik zinciri ve lojistik temsilciliği.",
+  "Single center from supply to delivery. IHRACHANE offers managed factory sourcing, supplier inspection, China warehousing, and global shipping logistics. Tedarik zincirinden teslimata tek merkez. Fabrika temini, tedarikçi denetimi, Çin depolama ve küresel sevkiyat.",
 );
+const canonicalHome = "https://www.ihrachane.com/";
 
 export const metadata = {
   title: pageTitle,
@@ -36,14 +40,19 @@ export const metadata = {
   keywords: [
     "ihrachane",
     "ihrachane sourcing",
+    "ihrachane global",
+    "ihrachane b2b",
     "global supply chain management",
     "international procurement solutions",
     "factory sourcing agent",
     "china product sourcing",
+    "china turkey supplier",
     "supplier verification and inspection",
     "international freight logistics",
     "end-to-end supply chain",
     "B2B trade procurement",
+    "china warehouse fulfillment",
+    "factory audit quality control",
     "küresel tedarik zinciri",
     "satın alma çözümleri",
     "kaynak sağlama temsilcisi",
@@ -54,17 +63,19 @@ export const metadata = {
     "tedarikçi doğrulaması",
     "dış ticaret tedarik yönetimi",
     "ihracat lojistik desteği",
+    "fabrika denetimi kalite kontrol",
   ],
   alternates: {
-    canonical: "/",
+    canonical: canonicalHome,
   },
   openGraph: {
     title: pageTitle,
     description: pageDescription,
-    url: SITE_URL,
+    url: canonicalHome,
     type: "website",
     siteName: "IHRACHANE",
     locale: "en_US",
+    alternateLocale: ["tr_TR"],
     images: buildOgImages(null, "IHRACHANE Global Supply Chain Solutions"),
   },
   twitter: {
@@ -245,6 +256,29 @@ export default async function Home() {
       <Suspense fallback={<MarqueeSkeleton />}>
         <Clients />
       </Suspense>
+      <BilingualSeoSection showTurkish={false}
+        enKeywords={[
+          "global supply chain management",
+          "china product sourcing",
+          "supplier verification inspection",
+          "international freight logistics",
+          "factory audit quality control",
+          "china warehousing",
+          "B2B procurement service",
+          "end to end supply chain",
+        ]}
+        trKeywords={[
+          "küresel tedarik zinciri",
+          "çin ürün temini",
+          "tedarikçi doğrulaması",
+          "uluslararası lojistik",
+          "fabrika denetimi",
+          "kalite kontrol",
+          "çin depolama",
+          "navlun taşımacılığı",
+          "dış ticaret desteği",
+        ]}
+      />
       <Form />
     </div>
   );

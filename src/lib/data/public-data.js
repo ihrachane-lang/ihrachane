@@ -61,7 +61,7 @@ async function fetchSubCategoryById(id) {
 
 async function fetchSubCategoriesWithCategories() {
   await dbConnect();
-  const subCategories = await SubCategory.find({}, { title: 1, selectedCategory: 1, updatedAt: 1 })
+  const subCategories = await SubCategory.find({}, { title: 1, slug: 1, selectedCategory: 1, updatedAt: 1 })
     .populate("selectedCategory", "name slug")
     .lean();
 
@@ -69,9 +69,54 @@ async function fetchSubCategoriesWithCategories() {
     .filter((sub) => sub.selectedCategory?.name)
     .map((sub) => ({
       id: sub._id.toString(),
-      slug: sub.selectedCategory.slug || slugify(sub.selectedCategory.name),
+      subSlug: sub.slug || slugify(sub.title),
+      categorySlug: sub.selectedCategory.slug || slugify(sub.selectedCategory.name),
       updatedAt: sub.updatedAt,
     }));
+}
+
+async function fetchSubCategoryBySlugs(categorySlug, subCategorySlug) {
+  await dbConnect();
+  const cleanCategorySlug = slugify(categorySlug);
+  const cleanSubSlug = slugify(subCategorySlug);
+
+  let category = await Category.findOne({ slug: cleanCategorySlug }, { _id: 1, slug: 1, name: 1 }).lean();
+
+  if (!category) {
+    const namePattern = nameFromSlug(cleanCategorySlug);
+    const escaped = namePattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    category = await Category.findOne({
+      name: { $regex: new RegExp(`^${escaped}$`, "i") },
+    }, { _id: 1, slug: 1, name: 1 }).lean();
+  }
+
+  if (!category) return null;
+
+  let subCategory = await SubCategory.findOne({
+    selectedCategory: category._id,
+    slug: cleanSubSlug,
+  })
+    .populate("subCategoryServices")
+    .populate("selectedCategory", "name slug")
+    .lean();
+
+  if (!subCategory) {
+    const subNamePattern = nameFromSlug(cleanSubSlug);
+    const subEscaped = subNamePattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    subCategory = await SubCategory.findOne({
+      selectedCategory: category._id,
+      title: { $regex: new RegExp(`^${subEscaped}$`, "i") },
+    })
+      .populate("subCategoryServices")
+      .populate("selectedCategory", "name slug")
+      .lean();
+  }
+
+  if (subCategory && !subCategory.slug) {
+    subCategory.slug = slugify(subCategory.title);
+  }
+
+  return subCategory;
 }
 
 async function fetchTestimonials() {
@@ -138,6 +183,21 @@ export const getSubCategoriesForSitemap = unstable_cache(
   ["sub-categories-sitemap"],
   { tags: [CACHE_TAGS.subCategories, CACHE_TAGS.categories] }
 );
+
+export function getSubCategoryBySlugs(categorySlug, subCategorySlug) {
+  return unstable_cache(
+    () => fetchSubCategoryBySlugs(categorySlug, subCategorySlug),
+    [`subcategory-by-slugs-${categorySlug}-${subCategorySlug}`],
+    {
+      tags: [
+        CACHE_TAGS.subCategories,
+        CACHE_TAGS.categories,
+        subCategoryTag(`${categorySlug}-${subCategorySlug}`),
+        categoryTag(categorySlug),
+      ],
+    }
+  )();
+}
 
 export const getTestimonials = unstable_cache(fetchTestimonials, ["testimonials"], {
   tags: [CACHE_TAGS.testimonials],

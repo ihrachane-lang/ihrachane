@@ -130,7 +130,7 @@ export default async function Footer() {
               {categories?.map((cat) => (
                 <li key={cat._id?.toString()}>
                   <Link
-                    href={`/home/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`}
                     className="block rounded-xl py-1 text-slate-400 transition-colors hover:text-orange-300"
                   >
                     {cat.name}

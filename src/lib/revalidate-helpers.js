@@ -8,14 +8,15 @@ export async function revalidateForSubCategoryId(subCategoryId) {
   await dbConnect();
   const sub = await SubCategory.findById(subCategoryId).populate(
     "selectedCategory",
-    "name"
+    "name slug"
   );
 
   if (!sub) return;
 
   revalidateSubCategories({
     subCategoryId: sub._id.toString(),
-    categoryName: sub.selectedCategory?.name,
+    categoryName: sub.selectedCategory?.slug || sub.selectedCategory?.name,
+    subCategoryTitle: sub.title,
   });
 }
 
@@ -27,13 +28,14 @@ export async function revalidateForSubCategoryDoc(subCategory) {
     ? subCategory
     : await SubCategory.findById(subCategory._id).populate(
         "selectedCategory",
-        "name"
+        "name slug"
       );
 
   if (!sub) return;
 
   revalidateSubCategories({
     subCategoryId: sub._id.toString(),
-    categoryName: sub.selectedCategory?.name,
+    categoryName: sub.selectedCategory?.slug || sub.selectedCategory?.name,
+    subCategoryTitle: sub.title,
   });
 }

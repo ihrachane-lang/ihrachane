@@ -48,7 +48,7 @@ export async function POST(request) {
     });
 
     revalidateCategories(category.name);
-    warmupPublicRoute(`/home/${category.slug || slugify(category.name)}`);
+    warmupPublicRoute(`/${category.slug || slugify(category.name)}`);
 
     return NextResponse.json(
       {

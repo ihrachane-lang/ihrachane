@@ -3,7 +3,7 @@ import { CACHE_TAGS } from "./cache-tags";
 import { pingGoogleSitemap, warmupPublicRoute } from "./seo/seo-utils";
 import { slugify } from "./slug";
 
-function sitemapChanged() {
+export function sitemapChanged() {
   try {
     revalidatePath("/sitemap.xml");
     revalidatePath("/robots.txt");
@@ -57,22 +57,23 @@ export function revalidateCategories(categoryName) {
   revalidatePath("/privacy");
   revalidatePath("/sitemap.xml");
   if (categoryName) {
-    revalidatePath(`/home/${slugify(categoryName)}`);
+    revalidatePath(`/${slugify(categoryName)}`);
   }
   sitemapChanged();
 }
 
-export function revalidateSubCategories({ subCategoryId, categoryName } = {}) {
+export function revalidateSubCategories({ subCategoryId, categoryName, subCategoryTitle } = {}) {
   revalidateTag(CACHE_TAGS.subCategories);
   revalidateTag(CACHE_TAGS.subCategoriesWithCategories);
   revalidateTag(CACHE_TAGS.subCategoryNames);
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
   if (categoryName) {
-    revalidatePath(`/home/${slugify(categoryName)}`);
+    revalidatePath(`/${slugify(categoryName)}`);
   }
-  if (categoryName && subCategoryId) {
-    revalidatePath(`/home/${slugify(categoryName)}/${subCategoryId}`);
+  if (categoryName && (subCategoryId || subCategoryTitle)) {
+    const subSlug = subCategoryTitle ? slugify(subCategoryTitle) : subCategoryId;
+    revalidatePath(`/${slugify(categoryName)}/${subSlug}`);
   }
   sitemapChanged();
 }
@@ -80,13 +81,15 @@ export function revalidateSubCategories({ subCategoryId, categoryName } = {}) {
 export function revalidateSubCategoryServices({
   subCategoryId,
   categoryName,
+  subCategoryTitle,
 } = {}) {
   revalidateTag(CACHE_TAGS.subCategoryServices);
   revalidatePath("/");
-  if (categoryName && subCategoryId) {
-    revalidatePath(`/home/${slugify(categoryName)}/${subCategoryId}`);
+  if (categoryName && (subCategoryId || subCategoryTitle)) {
+    const subSlug = subCategoryTitle ? slugify(subCategoryTitle) : subCategoryId;
+    revalidatePath(`/${slugify(categoryName)}/${subSlug}`);
   } else if (categoryName) {
-    revalidatePath(`/home/${slugify(categoryName)}`);
+    revalidatePath(`/${slugify(categoryName)}`);
   }
 }
 
@@ -107,18 +110,23 @@ export async function revalidateForSubCategoryDoc(doc) {
   const safeCategoryName =
     typeof categorySlugOrName === "string" ? categorySlugOrName : "";
 
+  const subCategoryTitle = doc?.title;
+  const subCategorySlug = doc?.slug || (subCategoryTitle ? slugify(subCategoryTitle) : subCategoryId);
+
   revalidateSubCategories({
     subCategoryId,
     categoryName: safeCategoryName,
+    subCategoryTitle,
   });
   revalidateSubCategoryServices({
     subCategoryId,
     categoryName: safeCategoryName,
+    subCategoryTitle,
   });
   revalidateCategories(safeCategoryName);
   warmupPublicRoute(
-    `/home/${safeCategoryName}`,
-    `/home/${safeCategoryName}/${subCategoryId}`
+    `/${safeCategoryName}`,
+    `/${safeCategoryName}/${subCategorySlug}`
   );
 }
 
