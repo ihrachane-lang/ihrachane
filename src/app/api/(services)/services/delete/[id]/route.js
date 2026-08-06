@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Service from "@/models/Service";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateServices } from "@/lib/revalidate-public";
 
 // DELETE a service
 export async function DELETE(request, { params }) {
@@ -23,6 +24,8 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateServices();
 
     return NextResponse.json({
       success: true,

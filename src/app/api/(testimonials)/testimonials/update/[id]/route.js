@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Testimonial from "@/models/Testimonial";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateTestimonials } from "@/lib/revalidate-public";
 
 // PUT update a testimonial
 export async function PUT(request, { params }) {
@@ -27,6 +28,8 @@ export async function PUT(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateTestimonials();
 
     return NextResponse.json({
       success: true,

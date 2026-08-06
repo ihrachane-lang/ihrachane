@@ -232,63 +232,85 @@ const icons = {
 };
 export const menuItems = [
   { name: "Dashboard", icon: icons.dashboard, path: "/dashboard" },
-  { name: "APPS", icon: icons.apps, isHeader: true },
+
+  { name: "STATIC PAGES & SECTIONS", icon: icons.contents, isHeader: true },
+
+  // Home Page
   {
-    name: "Categories",
+    name: "Home Page",
+    icon: icons.home,
+    path: "/dashboard/home",
+    hasSubmenu: true,
+    subItems: [
+      { name: "Hero Section", icon: icons.home, path: "/dashboard/home" },
+      { name: "Services Section", icon: icons.services, path: "/dashboard/services" },
+      { name: "Client Section", icon: icons.client, path: "/dashboard/client" },
+      { name: "Partner Section", icon: icons.partner, path: "/dashboard/partner" },
+      { name: "Testimonial Section", icon: icons.testimonial, path: "/dashboard/testimonial" },
+    ],
+  },
+
+  // Shipping Partner Page
+  {
+    name: "Shipping Partner Page",
+    icon: icons.partner,
+    path: "/dashboard/public/shipping-partners",
+    hasSubmenu: true,
+    subItems: [
+      { name: "Hero Section", icon: icons.home, path: "/dashboard/public/shipping-partners" },
+      { name: "Partners List", icon: icons.partner, path: "/dashboard/partner" },
+    ],
+  },
+
+  // About Page
+  {
+    name: "About Page",
+    icon: icons.about,
+    path: "/dashboard/about",
+    hasSubmenu: true,
+    subItems: [
+      { name: "Company Details", icon: icons.about, path: "/dashboard/about/details" },
+      { name: "Social Links", icon: icons.link, path: "/dashboard/about/social-links" },
+    ],
+  },
+
+  // Contact Page
+  {
+    name: "Contact Page",
+    icon: icons.contact,
+    path: "/dashboard/contact",
+    hasSubmenu: true,
+    subItems: [
+      { name: "Contact Messages", icon: icons.contact, path: "/dashboard/contact" },
+      { name: "Sourcing Requests", icon: icons.sourcing, path: "/dashboard/sourcing-request" },
+    ],
+  },
+
+  { name: "DYNAMIC SERVICE PAGES", icon: icons.apps, isHeader: true },
+  {
+    name: "Dynamic Pages Manager",
     icon: icons.categories,
-    path: "/dashboard/categories",
+    path: "/dashboard/categories/list",
     hasSubmenu: true,
     subItems: [
       {
-        name: "Category List",
+        name: "Dynamic Pages List",
         icon: icons.categories,
         path: "/dashboard/categories/list",
       },
       {
-        name: "Sub-Category List",
+        name: "Page Sub-Categories",
         icon: icons.categories,
         path: "/dashboard/categories/sub-list",
       },
       {
-        name: "Sub-Category Service",
+        name: "Sub-Category Services",
         icon: icons.services,
         path: "/dashboard/categories/service",
       },
     ],
   },
-  { name: "Home", icon: icons.home, path: "/dashboard/home" },
-  { name: "Services", icon: icons.services, path: "/dashboard/services" },
-  { name: "Client", icon: icons.client, path: "/dashboard/client" },
-  { name: "Partner", icon: icons.partner, path: "/dashboard/partner" },
-  {
-    name: "Testimonial",
-    icon: icons.testimonial,
-    path: "/dashboard/testimonial",
-  },
-  { name: "Users", icon: icons.users, path: "/dashboard/users" },
-  { name: "CLASSIC CONTENTS", icon: icons.contents, isHeader: true },
-  {
-    name: "About Company",
-    icon: icons.about,
-    path: "/dashboard/about",
-    hasSubmenu: true,
-    subItems: [
-      {
-        name: "Company Details",
-        icon: icons.about,
-        path: "/dashboard/about/details",
-      },
-      {
-        name: "Social Links",
-        icon: icons.link,
-        path: "/dashboard/about/social-links",
-      },
-    ],
-  },
-  { name: "Contact Form", icon: icons.contact, path: "/dashboard/contact" },
-  {
-    name: "Sourcing Request",
-    icon: icons.sourcing,
-    path: "/dashboard/sourcing-request",
-  },
+
+  { name: "ADMINISTRATIVE", icon: icons.users, isHeader: true },
+  { name: "User Management", icon: icons.users, path: "/dashboard/users" },
 ];

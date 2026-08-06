@@ -3,6 +3,9 @@ import Category from "@/models/Category";
 import { NextResponse } from "next/server";
 import { uploadToCloudinary } from "@/utils/uploadToCloudinary";
 import { isAdminCheck } from "@/utils/isAdminCheck";
+import { revalidateCategories } from "@/lib/revalidate-public";
+import { warmupPublicRoute } from "@/lib/seo/seo-utils";
+import { slugify } from "@/lib/slug";
 
 export async function POST(request) {
   try {
@@ -27,14 +30,12 @@ export async function POST(request) {
     const bannerImgFile = data.get("bannerImg");
     const contentSideImgFile = data.get("contentSideImg");
 
-    // ✅ Uploads with helper
     const bannerResult = await uploadToCloudinary(bannerImgFile, "categories");
     const contentSideResult = await uploadToCloudinary(
       contentSideImgFile,
       "categories"
     );
 
-    // Save category in DB
     const category = await Category.create({
       name,
       bannerImg: bannerResult?.secure_url || "",
@@ -45,6 +46,9 @@ export async function POST(request) {
       mainBannerDescription,
       creatorInfo,
     });
+
+    revalidateCategories(category.name);
+    warmupPublicRoute(`/${category.slug || slugify(category.name)}`);
 
     return NextResponse.json(
       {

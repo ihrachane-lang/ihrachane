@@ -1,12 +1,14 @@
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 
+export const revalidate = 3600;
+
 export default function PublicLayout({ children }) {
   return (
-    <>
+    <div className="site-shell">
       <Navbar />
       <div className="min-h-screen">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }

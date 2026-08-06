@@ -3,125 +3,41 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import AppProvider from "@/providers/AppProvider";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-export const fetchCache = "force-no-store";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata = {
-  title: {
-    default: "Single Center from Supply to Delivery",
-    
-  },
-  description: "IHRACHANE delivers end-to-end supply chain management, procurement, and global sourcing solutions for businesses seeking efficiency and growth.",
-  keywords: "ihrachane, supply chain management, procurement, sourcing, logistics, inventory management, supplier management, global sourcing",
-  authors: [{ name: "IHRACHANE Team" }],
+  metadataBase: new URL("https://www.ihrachane.com"),
+  title: { default: "IHRACHANE | Global Sourcing & Logistics", template: "%s | IHRACHANE" },
+  description: "IHRACHANE manages factory sourcing, supplier verification, quality inspection, China warehousing and international freight for growing businesses.",
+  keywords: ["IHRACHANE", "global sourcing", "supplier verification", "factory audit", "quality inspection", "international freight logistics"],
+  authors: [{ name: "IHRACHANE Global Team" }],
   creator: "IHRACHANE",
   publisher: "IHRACHANE",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://www.ihrachane.com'), // Replace with your actual domain
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
   openGraph: {
-    title: "Single Center from Supply to Delivery",
-    description: "End-to-end supply chain management, procurement, and global sourcing solutions for businesses.",
-    url: 'https://www.ihrachane.com', // Replace with your actual domain
-    siteName: 'IHRACHANE',
-    images: [
-      {
-        url: '/logo/siteLogo/logo.svg', // Replace with your actual OG image path
-        width: 1200,
-        height: 630,
-        alt: 'Supply Chain Solutions',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
+    title: "IHRACHANE | Global Sourcing & Logistics",
+    description: "Factory sourcing, supplier verification, quality inspection and international freight coordination.",
+    url: "https://www.ihrachane.com/",
+    siteName: "IHRACHANE",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "IHRACHANE global sourcing and logistics" }],
+    locale: "en_US",
+    type: "website",
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Single Center from Supply to Delivery',
-    description: 'End-to-end supply chain management solutions for businesses.',
-    images: ['/logo/siteLogo/logo.svg'], // Replace with your actual Twitter image path
-    creator: '@ihrachane', // Replace with your actual Twitter handle
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  icons: {
-    icon: [
-      { url: '/logo/siteLogo/logo.svg' },
-      { url: '/logo/siteLogo/logo.svg', sizes: '16x16', type: 'image/png' },
-      { url: '/logo/siteLogo/logo.svg', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/logo/siteLogo/logo.svg',
-    apple: [
-      { url: '/logo/siteLogo/logo.svg' },
-      { url: '/logo/siteLogo/logo.svg', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/logo/siteLogo/logo.svg',
-        color: '#5bbad5',
-      },
-    ],
-  },
-  manifest: '/site.webmanifest', // Add if you have a web app manifest
+  twitter: { card: "summary_large_image", title: "IHRACHANE | Global Sourcing & Logistics", description: "Factory sourcing, supplier verification, quality inspection and freight coordination.", images: ["/opengraph-image"] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
+  icons: { icon: [{ url: "/favicon.ico" }] },
+  category: "business",
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" data-theme="light">
-      <head>
-        {/* Structured Data for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "IHRACHANE",
-              "url": "https://www.ihrachane.com",
-              "logo": "https://www.ihrachane.com/logo/siteLogo/logo.svg",
-              "description": "Single Center from Supply to Delivery",
-            })
-          }}
-        />
-      </head>
-      <AppProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <main>{children}</main>
-          <Toaster />
-        </body>
-      </AppProvider>
-    </html>
-  );
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "@id": "https://www.ihrachane.com/#organization", name: "IHRACHANE", url: "https://www.ihrachane.com", logo: "https://www.ihrachane.com/logo/siteLogo/logo.svg", description: "Global procurement, sourcing, quality control and logistics solutions." },
+      { "@type": "WebSite", "@id": "https://www.ihrachane.com/#website", url: "https://www.ihrachane.com", name: "IHRACHANE", publisher: { "@id": "https://www.ihrachane.com/#organization" }, inLanguage: "en" },
+      { "@type": "Service", "@id": "https://www.ihrachane.com/#service", name: "Global Supply Chain & Logistics Management", provider: { "@id": "https://www.ihrachane.com/#organization" }, serviceType: "Procurement and freight forwarding services", areaServed: "Worldwide" },
+    ],
+  };
+
+  return <html lang="en" data-theme="light"><head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /></head><body className={`${geistSans.variable} ${geistMono.variable} antialiased`}><AppProvider><main>{children}</main><Toaster /></AppProvider></body></html>;
 }

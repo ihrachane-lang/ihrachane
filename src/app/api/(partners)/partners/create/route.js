@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Partner from "@/models/Partner";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidatePartners } from "@/lib/revalidate-public";
 
 // POST a new partner
 export async function POST(request) {
@@ -16,6 +17,7 @@ export async function POST(request) {
     }
     const body = await request.json();
     const partner = await Partner.create(body);
+    revalidatePartners();
     return NextResponse.json(
       { success: true, message: "Partner Create Successfully!", data: partner },
       { status: 201 }

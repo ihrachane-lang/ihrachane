@@ -1,21 +1,18 @@
-import React from "react";
 import Hero from "../shared/Hero";
-import dbConnect from "@/lib/mongodb";
-import HomeHero from "@/models/HomeHero";
+import { getHomeHero } from "@/lib/data/public-data";
+import { slugToTitle } from "@/lib/slug";
 
-const HomeHeroSection = async () => {
-  await dbConnect();
-  const data = await HomeHero.findOne().lean()
+export default async function HomeHeroSection({ slug = "home" }) {
+  const data = await getHomeHero(slug);
+
   return (
     <Hero
       img={data?.image}
       info={{
-        span: data?.slug,
+        span: slug === "home" ? "Global Sourcing Partner" : slugToTitle(slug),
         title: data?.title,
         details: data?.description,
       }}
     />
   );
-};
-
-export default HomeHeroSection;
+}

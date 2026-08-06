@@ -56,20 +56,20 @@
   }
 }
 
-/* Menu item animations */
+/* Menu item animations + colors — orange/slate palette-এর সাথে matched */
 .menu-item {
   display: block;
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  color: #374151;
+  color: #334155; /* slate-700 */
   font-weight: 500;
   font-size: 1.125rem;
   transition: all 0.3s;
 }
 
 .menu-item:hover {
-  background-color: #ffedd5;
-  color: #f97316;
+  background-color: #fff7ed; /* orange-50 */
+  color: #c2410c; /* orange-700 */
   transform: scale(1.05);
 }
 
@@ -105,7 +105,7 @@
   }
 }
 
-/* Contact button animations */
+/* Contact button animations + colors — orange-500 → orange-600/700 palette */
 .contact-button {
   display: block;
   width: 100%;
@@ -117,7 +117,7 @@
   font-weight: 500;
   font-size: 1.125rem;
   transition: all 0.3s;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.25);
 }
 
 .contact-button:hover {

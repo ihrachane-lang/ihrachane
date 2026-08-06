@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import CompanyDetails from "@/models/CompanyDetails";
 import { isAdminCheck } from "@/utils/isAdminCheck";
+import { revalidateCompanyDetails } from "@/lib/revalidate-public";
 
 // GET: Fetch company details (only one record)
 export async function GET() {
@@ -44,6 +45,8 @@ export async function POST(request) {
       // Create a new document (only once)
       companyDetails = await CompanyDetails.create(body);
     }
+
+    revalidateCompanyDetails();
 
     return NextResponse.json({ success: true, data: companyDetails });
   } catch (error) {

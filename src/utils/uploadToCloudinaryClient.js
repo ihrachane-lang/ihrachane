@@ -8,27 +8,31 @@
 export async function uploadToCloudinaryClient(file) {
   if (!file) throw new Error("No file provided!");
 
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UNSIGNED_UPLOAD_PRESET_NAME;
+
+  if (!cloudName || !uploadPreset) {
+    throw new Error("Cloudinary cloud name or upload preset is missing in .env variables!");
+  }
+
   const formData = new FormData();
   formData.append("file", file);
-  formData.append(
-    "upload_preset",
-    process.env.NEXT_PUBLIC_CLOUDINARY_UNSIGNED_UPLOAD_PRESET_NAME
-  );
-
-  // console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
+  formData.append("upload_preset", uploadPreset);
 
   const response = await fetch(
-    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`,
+    `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
     {
       method: "POST",
       body: formData,
     }
   );
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Cloudinary upload failed!");
+    console.error("❌ Cloudinary upload error payload:", data);
+    throw new Error(data?.error?.message || "Cloudinary upload failed!");
   }
 
-  const data = await response.json();
   return data.secure_url; // uploaded image URL
 }

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const UpdatePostForm = () => {
   const [formData, setFormData] = useState({
-    slug: "",
+    slug: "home",
     title: "",
     description: "",
     image: "",
@@ -20,11 +20,11 @@ const UpdatePostForm = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/home/hero");
+        const res = await fetch("/api/home/hero?slug=home");
         if (!res.ok) return; // No post yet
         const data = await res.json();
         setFormData({
-          slug: data.slug || "",
+          slug: data.slug || "home",
           title: data.title || "",
           description: data.description || "",
           image: data.image || "",
@@ -59,7 +59,7 @@ const UpdatePostForm = () => {
       }
 
       const payload = {
-        slug: formData.slug,
+        slug: formData.slug || "home",
         title: formData.title,
         description: formData.description,
         image: imageUrl,
@@ -94,26 +94,25 @@ const UpdatePostForm = () => {
         {/* Header */}
         <div className="bg-gradient-to-b from-[#19203c] via-[#3b3b5f] to-[#1e1e30] p-5">
           <h1 className="text-2xl font-semibold text-white text-center">
-            Update Hero Section
+            Home Page - Hero Section
           </h1>
           <p className="text-sm text-orange-100 text-center">
-            Add or update your hero section details below
+            Add or update your home page hero section details below
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Slug */}
+          {/* Slug (ReadOnly/Disabled) */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Slug
+              Page Identifier (Slug)
             </label>
             <input
               type="text"
               name="slug"
-              value={formData?.slug}
-              onChange={handleChange}
-              className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm p-3"
-              placeholder="Enter Slug"
+              value={formData.slug || "home"}
+              disabled
+              className="block w-full rounded-md border border-gray-200 bg-gray-100 shadow-sm sm:text-sm p-3 text-gray-600 cursor-not-allowed"
             />
           </div>
 
