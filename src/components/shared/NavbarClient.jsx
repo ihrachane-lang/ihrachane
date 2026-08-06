@@ -16,7 +16,7 @@ export default function NavbarClient({ menus }) {
   const pathname = usePathname();
 
   const categoryMenus = menus?.filter(
-    (menu) => menu.url !== "/" && menu.url !== "/shipping-partners"
+    (menu) => menu.url !== "/" && menu.url !== "/shipping-partners",
   );
 
   const primaryMenus = [
@@ -96,7 +96,7 @@ export default function NavbarClient({ menus }) {
       >
         {/* Unscrolled dark background layer */}
         <div
-          className={`absolute inset-0 bg-gradient-to-b from-slate-950/90 via-orange-950/95 to-slate-950 transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 bg-[linear-gradient(to_right,#422816,#141314,#141415,#271F13)] transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-0" : "opacity-100"
           }`}
         />
@@ -156,8 +156,8 @@ export default function NavbarClient({ menus }) {
                             ? "bg-orange-50 text-orange-700"
                             : "text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                           : isActive
-                          ? "bg-white/15 text-white"
-                          : "text-white/90 hover:bg-white/10 hover:text-white"
+                            ? "bg-white/15 text-white"
+                            : "text-white/90 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {menu.path}
@@ -174,8 +174,8 @@ export default function NavbarClient({ menus }) {
                             ? "bg-orange-50 text-orange-700"
                             : "text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                           : isSolutionsRoute
-                          ? "bg-white/15 text-white"
-                          : "text-white/90 hover:bg-white/10 hover:text-white"
+                            ? "bg-white/15 text-white"
+                            : "text-white/90 hover:bg-white/10 hover:text-white"
                       }`}
                       aria-haspopup="true"
                     >
@@ -209,7 +209,8 @@ export default function NavbarClient({ menus }) {
                                   : "text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                               }`}
                             >
-                              {menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}
+                              {menu.path.charAt(0).toUpperCase() +
+                                menu.path.slice(1)}
                             </Link>
                           );
                         })}
@@ -221,7 +222,12 @@ export default function NavbarClient({ menus }) {
 
               <button onClick={goToContact} className="site-button-primary">
                 <span>Get Custom Offer</span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -289,13 +295,15 @@ export default function NavbarClient({ menus }) {
       {/* Mobile Menu Overlay */}
       {(isMenuOpen || isAnimating) && (
         <div
-          className={`lg:hidden fixed inset-0 z-50 ${isAnimating ? "menu-overlay-closing" : "menu-overlay-opening"
-            }`}
+          className={`lg:hidden fixed inset-0 z-50 ${
+            isAnimating ? "menu-overlay-closing" : "menu-overlay-opening"
+          }`}
           onClick={toggleMenu}
         >
           <div
-            className={`absolute right-0 top-0 h-full w-80 max-w-[88vw] overflow-hidden ${isAnimating ? "menu-panel-closing" : "menu-panel-opening"
-              }`}
+            className={`absolute right-0 top-0 h-full w-80 max-w-[88vw] overflow-hidden ${
+              isAnimating ? "menu-panel-closing" : "menu-panel-opening"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex h-full flex-col border-l border-orange-100 bg-white/95 backdrop-blur-xl">
@@ -343,13 +351,15 @@ export default function NavbarClient({ menus }) {
                       <Link
                         key={menu.url}
                         href={menu.url}
-                        className={`menu-item ${isAnimating
+                        className={`menu-item ${
+                          isAnimating
                             ? "menu-item-closing"
                             : "menu-item-opening"
-                          } block rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${isActive
+                        } block rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${
+                          isActive
                             ? "bg-orange-50 text-orange-700"
                             : "text-slate-700 hover:bg-slate-50 hover:text-orange-700"
-                          }`}
+                        }`}
                         onClick={toggleMenu}
                         style={{
                           animationDelay: isAnimating
@@ -372,8 +382,9 @@ export default function NavbarClient({ menus }) {
                     >
                       <span>Solutions</span>
                       <svg
-                        className={`h-4 w-4 transition-transform ${isSolutionsOpen ? "rotate-180" : ""
-                          }`}
+                        className={`h-4 w-4 transition-transform ${
+                          isSolutionsOpen ? "rotate-180" : ""
+                        }`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -395,13 +406,17 @@ export default function NavbarClient({ menus }) {
                             <Link
                               key={menu.url}
                               href={menu.url}
-                              className={`rounded-2xl px-3 py-3 text-sm font-semibold ${isActive
+                              className={`rounded-2xl px-3 py-3 text-sm font-semibold ${
+                                isActive
                                   ? "bg-white text-orange-700 shadow-sm"
                                   : "text-slate-700 hover:bg-white hover:text-orange-700"
-                                }`}
+                              }`}
                               onClick={toggleMenu}
                             >
-                              <span className="bg-white border border-amber-50 px-3 rounded-md block ">{menu.path.charAt(0).toUpperCase() + menu.path.slice(1)}</span>
+                              <span className="bg-white border border-amber-50 px-3 rounded-md block ">
+                                {menu.path.charAt(0).toUpperCase() +
+                                  menu.path.slice(1)}
+                              </span>
                             </Link>
                           );
                         })}
@@ -413,10 +428,11 @@ export default function NavbarClient({ menus }) {
 
               <div className="border-t border-slate-100 bg-slate-50/80 p-6">
                 <button
-                  className={`contact-button ${isAnimating
+                  className={`contact-button ${
+                    isAnimating
                       ? "contact-button-closing"
                       : "contact-button-opening"
-                    } w-full`}
+                  } w-full`}
                   onClick={goToContact}
                 >
                   Get Custom Offer
