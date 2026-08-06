@@ -15,7 +15,7 @@ function getMailConfig() {
 
   if (!user || !pass) {
     throw new Error(
-      "Email is not configured. Set SMTP_GMAIL_USER and SMTP_GMAIL_PASS in Vercel Production environment variables."
+      "Email is not configured. Set SMTP_GMAIL_USER and SMTP_GMAIL_PASS in Vercel Production environment variables.",
     );
   }
 
@@ -34,8 +34,8 @@ function createTransporter() {
     secure: port === 465,
     requireTLS: port !== 465,
     auth: { user, pass },
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
+    connectionTimeout: 10000,
+    greetingTimeout: 5000,
     socketTimeout: 20_000,
   });
 }
@@ -55,7 +55,7 @@ export const sendEmail = async (name, email, emailType) => {
       // 🔐 Hash the code
       hashedToken = await bcrypt.hash(
         rawCode,
-        Number(process.env.HASH_SALT_ROUND)
+        Number(process.env.HASH_SALT_ROUND),
       );
 
       await dbConnect();
@@ -102,7 +102,8 @@ export const sendEmail = async (name, email, emailType) => {
       message: "Please check your email!!",
     };
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error occurred";
+    const message =
+      error instanceof Error ? error.message : "Unknown error occurred";
     console.error("Email send error:", message);
     return { success: false, message };
   }
