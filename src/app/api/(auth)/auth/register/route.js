@@ -4,6 +4,9 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { sendEmail } from "@/utils/sendEmail";
 
+export const runtime = "nodejs";
+export const maxDuration = 30;
+
 export async function POST(req) {
   try {
     await dbConnect();
@@ -54,7 +57,17 @@ export async function POST(req) {
     } = newUser._doc;
 
     // Send verification email
-    await sendEmail(name, email, "verify-email");
+    const emailResponse = await sendEmail(name, email, "verify-email");
+
+    if (!emailResponse.success) {
+      return NextResponse.json(
+        {
+          error:
+            "Account created, but the verification email could not be sent. Please use Resend OTP after the email service is configured.",
+        },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json(
       {

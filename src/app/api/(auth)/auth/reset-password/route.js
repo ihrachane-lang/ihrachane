@@ -3,6 +3,9 @@ import { sendEmail } from "@/utils/sendEmail";
 import User from "@/models/User";
 import dbConnect from "@/lib/mongodb";
 
+export const runtime = "nodejs";
+export const maxDuration = 30;
+
 export const POST = async (request) => {
   try {
     await dbConnect();
@@ -43,20 +46,17 @@ export const POST = async (request) => {
       email,
       "reset-password"
     );
-    let responseMessage = "Failed to send OTP!";
-
-    if (typeof emailResponse == "object" && emailResponse.success) {
-      responseMessage = emailResponse?.message;
-
+    if (!emailResponse.success) {
       return NextResponse.json(
-        {
-          message: responseMessage,
-          email,
-          status: 200,
-        },
-        { status: 201 }
+        { message: emailResponse.message || "Failed to send OTP." },
+        { status: 502 }
       );
     }
+
+    return NextResponse.json(
+      { message: emailResponse.message, email, status: 200 },
+      { status: 200 }
+    );
   } catch (err) {
     return NextResponse.json(
       {

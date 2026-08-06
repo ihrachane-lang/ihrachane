@@ -7,18 +7,42 @@ import {
 import dbConnect from "@/lib/mongodb";
 import User from "@/models/User";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_GMAIL_USER,
-    pass: process.env.SMTP_GMAIL_PASS,
-  },
-});
+function getMailConfig() {
+  const user = process.env.SMTP_GMAIL_USER?.trim();
+  // Gmail displays app passwords in groups; whitespace is not part of the
+  // password and is a common source of deployment-only authentication errors.
+  const pass = process.env.SMTP_GMAIL_PASS?.replace(/\s/g, "");
+
+  if (!user || !pass) {
+    throw new Error(
+      "Email is not configured. Set SMTP_GMAIL_USER and SMTP_GMAIL_PASS in Vercel Production environment variables."
+    );
+  }
+
+  return { user, pass };
+}
+
+function createTransporter() {
+  const { user, pass } = getMailConfig();
+  const port = Number(process.env.SMTP_PORT || 587);
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port,
+    // Port 587 uses STARTTLS and is generally more reliable from serverless
+    // providers than an implicit-TLS SMTP connection on port 465.
+    secure: port === 465,
+    requireTLS: port !== 465,
+    auth: { user, pass },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 20_000,
+  });
+}
 
 export const sendEmail = async (name, email, emailType) => {
   try {
+    const { user: from } = getMailConfig();
     let hashedToken = "";
     let subject = "";
     let htmlContent = "";
@@ -61,19 +85,25 @@ export const sendEmail = async (name, email, emailType) => {
       throw new Error("Invalid email type or missing data.");
     }
 
-    await transporter.sendMail({
-      from: `"Ihrachane Support" <${process.env.SMTP_GMAIL_USER}>`,
-      to: toEmail,
+    const transporter = createTransporter();
+    const result = await transporter.sendMail({
+      from: `"Ihrachane Support" <${from}>`,
+      to: toEmail.trim(),
       subject,
       html: htmlContent,
     });
+
+    if (!result.messageId) {
+      throw new Error("Email provider did not accept the message.");
+    }
 
     return {
       success: true,
       message: "Please check your email!!",
     };
   } catch (error) {
-    console.error("Email send error:", error);
-    return error instanceof Error ? error.message : "Unknown error occurred";
+    const message = error instanceof Error ? error.message : "Unknown error occurred";
+    console.error("Email send error:", message);
+    return { success: false, message };
   }
 };
