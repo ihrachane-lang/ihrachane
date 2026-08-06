@@ -4,7 +4,7 @@ import { slugify } from "@/lib/slug";
 const categorySchema = new Schema(
   {
     name: { type: String, required: true, index: true },
-    slug: { type: String, sparse: true },
+    slug: { type: String },
     bannerImg: { type: String, required: true },
     contentSideImg: { type: String },
     contentTitle: { type: String, required: true },
