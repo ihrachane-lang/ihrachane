@@ -4,7 +4,7 @@ import { slugify } from "@/lib/slug";
 const subCategorySchema = new Schema(
   {
     title: { type: String, required: true },
-    slug: { type: String, sparse: true },
+    slug: { type: String },
     selectedCategory: {
       type: Schema.Types.ObjectId,
       ref: "Category",
