@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Testimonial from "@/models/Testimonial";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateTestimonials } from "@/lib/revalidate-public";
 
 // POST a new testimonial
 export async function POST(request) {
@@ -16,6 +17,7 @@ export async function POST(request) {
     }
     const body = await request.json();
     const testimonial = await Testimonial.create(body);
+    revalidateTestimonials();
     return NextResponse.json(
       {
         success: true,

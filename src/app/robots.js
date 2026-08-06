@@ -1,37 +1,31 @@
-export default function robots() {
-  const baseUrl = "https://www.ihrachane.com";
+import { SITE_URL } from "@/lib/seo/seo-utils";
 
+export default function robots() {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/dashboard/",
-          "/dashboard/*",
-          "/api/",
-          "/api/*",
-          "/login",
-          "/register",
-          "/reset-password",
-          "/otp-verification",
-        ],
+        disallow: ["/dashboard/", "/api/", "/login", "/register", "/reset-password", "/otp-verification"],
+        crawlDelay: 1,
       },
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: [
-          "/dashboard/",
-          "/dashboard/*",
-          "/api/",
-          "/api/*",
-          "/login",
-          "/register",
-          "/reset-password",
-          "/otp-verification",
-        ],
+        disallow: ["/dashboard/", "/api/", "/login", "/register", "/reset-password", "/otp-verification"],
+      },
+      {
+        userAgent: "Yandex",
+        allow: "/",
+        disallow: ["/dashboard/", "/api/", "/login", "/register", "/reset-password", "/otp-verification"],
+      },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: ["/dashboard/", "/api/", "/login", "/register", "/reset-password", "/otp-verification"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import SocialLink from "@/models/SocialLink";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateSocialLinks } from "@/lib/revalidate-public";
 
 // POST a new socialLink
 export async function POST(request) {
@@ -16,6 +17,7 @@ export async function POST(request) {
     }
     const body = await request.json();
     const socialLink = await SocialLink.create(body);
+    revalidateSocialLinks();
     return NextResponse.json(
       { success: true, data: socialLink },
       { status: 201 }

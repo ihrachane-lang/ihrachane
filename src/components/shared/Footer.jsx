@@ -1,50 +1,28 @@
-"use client";
-import { getData } from "@/utils/axiosPublic";
-import { getClientUser } from "@/utils/getClientUser";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import LogOutBtn from "./LogOutBtn";
 import Image from "next/image";
+import { FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import {
+  getCategoryNames,
+  getCompanyDetails,
+  getSocialLinks,
+} from "@/lib/data/public-data";
+import { slugify } from "@/lib/slug";
+import FooterAuth from "./FooterAuth";
 
-export default function Footer() {
-  const { user } = getClientUser();
-  const [social, setSocial] = useState([]);
-  const [about, setAbout] = useState({});
-  const [categories, setCategories] = useState([]);
+function processSvg(svgContent) {
+  if (!svgContent) return "";
+  return svgContent.replace(
+    /<svg([^>]*)>/,
+    '<svg$1 width="18" height="18" fill="currentColor" style="width: 18px; height: 18px;">'
+  );
+}
 
-  useEffect(() => {
-    async function fetchFooterData() {
-      try {
-        const [socialRes, companyRes, categoryRes] = await Promise.allSettled([
-          getData("/api/company/social-links"),
-          getData("/api/company/details"),
-          fetch("/api/categories/categoriesName").then((r) => r.json()),
-        ]);
-
-        if (socialRes.status === "fulfilled" && Array.isArray(socialRes.value?.data)) {
-          setSocial(socialRes.value.data);
-        }
-        if (companyRes.status === "fulfilled" && companyRes.value?.data) {
-          setAbout(companyRes.value.data);
-        }
-        if (categoryRes.status === "fulfilled" && categoryRes.value?.data) {
-          setCategories(categoryRes.value.data);
-        }
-      } catch (e) {
-        console.error("Error fetching footer data:", e);
-      }
-    }
-    fetchFooterData();
-  }, []);
-
-  const processSvg = (svgContent) => {
-    if (!svgContent) return "";
-    return svgContent.replace(
-      /<svg([^>]*)>/,
-      '<svg$1 width="18" height="18" fill="currentColor" style="width: 18px; height: 18px;">'
-    );
-  };
+export default async function Footer() {
+  const [social, about, categories] = await Promise.all([
+    getSocialLinks(),
+    getCompanyDetails(),
+    getCategoryNames(),
+  ]);
 
   return (
     <footer className="relative overflow-hidden border-t border-orange-100/80 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.12),transparent_24%),linear-gradient(180deg,#171717_0%,#09090b_100%)] pt-20 text-slate-300">
@@ -94,7 +72,7 @@ export default function Footer() {
               {social?.map((item) => (
                 <Link
                   href={item?.socialLink || "#"}
-                  key={item?._id}
+                  key={item?._id?.toString()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-500/40 hover:text-orange-300"
@@ -112,25 +90,25 @@ export default function Footer() {
               {about?.address && (
                 <p className="flex items-start gap-3">
                   <FaMapMarkerAlt className="mt-0.5 flex-shrink-0 text-base text-orange-400" />
-                  <span>{about?.address}</span>
+                  <span>{about.address}</span>
                 </p>
               )}
               {about?.phoneNumber && (
                 <p className="flex items-center gap-3">
                   <FaPhoneAlt className="flex-shrink-0 text-sm text-orange-400" />
-                  <span>{about?.phoneNumber}</span>
+                  <span>{about.phoneNumber}</span>
                 </p>
               )}
               {about?.email && (
                 <p className="flex items-center gap-3">
                   <FaEnvelope className="flex-shrink-0 text-sm text-orange-400" />
-                  <span>{about?.email}</span>
+                  <span>{about.email}</span>
                 </p>
               )}
               {about?.whatsAppNumber && (
                 <p className="flex items-center gap-3">
                   <FaWhatsapp className="flex-shrink-0 text-base text-emerald-400" />
-                  <span className="font-semibold text-emerald-300">{about?.whatsAppNumber}</span>
+                  <span className="font-semibold text-emerald-300">{about.whatsAppNumber}</span>
                 </p>
               )}
             </div>
@@ -149,13 +127,13 @@ export default function Footer() {
                   Shipping Partners
                 </Link>
               </li>
-              {categories?.map((cat, index) => (
-                <li key={index}>
+              {categories?.map((cat) => (
+                <li key={cat._id?.toString()}>
                   <Link
-                    href={`/home/${cat?.name?.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`}
                     className="block rounded-xl py-1 text-slate-400 transition-colors hover:text-orange-300"
                   >
-                    {cat?.name}
+                    {cat.name}
                   </Link>
                 </li>
               ))}
@@ -195,30 +173,7 @@ export default function Footer() {
               Portal Access
             </h4>
             <ul className="space-y-3 text-sm">
-              {user ? (
-                <>
-                  <li>
-                    <Link
-                      href="/dashboard"
-                      className="inline-flex rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-xs font-bold text-orange-300 transition-all hover:bg-orange-500/20"
-                    >
-                      Go to Dashboard
-                    </Link>
-                  </li>
-                  <li className="pt-2">
-                    <LogOutBtn />
-                  </li>
-                </>
-              ) : (
-                <li>
-                  <Link
-                    href="/login"
-                    className="inline-flex rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-bold text-white transition-all hover:border-orange-500/40 hover:bg-white/10"
-                  >
-                    Client Login
-                  </Link>
-                </li>
-              )}
+              <FooterAuth />
             </ul>
           </div>
         </div>
@@ -238,4 +193,3 @@ export default function Footer() {
     </footer>
   );
 }
-

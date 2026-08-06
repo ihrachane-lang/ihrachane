@@ -1,20 +1,16 @@
-import dbConnect from "@/lib/mongodb";
-import Service from "@/models/Service";
 import Link from "next/link";
 import SingleService from "./SingleService";
 import SectionIntro from "../shared/SectionIntro";
+import { getServices } from "@/lib/data/public-data";
 
-const ServiceCard = async () => {
-  await dbConnect();
-  const services = await Service.find().lean();
+export default async function OurServices() {
+  const services = await getServices();
 
   return (
     <section
       id="services"
       className="site-section-dark my-10 overflow-hidden relative"
     >
-      {/* গ্লো ইফেক্ট সম্পূর্ণ রিমুভ করা হয়েছে */}
-
       <div className="site-container relative z-10">
         <SectionIntro
           badge="Capabilities"
@@ -42,7 +38,7 @@ const ServiceCard = async () => {
         </div>
 
         <div className="mt-20">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-orange-400/90 to-amber-400/80 p-8 text-center shadow-[0_30px_80px_-32px_rgba(249,115,22,0.9)] sm:p-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-orange-600/90 via-orange-700 to-amber-600/80 p-8 text-center shadow-[0_30px_80px_-32px_rgba(249,115,22,0.9)] sm:p-12">
             <div className="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
             <h3 className="mb-4 text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -77,6 +73,4 @@ const ServiceCard = async () => {
       </div>
     </section>
   );
-};
-
-export default ServiceCard;
+}

@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import SocialLink from "@/models/SocialLink";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateSocialLinks } from "@/lib/revalidate-public";
 
 // PUT update a socialLink
 export async function PUT(request, { params }) {
@@ -27,6 +28,8 @@ export async function PUT(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateSocialLinks();
 
     return NextResponse.json({ success: true, data: socialLink });
   } catch (error) {

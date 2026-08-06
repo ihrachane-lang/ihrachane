@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import SubCategoryService from "@/models/SubCategoryService";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateForSubCategoryId } from "@/lib/revalidate-helpers";
 
 export async function PUT(request, { params }) {
   try {
@@ -14,18 +15,14 @@ export async function PUT(request, { params }) {
       );
     }
 
-    const { id } = await params; // ✅ destructure directly
+    const { id } = await params;
 
-    // console.log(id);
     const body = await request.json();
-    const scs = await SubCategoryService.findById(id);
-    // console.log(scs);
     const subCategoryService = await SubCategoryService.findByIdAndUpdate(
       id,
       body,
       { new: true, runValidators: true }
     );
-    // console.log(subCategoryService);
     if (!subCategoryService) {
       return NextResponse.json(
         { success: false, error: "Sub-Category Service not found" },
@@ -33,10 +30,12 @@ export async function PUT(request, { params }) {
       );
     }
 
+    await revalidateForSubCategoryId(subCategoryService.selectedSubCategory);
+
     return NextResponse.json({
       success: true,
       message: "Sub-Category Service updated successfully!",
-      data: subCategoryService, // ✅ fixed
+      data: subCategoryService,
     });
   } catch (error) {
     return NextResponse.json(

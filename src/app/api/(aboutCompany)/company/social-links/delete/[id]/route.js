@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import SocialLink from "@/models/SocialLink";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateSocialLinks } from "@/lib/revalidate-public";
 
 // DELETE a Social Links
 export async function DELETE(request, { params }) {
@@ -23,6 +24,8 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+
+    revalidateSocialLinks();
 
     return NextResponse.json({ success: true, data: {} });
   } catch (error) {

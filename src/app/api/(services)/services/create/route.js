@@ -2,6 +2,7 @@ import dbConnect from "@/lib/mongodb";
 import Service from "@/models/Service";
 import { isAdminCheck } from "@/utils/isAdminCheck";
 import { NextResponse } from "next/server";
+import { revalidateServices } from "@/lib/revalidate-public";
 
 // POST a new service
 export async function POST(request) {
@@ -16,6 +17,7 @@ export async function POST(request) {
     }
     const body = await request.json();
     const service = await Service.create(body);
+    revalidateServices();
     return NextResponse.json(
       { success: true, message: "Service Create Successfully!", data: service },
       { status: 201 }

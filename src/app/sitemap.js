@@ -1,10 +1,14 @@
-import dbConnect from "@/lib/mongodb";
-import Category from "@/models/Category";
+import {
+  getCategories,
+  getSubCategoriesForSitemap,
+} from "@/lib/data/public-data";
+import { servicePages } from "@/lib/seo/service-pages";
+
+export const revalidate = 86400;
 
 export default async function sitemap() {
   const baseUrl = "https://www.ihrachane.com";
 
-  // Static routes
   const staticRoutes = [
     {
       url: `${baseUrl}`,
@@ -26,30 +30,41 @@ export default async function sitemap() {
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    { url: `${baseUrl}/tr`, changeFrequency: "weekly", priority: 0.9, alternates: { languages: { en: baseUrl, tr: `${baseUrl}/tr`, "x-default": baseUrl } } },
+    ...Object.entries(servicePages).flatMap(([slug, page]) => [
+      { url: `${baseUrl}/services/${slug}`, changeFrequency: "monthly", priority: 0.9, alternates: { languages: { en: `${baseUrl}/services/${slug}`, tr: `${baseUrl}/tr/${page.turkishSlug}`, "x-default": `${baseUrl}/services/${slug}` } } },
+      { url: `${baseUrl}/tr/${page.turkishSlug}`, changeFrequency: "monthly", priority: 0.9, alternates: { languages: { en: `${baseUrl}/services/${slug}`, tr: `${baseUrl}/tr/${page.turkishSlug}`, "x-default": `${baseUrl}/services/${slug}` } } },
+    ]),
   ];
 
-  // Dynamic Category / Solutions routes
   let dynamicCategoryRoutes = [];
-  try {
-    await dbConnect();
-    const categories = await Category.find().select("name updatedAt").lean();
+  let dynamicSubCategoryRoutes = [];
 
-    dynamicCategoryRoutes = categories.map((cat) => {
-      const slug = cat.name.toLowerCase().replace(/\s+/g, "-");
-      return {
-        url: `${baseUrl}/home/${slug}`,
-        lastModified: cat.updatedAt ? new Date(cat.updatedAt) : new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-      };
-    });
+  try {
+    const [categories, subCategories] = await Promise.all([
+      getCategories(),
+      getSubCategoriesForSitemap(),
+    ]);
+
+    dynamicCategoryRoutes = categories.map((cat) => ({
+      url: `${baseUrl}/${cat.slug}`,
+      ...(cat.updatedAt ? { lastModified: new Date(cat.updatedAt) } : {}),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    }));
+
+    dynamicSubCategoryRoutes = subCategories.map((sub) => ({
+      url: `${baseUrl}/${sub.categorySlug}/${sub.subSlug}`,
+      ...(sub.updatedAt ? { lastModified: new Date(sub.updatedAt) } : {}),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    }));
   } catch (error) {
     console.error("Error generating dynamic sitemap:", error);
   }
 
-  return [...staticRoutes, ...dynamicCategoryRoutes];
+  return [...staticRoutes, ...dynamicCategoryRoutes, ...dynamicSubCategoryRoutes];
 }
