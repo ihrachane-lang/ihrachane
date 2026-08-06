@@ -41,6 +41,7 @@ Step 1: Property তৈরি করুন
 7. Type = TXT, Name/Host = Google-এর দেওয়া value, Value = Google-এর দেওয়া token দিন।
 8. Save করুন। DNS update কয়েক মিনিট থেকে 24 ঘণ্টা লাগতে পারে।
 9. Search Console-এ ফিরে “Verify” চাপুন।
+#######----DONE-------###########
 
 Step 2: Sitemap submit করুন
 ---------------------------
@@ -84,7 +85,7 @@ Step 4: প্রতি সপ্তাহে Search Console-এ যা দে�
 5. Manual Actions এবং Security Issues: সবসময় zero হওয়া দরকার।
 
 
-PART 2 — Bing Webmaster Tools setup
+PART 2 — Bing Webmaster Tools setup || letter
 ===================================
 
 1. https://www.bing.com/webmasters/ খুলুন।
