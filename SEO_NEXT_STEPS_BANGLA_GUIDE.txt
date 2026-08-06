@@ -85,7 +85,7 @@ Step 4: প্রতি সপ্তাহে Search Console-এ যা দে�
 5. Manual Actions এবং Security Issues: সবসময় zero হওয়া দরকার।
 
 
-PART 2 — Bing Webmaster Tools setup
+PART 2 — Bing Webmaster Tools setup || letter
 ===================================
 
 1. https://www.bing.com/webmasters/ খুলুন।
