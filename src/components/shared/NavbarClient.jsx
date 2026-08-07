@@ -96,7 +96,7 @@ export default function NavbarClient({ menus }) {
       >
         {/* Unscrolled dark background layer */}
         <div
-          className={`absolute inset-0 bg-[linear-gradient(to_right,#422816,#141314,#141415,#271F13)] transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-400/70  transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-0" : "opacity-100"
           }`}
         />
