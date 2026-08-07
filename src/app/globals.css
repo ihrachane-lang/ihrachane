@@ -69,9 +69,9 @@
     @apply relative py-20 sm:py-24 lg:py-28 bg-[linear-gradient(180deg,rgba(255,247,237,0.75),rgba(255,255,255,0.98))];
   }
 
-  .site-section-dark {
-    @apply relative py-20 sm:py-24 lg:py-28 bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.14),transparent_24%),linear-gradient(180deg,#171717_0%,#0a0a0a_100%)] text-white;
-  }
+ .site-section-dark {
+  @apply relative py-20 sm:py-24 lg:py-28 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_30%),linear-gradient(180deg,#f97310_0%,#ea680c_80%)] text-neutral-900;
+}
 
   .site-panel {
     @apply rounded-[2rem] border border-slate-200/80 bg-white shadow-[0_24px_70px_-32px_rgba(15,23,42,0.32)];

@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function Hero({
   img,
   info,
-  primaryHref = "#contact",
+  primaryHref = "/#contact",
   primaryLabel = "Get Custom Offer →",
-  secondaryHref = "#services",
+  secondaryHref = "/#services",
   secondaryLabel = "Explore Services",
 }) {
   return (
