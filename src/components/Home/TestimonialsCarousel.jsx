@@ -158,26 +158,42 @@ export default function TestimonialsCarousel({ testimonials }) {
         </div>
       </div>
 
-      <div className="site-panel-dark rounded-[2rem] border-white/10 p-8 text-white sm:p-12">
-        <div className="grid grid-cols-2 gap-6 divide-y divide-white/10 text-center md:grid-cols-4 md:divide-x md:divide-y-0 sm:gap-8">
-          <div className="pt-4 md:pt-0">
-            <div className="mb-1 text-3xl font-black text-orange-300 sm:text-4xl lg:text-5xl">500+</div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 sm:text-sm">Happy Clients</div>
-          </div>
-          <div className="pt-4 md:pt-0">
-            <div className="mb-1 text-3xl font-black text-white sm:text-4xl lg:text-5xl">98%</div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 sm:text-sm">Satisfaction Rate</div>
-          </div>
-          <div className="pt-4 md:pt-0">
-            <div className="mb-1 text-3xl font-black text-orange-300 sm:text-4xl lg:text-5xl">{experienceYears}+</div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 sm:text-sm">Years Experience</div>
-          </div>
-          <div className="pt-4 md:pt-0">
-            <div className="mb-1 text-3xl font-black text-white sm:text-4xl lg:text-5xl">24/7</div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 sm:text-sm">Dedicated Support</div>
-          </div>
-        </div>
+<div className="rounded-[2rem] border border-orange-100 bg-white/90 p-8 text-black shadow-lg backdrop-blur-md sm:p-12">
+  <div className="grid grid-cols-2 gap-6 divide-y divide-orange-100 text-center md:grid-cols-4 md:divide-x md:divide-y-0 sm:gap-8">
+    <div className="pt-4 md:pt-0">
+      <div className="mb-1 text-3xl font-black text-orange-600 sm:text-4xl lg:text-5xl">
+        500+
       </div>
+      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+        Happy Clients
+      </div>
+    </div>
+    <div className="pt-4 md:pt-0">
+      <div className="mb-1 text-3xl font-black text-black sm:text-4xl lg:text-5xl">
+        98%
+      </div>
+      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+        Satisfaction Rate
+      </div>
+    </div>
+    <div className="pt-4 md:pt-0">
+      <div className="mb-1 text-3xl font-black text-orange-600 sm:text-4xl lg:text-5xl">
+        {experienceYears}+
+      </div>
+      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+        Years Experience
+      </div>
+    </div>
+    <div className="pt-4 md:pt-0">
+      <div className="mb-1 text-3xl font-black text-black sm:text-4xl lg:text-5xl">
+        24/7
+      </div>
+      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+        Dedicated Support
+      </div>
+    </div>
+  </div>
+</div>
     </>
   );
 }
