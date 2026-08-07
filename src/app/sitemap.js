@@ -2,6 +2,7 @@ import {
   getCategories,
   getSubCategoriesForSitemap,
 } from "@/lib/data/public-data";
+import { getBlogPostSlugsForSitemap } from "@/lib/data/blog-data";
 import { servicePages } from "@/lib/seo/service-pages";
 
 export const revalidate = 86400;
@@ -15,6 +16,12 @@ export default async function sitemap() {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/about-us`,
@@ -42,11 +49,13 @@ export default async function sitemap() {
 
   let dynamicCategoryRoutes = [];
   let dynamicSubCategoryRoutes = [];
+  let dynamicBlogRoutes = [];
 
   try {
-    const [categories, subCategories] = await Promise.all([
+    const [categories, subCategories, blogPosts] = await Promise.all([
       getCategories(),
       getSubCategoriesForSitemap(),
+      getBlogPostSlugsForSitemap(),
     ]);
 
     dynamicCategoryRoutes = categories.map((cat) => ({
@@ -62,9 +71,23 @@ export default async function sitemap() {
       changeFrequency: "weekly",
       priority: 0.85,
     }));
+
+    dynamicBlogRoutes = blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      ...(post.updatedAt || post.publishedAt
+        ? { lastModified: new Date(post.updatedAt || post.publishedAt) }
+        : {}),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
   } catch (error) {
     console.error("Error generating dynamic sitemap:", error);
   }
 
-  return [...staticRoutes, ...dynamicCategoryRoutes, ...dynamicSubCategoryRoutes];
+  return [
+    ...staticRoutes,
+    ...dynamicCategoryRoutes,
+    ...dynamicSubCategoryRoutes,
+    ...dynamicBlogRoutes,
+  ];
 }
