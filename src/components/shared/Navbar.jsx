@@ -4,6 +4,7 @@ import { getCategoryNames } from "@/lib/data/public-data";
 const staticMenus = [
   { url: "/", path: "Home" },
   { url: "/shipping-partners", path: "SHIPPING PARTNERS" },
+  { url: "/blog", path: "BLOG" },
 ];
 
 export default async function Navbar() {

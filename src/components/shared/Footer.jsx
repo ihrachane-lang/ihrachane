@@ -146,6 +146,11 @@ export default async function Footer() {
             </h4>
             <ul className="grid gap-2 text-sm">
               <li>
+                <Link href="/blog" className="block py-1 font-semibold text-orange-400 transition-colors hover:text-orange-300">
+                  Blog & Insights
+                </Link>
+              </li>
+              <li>
                 <Link href="/#contact" className="block py-1 text-slate-400 transition-colors hover:text-orange-300">
                   Contact Us
                 </Link>
