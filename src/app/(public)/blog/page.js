@@ -51,18 +51,18 @@ export default async function BlogListingPage({ searchParams }) {
         dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(breadcrumbs) }}
       />
 
-      <main className="bg-slate-50 min-h-screen pb-20">
-        {/* Hero Banner */}
-        <section className="relative bg-gradient-to-r from-[#19203c] via-[#2c3355] to-[#1e1e30] text-white py-20 px-6 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent opacity-70" />
+      <main className="bg-slate-50 min-h-screen py-20">
+        {/* Hero Banner - Dark blue changed to vibrant Orange Theme */}
+        <section className="relative bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white py-20 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-300/30 via-transparent to-transparent opacity-70" />
           <div className="max-w-6xl mx-auto relative z-10 text-center space-y-4">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30 text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
               IHRACHANE Sourcing & Logistics Hub
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
               Insights & Supply Chain Guides
             </h1>
-            <p className="max-w-2xl mx-auto text-gray-300 text-base md:text-lg">
+            <p className="max-w-2xl mx-auto text-orange-100 text-base md:text-lg">
               Proven strategies for factory sourcing, China supplier audits, quality inspection standards, and international freight logistics.
             </p>
           </div>
@@ -79,8 +79,8 @@ export default async function BlogListingPage({ searchParams }) {
                   href={cat === "All" ? "/blog" : `/blog?category=${encodeURIComponent(cat)}`}
                   className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
                     isActive
-                      ? "bg-[#19203c] text-white shadow-md"
-                      : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                      ? "bg-orange-600 text-white shadow-md"
+                      : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
                   }`}
                 >
                   {cat}
@@ -116,7 +116,7 @@ export default async function BlogListingPage({ searchParams }) {
                       fill
                       className="object-cover group-hover:scale-105 transition duration-500"
                     />
-                    <div className="absolute top-3 left-3 bg-[#19203c]/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow">
+                    <div className="absolute top-3 left-3 bg-orange-600/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow">
                       <FaTag className="text-[10px]" /> {post.category}
                     </div>
                   </Link>
@@ -155,7 +155,7 @@ export default async function BlogListingPage({ searchParams }) {
                       </span>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 text-sm font-bold text-[#19203c] group-hover:text-orange-600 transition"
+                        className="inline-flex items-center gap-1 text-sm font-bold text-orange-600 hover:text-orange-700 transition"
                       >
                         Read Article <FaArrowRight className="text-xs group-hover:translate-x-1 transition" />
                       </Link>

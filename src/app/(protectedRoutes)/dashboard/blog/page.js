@@ -73,7 +73,7 @@ export default function BlogManagementPage() {
         </div>
         <Link
           href="/dashboard/blog/create"
-          className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2.5 rounded-xl transition flex items-center gap-2 shadow-lg"
+          className="bg-slate-500 hover:bg-slate-600 text-white font-medium px-5 py-2.5 rounded-xl transition flex items-center gap-2 shadow-lg"
         >
           <FaPlus /> Create New Post
         </Link>
