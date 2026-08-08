@@ -113,7 +113,7 @@ const Form = () => {
   };
 
   return (
-    <section id="contact" className="site-section-muted overflow-hidden">
+    <section id="contact" className="site-section-muted overflow-hidden bg-orange-50/30 py-16">
       <div className="site-container relative z-10">
         <SectionIntro
           badge="Direct Inquiry"
@@ -129,18 +129,21 @@ const Form = () => {
           className="mb-16"
         />
 
-        <div className="site-panel mx-auto max-w-6xl overflow-hidden">
+        <div className="site-panel mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-orange-100 bg-white shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative flex flex-col justify-between overflow-hidden bg-[radial-gradient(circle_at_top_right,rgba(251,146,60,0.18),transparent_22%),linear-gradient(180deg,#171717_0%,#09090b_100%)] p-8 text-white sm:p-10 lg:col-span-5 lg:p-12">
-              <div className="site-grid-overlay absolute inset-0 opacity-30" />
+            {/* Left Box: Rich Orange Theme */}
+            <div className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 p-8 text-white sm:p-10 lg:col-span-5 lg:p-12">
+              <div className="site-grid-overlay absolute inset-0 opacity-10" />
 
               <div className="relative z-10 space-y-8">
                 <div className="space-y-4">
-                  <div className="site-badge-dark">Why teams choose IHRACHANE</div>
-                  <h3 className="text-3xl font-black tracking-tight">
+                  <div className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    Why teams choose IHRACHANE
+                  </div>
+                  <h3 className="text-3xl font-black tracking-tight text-white">
                     Premium sourcing support without the operational guesswork.
                   </h3>
-                  <p className="text-sm leading-7 text-slate-300">
+                  <p className="text-sm leading-7 text-orange-100">
                     Direct access to vetted supplier databases, verified quality control specialists, and coordinated international freight support.
                   </p>
                 </div>
@@ -152,36 +155,37 @@ const Form = () => {
                     "End-to-end sourcing, inspection, and logistics coordination",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-orange-500/20 text-orange-300">
+                      <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white font-bold backdrop-blur-sm">
                         ✓
                       </div>
-                      <span className="text-sm font-semibold text-slate-200">{item}</span>
+                      <span className="text-sm font-semibold text-white">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <div className="relative z-10 mt-12 grid gap-4 pt-8 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                  <div className="text-2xl font-black text-orange-300">24h</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">
+                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+                  <div className="text-2xl font-black text-white">24h</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-orange-100">
                     Response Window
                   </div>
                 </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
                   <div className="text-2xl font-black text-white">Global</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">
+                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-orange-100">
                     Logistics Reach
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12">
+            {/* Right Box: Form Inputs & Submit Button */}
+            <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12 bg-white">
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="firstName" className="site-label">
+                    <label htmlFor="firstName" className="block text-sm font-bold text-neutral-800">
                       First Name *
                     </label>
                     <input
@@ -204,7 +208,7 @@ const Form = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="lastName" className="site-label">
+                    <label htmlFor="lastName" className="block text-sm font-bold text-neutral-800">
                       Last Name *
                     </label>
                     <input
@@ -229,7 +233,7 @@ const Form = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="site-label">
+                    <label htmlFor="phone" className="block text-sm font-bold text-neutral-800">
                       Phone Number *
                     </label>
                     <input
@@ -252,7 +256,7 @@ const Form = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="site-label">
+                    <label htmlFor="email" className="block text-sm font-bold text-neutral-800">
                       Email Address *
                     </label>
                     <input
@@ -276,7 +280,7 @@ const Form = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="site-label">
+                  <label htmlFor="message" className="block text-sm font-bold text-neutral-800">
                     How Can We Help You? *
                   </label>
                   <textarea
@@ -299,10 +303,11 @@ const Form = () => {
                 </div>
 
                 <div className="space-y-4">
+                  {/* Vibrant Orange Submit Button */}
                   <button
                     disabled={loading}
                     type="submit"
-                    className="site-button-primary w-full rounded-2xl py-4 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-500 hover:shadow-orange-500/40 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {loading ? (
                       <div className="flex items-center justify-center gap-2">

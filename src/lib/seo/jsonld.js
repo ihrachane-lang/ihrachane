@@ -182,3 +182,42 @@ export function legalPageJsonLd({ url, title, description, updatedAt, type }) {
     isPartOf: { "@id": `${SITE_URL}/#website` },
   });
 }
+
+export function articleJsonLd({
+  url,
+  title,
+  description,
+  image,
+  publishedAt,
+  updatedAt,
+  authorName = BRAND_NAME,
+  category,
+}) {
+  return safeJson({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(url),
+    },
+    headline: title,
+    description: description,
+    image: image ? [absoluteUrl(image)] : undefined,
+    datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
+    dateModified: updatedAt ? new Date(updatedAt).toISOString() : undefined,
+    author: {
+      "@type": "Person",
+      name: authorName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: BRAND_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/logo/siteLogo/logo.svg"),
+      },
+    },
+    articleSection: category || "Business",
+  });
+}
+

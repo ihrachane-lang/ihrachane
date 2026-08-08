@@ -64,7 +64,7 @@ export default function BilingualSeoSection({
               </div>
             ) : null}
             <div className="mt-7">
-              <Link href="/#contact" className="site-button-primary">
+              <Link href="/sourcing#contact" className="site-button-primary">
                 <span>Request Sourcing Quote</span>
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -128,7 +128,7 @@ export default function BilingualSeoSection({
             ) : null}
             <div className="mt-7">
               <Link
-                href="/#contact"
+                href="/sourcing#contact"
                 className="site-button-primary inline-flex"
                 aria-label="Tedarik teklifi alın — IHRACHANE ile iletişime geçin"
               >

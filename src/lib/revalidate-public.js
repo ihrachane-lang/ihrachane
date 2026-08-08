@@ -174,3 +174,20 @@ export function revalidateSocialLinks() {
   revalidatePath("/privacy");
   revalidatePublicLayout();
 }
+
+export function revalidateBlog(slug) {
+  try {
+    revalidateTag("blog-posts");
+    revalidatePath("/blog");
+    revalidatePath("/blog", "page");
+    if (slug) {
+      revalidatePath(`/blog/${slug}`);
+      revalidatePath(`/blog/${slug}`, "page");
+      warmupPublicRoute(`/blog/${slug}`);
+    }
+    revalidatePath("/sitemap.xml");
+    sitemapChanged();
+  } catch (err) {
+    console.error("revalidateBlog error:", err);
+  }
+}

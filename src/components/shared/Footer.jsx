@@ -25,34 +25,48 @@ export default async function Footer() {
   ]);
 
   return (
-    <footer className="relative overflow-hidden border-t border-orange-100/80 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.12),transparent_24%),linear-gradient(180deg,#171717_0%,#09090b_100%)] pt-20 text-slate-300">
-      <div className="site-orb right-8 top-8 h-72 w-72 bg-orange-500/10" />
+    <footer className="relative overflow-hidden border-t border-orange-500/20 bg-slate-950 pt-20 text-slate-300">
+      {/* Soft Ambient Glows (Very subtle orange highlights) */}
+      <div className="absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-orange-600/10 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-24 left-10 h-80 w-80 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
 
       <div className="site-container relative z-10">
-        <div className="site-panel-dark mb-12 overflow-hidden border-white/8">
-          <div className="grid gap-10 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:px-12 lg:py-10">
+        {/* Top CTA Banner: Soft Warm Gradient Card */}
+        <div className="mb-16 overflow-hidden rounded-3xl border border-orange-500/20 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900 p-8 shadow-2xl backdrop-blur-xl sm:p-10 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div className="space-y-4">
-              <div className="site-badge-dark">Built for sourcing, inspection, and delivery</div>
-              <h2 className="site-title-dark max-w-2xl text-3xl lg:text-4xl">
+              <div className="inline-block rounded-full border border-orange-500/30 bg-orange-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-orange-400">
+                Built for sourcing, inspection, and delivery
+              </div>
+              <h2 className="text-3xl font-extrabold text-white lg:text-4xl">
                 Ready to streamline your global supply chain with one trusted partner?
               </h2>
-              <p className="site-copy-dark max-w-2xl">
+              <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
                 IHRACHANE helps teams source smarter, reduce risk, and move products faster with a fully managed procurement and logistics workflow.
               </p>
             </div>
 
-            <div className="flex flex-col justify-center gap-4 lg:items-end">
-              <Link href="/#contact" className="site-button-primary">
+            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
+              <Link
+                href="/sourcing#contact"
+                className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-500/30"
+              >
                 Start a Project
               </Link>
-              <Link href="/shipping-partners" className="site-button-dark">
+              <Link
+                href="/shipping-partners"
+                className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800/60 px-6 py-3.5 text-sm font-semibold text-slate-200 transition-all duration-300 hover:border-orange-500/40 hover:bg-slate-800 hover:text-white"
+              >
                 View Shipping Partners
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 gap-10 border-b border-slate-800/80 pb-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+          
+          {/* Brand Info */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
               <Image
@@ -64,18 +78,19 @@ export default async function Footer() {
               />
             </Link>
 
-            <p className="max-w-sm text-sm leading-7 text-slate-400">
+            <p className="max-w-sm text-sm leading-relaxed text-slate-400">
               Single center from supply to delivery. Streamlining end-to-end procurement, product sourcing, quality control, and global logistics for expanding enterprises.
             </p>
 
-            <div className="flex items-center gap-3">
+            {/* Social Icons */}
+            <div className="flex items-center gap-2.5">
               {social?.map((item) => (
                 <Link
                   href={item?.socialLink || "#"}
                   key={item?._id?.toString()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-500/40 hover:text-orange-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-400 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-500/50 hover:bg-orange-500/10 hover:text-orange-400"
                 >
                   <div
                     dangerouslySetInnerHTML={{
@@ -86,43 +101,45 @@ export default async function Footer() {
               ))}
             </div>
 
+            {/* Contact Details */}
             <div className="space-y-3 pt-2 text-sm text-slate-400">
               {about?.address && (
                 <p className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="mt-0.5 flex-shrink-0 text-base text-orange-400" />
-                  <span>{about.address}</span>
+                  <FaMapMarkerAlt className="mt-1 flex-shrink-0 text-orange-500" />
+                  <span className="leading-snug">{about.address}</span>
                 </p>
               )}
               {about?.phoneNumber && (
                 <p className="flex items-center gap-3">
-                  <FaPhoneAlt className="flex-shrink-0 text-sm text-orange-400" />
+                  <FaPhoneAlt className="flex-shrink-0 text-orange-500" />
                   <span>{about.phoneNumber}</span>
                 </p>
               )}
               {about?.email && (
                 <p className="flex items-center gap-3">
-                  <FaEnvelope className="flex-shrink-0 text-sm text-orange-400" />
+                  <FaEnvelope className="flex-shrink-0 text-orange-500" />
                   <span>{about.email}</span>
                 </p>
               )}
               {about?.whatsAppNumber && (
                 <p className="flex items-center gap-3">
-                  <FaWhatsapp className="flex-shrink-0 text-base text-emerald-400" />
-                  <span className="font-semibold text-emerald-300">{about.whatsAppNumber}</span>
+                  <FaWhatsapp className="flex-shrink-0 text-base text-emerald-500" />
+                  <span className="font-medium text-emerald-400">{about.whatsAppNumber}</span>
                 </p>
               )}
             </div>
           </div>
 
+          {/* Solutions Links */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="border-b border-white/10 pb-3 text-sm font-bold uppercase tracking-[0.22em] text-white">
+            <h4 className="border-b border-slate-800 pb-3 text-xs font-bold uppercase tracking-widest text-slate-200">
               Solutions
             </h4>
-            <ul className="grid gap-2 text-sm">
+            <ul className="grid gap-2.5 text-sm">
               <li>
                 <Link
                   href="/shipping-partners"
-                  className="block rounded-xl py-1 text-slate-400 transition-colors hover:text-orange-300"
+                  className="block text-slate-400 transition-colors hover:text-orange-400"
                 >
                   Shipping Partners
                 </Link>
@@ -131,7 +148,7 @@ export default async function Footer() {
                 <li key={cat._id?.toString()}>
                   <Link
                     href={`/${cat.slug || cat.name.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="block rounded-xl py-1 text-slate-400 transition-colors hover:text-orange-300"
+                    className="block text-slate-400 transition-colors capitalize hover:text-orange-400"
                   >
                     {cat.name}
                   </Link>
@@ -140,36 +157,43 @@ export default async function Footer() {
             </ul>
           </div>
 
+          {/* Explore Links */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="border-b border-white/10 pb-3 text-sm font-bold uppercase tracking-[0.22em] text-white">
+            <h4 className="border-b border-slate-800 pb-3 text-xs font-bold uppercase tracking-widest text-slate-200">
               Explore
             </h4>
-            <ul className="grid gap-2 text-sm">
+            <ul className="grid gap-2.5 text-sm">
               <li>
-                <Link href="/#contact" className="block py-1 text-slate-400 transition-colors hover:text-orange-300">
+                <Link href="/blog" className="block font-medium text-orange-400 transition-colors hover:text-orange-300">
+                  Blog & Insights
+                </Link>
+              </li>
+              <li>
+                <Link href="/sourcing#contact" className="block text-slate-400 transition-colors hover:text-orange-400">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/about-us" className="block py-1 text-slate-400 transition-colors hover:text-orange-300">
+                <Link href="/about-us" className="block text-slate-400 transition-colors hover:text-orange-400">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="block py-1 text-slate-400 transition-colors hover:text-orange-300">
+                <Link href="/privacy" className="block text-slate-400 transition-colors hover:text-orange-400">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/shipping-partners" className="block py-1 text-slate-400 transition-colors hover:text-orange-300">
+                <Link href="/shipping-partners" className="block text-slate-400 transition-colors hover:text-orange-400">
                   Logistics & Partners
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Portal Access */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="border-b border-white/10 pb-3 text-sm font-bold uppercase tracking-[0.22em] text-white">
+            <h4 className="border-b border-slate-800 pb-3 text-xs font-bold uppercase tracking-widest text-slate-200">
               Portal Access
             </h4>
             <ul className="space-y-3 text-sm">
@@ -178,6 +202,7 @@ export default async function Footer() {
           </div>
         </div>
 
+        {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-8 text-center text-xs font-medium text-slate-500 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} IHRACHANE Supply Chain Management. All rights reserved.</p>
           <div className="flex gap-6">
