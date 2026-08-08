@@ -24,7 +24,7 @@ export default function Hero({
             )}
 
             <div className="space-y-4">
-              <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl xl:text-5xl leading-tight">
+              <h1 className="text-3xl font-extrabold capitalize tracking-tight text-white sm:text-4xl xl:text-5xl leading-tight">
                 {info?.title || "We find and ship the most affordable products for you"}
               </h1>
               <p className="mx-auto max-w-xl text-base text-orange-100/90 sm:text-lg lg:mx-0">

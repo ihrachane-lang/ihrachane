@@ -60,7 +60,7 @@ export default function Service({ subCategories, contentSideImg, slug }) {
 
                 <div className="flex-1 min-w-0 space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    <h3 className="text-lg uppercase sm:text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
                       {subCategory?.title}
                     </h3>
                     <FaArrowRight className="text-slate-400 group-hover:text-orange-500 group-hover:translate-x-1.5 transition-all text-sm flex-shrink-0 ml-2" />

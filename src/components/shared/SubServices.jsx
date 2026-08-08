@@ -44,7 +44,7 @@ export default function SubService({ services }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
                   <div className="absolute bottom-4 left-6 right-6">
-                    <h3 className="text-lg font-extrabold text-white drop-shadow sm:text-xl">
+                    <h3 className="text-lg uppercase font-extrabold text-white drop-shadow sm:text-xl">
                       {service.serviceName}
                     </h3>
                   </div>
