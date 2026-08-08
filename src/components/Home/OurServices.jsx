@@ -49,7 +49,7 @@ export default async function OurServices() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                href="#contact"
+                href="/sourcing#contact"
                 className="site-button-secondary border-orange-500 bg-orange-500 text-white hover:bg-orange-600 transition-colors"
               >
                 <span>Request Custom Quote</span>

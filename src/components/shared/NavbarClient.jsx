@@ -27,18 +27,11 @@ export default function NavbarClient({ menus }) {
 
   const isSolutionsRoute = categoryMenus?.some((menu) => pathname === menu.url);
 
-  function goToContact() {
-    const contactEl = document.getElementById("contact");
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: "smooth" });
-    } else if (pathname !== "/") {
-      router.push("/#contact");
-    } else {
-      router.push("/#contact");
-    }
-    setIsMenuOpen(false);
-    setIsAnimating(false);
-  }
+function goToContact() {
+  router.push("/sourcing#contact");
+  setIsMenuOpen(false);
+  setIsAnimating(false);
+}
 
   useEffect(() => {
     const handleScroll = () => {

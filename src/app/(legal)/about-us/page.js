@@ -240,7 +240,7 @@ export default function About() {
                 IHRACHANE was founded on a simple premise: international business scaling should never be stalled by language barriers, quality uncertainties, or supply chain friction. We serve as your dedicated operational partner in China and beyond.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row pt-2">
-                <Link href="/#contact" className="site-button-primary">
+                <Link href="/sourcing#contact" className="site-button-primary">
                   Start Your Procurement
                 </Link>
                 <Link href="/shipping-partners" className="site-button-dark">

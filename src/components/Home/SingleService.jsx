@@ -34,7 +34,7 @@ const SingleService = ({ index, service }) => {
 
       {/* Action link in Orange */}
       <Link
-        href="#contact"
+        href="/#contact"
         className="group/link inline-flex items-center gap-2 border-t border-orange-100 pt-4 text-sm font-bold text-orange-600 transition-colors hover:text-orange-500"
       >
         <span>Inquire About This Service</span>

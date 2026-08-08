@@ -96,7 +96,7 @@ export default async function Partners() {
           <h3 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
             Interested in partnering with IHRACHANE?
           </h3>
-          <Link href="#contact" className="site-button-primary">
+          <Link href="/#contact" className="site-button-primary">
             <span>Become a Partner</span>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />

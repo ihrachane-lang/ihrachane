@@ -48,7 +48,7 @@ export default async function Footer() {
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
               <Link
-                href="/#contact"
+                href="/sourcing#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-500/30"
               >
                 Start a Project
@@ -169,7 +169,7 @@ export default async function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="block text-slate-400 transition-colors hover:text-orange-400">
+                <Link href="/sourcing#contact" className="block text-slate-400 transition-colors hover:text-orange-400">
                   Contact Us
                 </Link>
               </li>
