@@ -37,7 +37,7 @@ export default function SubService({ services }) {
                     />
                   ) : (
                     <div className="w-full h-full bg-slate-800 flex items-center justify-center text-slate-500 font-bold">
-                      IHRACHANE
+                      İhraçHane
                     </div>
                   )}
 
@@ -52,7 +52,7 @@ export default function SubService({ services }) {
 
                 <div className="p-6 sm:p-8 space-y-4">
                   <div className="w-10 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full group-hover:w-16 transition-all duration-300" />
-                  <p className="text-sm leading-7 text-slate-600">
+                  <p className="text-sm font-semibold leading-7 text-slate-600">
                     {service.description}
                   </p>
                 </div>
