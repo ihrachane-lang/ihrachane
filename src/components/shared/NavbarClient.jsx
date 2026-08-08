@@ -23,7 +23,6 @@ export default function NavbarClient({ menus }) {
     { url: "/", path: "Home" },
     { url: "/shipping-partners", path: "Shipping Partners" },
     { url: "/about-us", path: "About Us" },
-    { url: "/privacy", path: "Privacy" },
   ];
 
   const isSolutionsRoute = categoryMenus?.some((menu) => pathname === menu.url);
@@ -241,7 +240,7 @@ export default function NavbarClient({ menus }) {
             <div className="lg:hidden flex items-center space-x-2.5">
               <button
                 onClick={goToContact}
-                className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(249,115,22,0.95)] transition-transform active:scale-95"
+                className="rounded-full bg-black px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(249,115,22,0.95)] transition-transform active:scale-95"
               >
                 Get Offer
               </button>
@@ -413,9 +412,8 @@ export default function NavbarClient({ menus }) {
                               }`}
                               onClick={toggleMenu}
                             >
-                              <span className="bg-white border border-amber-50 px-3 rounded-md block ">
-                                {menu.path.charAt(0).toUpperCase() +
-                                  menu.path.slice(1)}
+                              <span className="bg-white border capitalize border-amber-50 px-3 rounded-md block ">
+                                {menu.path}
                               </span>
                             </Link>
                           );
