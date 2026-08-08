@@ -11,7 +11,7 @@ export default function BilingualSeoSection({
   trKeywords,
   showTurkish = false,
 }) {
-  const brand = "IHRACHANE";
+  const brand = "İhraçHane";
   const enKeys = (enKeywords || []).filter(Boolean);
   const trKeys = (trKeywords || []).filter(Boolean);
 
@@ -21,7 +21,7 @@ export default function BilingualSeoSection({
         <div className={`grid gap-10 lg:gap-12 ${showTurkish ? "lg:grid-cols-2" : "max-w-4xl"}`}>
           <div className="site-panel rounded-[2rem] p-7 sm:p-9" lang="en">
             <div className="site-badge mb-5">English Overview</div>
-            <h2 className="site-title mb-5 text-2xl capitalize sm:text-3xl">
+            <h2 className="site-title text-orange-500 mb-5 text-2xl capitalize sm:text-3xl">
               {enTitle ||
                 (category
                   ? `${category == "sourcing"?"": category} Sourcing, Supplier Audit & Logistics by ${brand}`
