@@ -415,7 +415,7 @@ export default function EditBlogPostPage() {
               <input
                 type="text"
                 name="ogImage"
-                value={formData.ogImage}
+                value={formData.coverImage}
                 onChange={handleInputChange}
                 className="w-full rounded-lg border border-gray-300 p-3 bg-white focus:outline-none"
               />

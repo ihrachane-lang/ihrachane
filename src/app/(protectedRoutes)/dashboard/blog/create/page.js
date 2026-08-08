@@ -388,7 +388,7 @@ export default function CreateBlogPostPage() {
               <input
                 type="text"
                 name="ogImage"
-                value={formData.ogImage}
+                value={formData.coverImage}
                 onChange={handleInputChange}
                 placeholder="Image URL for Facebook / Twitter preview card"
                 className="w-full rounded-lg border border-gray-300 p-3 bg-white focus:outline-none"
