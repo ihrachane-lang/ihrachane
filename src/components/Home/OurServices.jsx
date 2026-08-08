@@ -17,7 +17,7 @@ export default async function OurServices() {
           title={
             <>
               Comprehensive{" "}
-              <span className="bg-gradient-to-r from-white via-orange-100 to-amber-200 bg-clip-text text-transparent drop-shadow-sm">
+              <span className="bg-gradient-to-r from-white via-orange-100 to-amber-100 bg-clip-text text-transparent drop-shadow-sm">
                 Supply Chain Solutions
               </span>
             </>
@@ -38,19 +38,20 @@ export default async function OurServices() {
 
         {/* CTA Banner section */}
         <div className="mt-20">
-          <div className="relative overflow-hidden rounded-[2rem] bg-slate-800/50 p-8 text-center border border-white/10 shadow-2xl backdrop-blur-xl sm:p-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-orange-500/80 to-orange-500/70 p-8 text-center border border-white/10 shadow-2xl backdrop-blur-xl sm:p-12">
             <div className="absolute -bottom-10 -right-10 h-64 w-64 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
 
             <h3 className="mb-4 text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
               Ready to Optimize Your Global Sourcing?
             </h3>
-            <p className="mx-auto mb-8 max-w-2xl text-base font-medium leading-relaxed text-slate-300 sm:text-lg">
-              Connect with our sourcing specialists today for a customized proposal tailored to your business needs.
+            <p className="mx-auto mb-8 max-w-2xl text-base font-medium leading-relaxed text-slate-200 sm:text-lg">
+              Connect with our sourcing specialists today for a customized
+              proposal tailored to your business needs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/sourcing#contact"
-                className="site-button-secondary border-orange-500 bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+                className="site-button-secondary border-orange-500 bg-slate-900 text-white hover:bg-slate-800 transition-colors"
               >
                 <span>Request Custom Quote</span>
                 <svg
