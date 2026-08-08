@@ -108,6 +108,7 @@ export async function generateMetadata({ params }) {
 
 export default async function CategoryPage({ params }) {
   const { category } = await params;
+  console.log(category);
   const data = await getCategoryBySlug(category);
 
   if (!data) {

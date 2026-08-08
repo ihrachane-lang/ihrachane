@@ -21,10 +21,10 @@ export default function BilingualSeoSection({
         <div className={`grid gap-10 lg:gap-12 ${showTurkish ? "lg:grid-cols-2" : "max-w-4xl"}`}>
           <div className="site-panel rounded-[2rem] p-7 sm:p-9" lang="en">
             <div className="site-badge mb-5">English Overview</div>
-            <h2 className="site-title mb-5 text-2xl sm:text-3xl">
+            <h2 className="site-title mb-5 text-2xl capitalize sm:text-3xl">
               {enTitle ||
                 (category
-                  ? `${category} Sourcing, Supplier Audit & Logistics by ${brand}`
+                  ? `${category == "sourcing"?"": category} Sourcing, Supplier Audit & Logistics by ${brand}`
                   : `${brand} | End-to-End Global Sourcing, Quality Control & Shipping`)}
             </h2>
             <div className="space-y-4 text-sm leading-7 text-slate-700 sm:text-base">
