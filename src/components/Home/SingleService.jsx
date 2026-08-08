@@ -5,7 +5,7 @@ const SingleService = ({ index, service }) => {
   return (
     <div
       key={index}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-orange-100 bg-white/80 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 sm:p-10"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-orange-100 bg-white/90 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 sm:p-10"
     >
       {/* Subtle orange hover highlight */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
