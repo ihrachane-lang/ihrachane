@@ -112,7 +112,7 @@ export default async function SingleBlogPostPage({ params }) {
 
       <article className="bg-slate-50 min-h-screen pb-20">
         {/* Article Header Banner */}
-        <header className="bg-gradient-to-r from-[#19203c] via-[#2c3355] to-[#1e1e30] text-white py-16 px-6">
+        <header className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white py-16 px-6">
           <div className="max-w-4xl mx-auto space-y-6">
             <Link
               href="/blog"
@@ -125,11 +125,11 @@ export default async function SingleBlogPostPage({ params }) {
               <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 {post.category}
               </span>
-              <span className="flex items-center gap-1 text-xs text-gray-300">
-                <FaClock className="text-orange-400" /> {post.readTimeMinutes || 5} min read
+              <span className="flex items-center gap-1 text-xs text-gray-200">
+                <FaClock className="text-slate-200" /> {post.readTimeMinutes || 5} min read
               </span>
-              <span className="flex items-center gap-1 text-xs text-gray-300">
-                <FaCalendarAlt className="text-orange-400" />
+              <span className="flex items-center gap-1 text-xs text-gray-200">
+                <FaCalendarAlt className="text-slate-200" />
                 {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-US", {
                   month: "long",
                   day: "numeric",
@@ -154,7 +154,7 @@ export default async function SingleBlogPostPage({ params }) {
                 <p className="text-sm font-semibold text-white">
                   {post.authorName || "IHRACHANE Team"}
                 </p>
-                <p className="text-xs text-gray-400">Global Logistics & Sourcing Specialists</p>
+                <p className="text-xs text-gray-300">Global Logistics & Sourcing Specialists</p>
               </div>
             </div>
           </div>
@@ -186,13 +186,13 @@ export default async function SingleBlogPostPage({ params }) {
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
               <div className="pt-6 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                <span className="text-sm font-semibold text-gray-500 flex items-center gap-1">
+                <span className="text-sm font-semibold text-orange-500 flex items-center gap-1">
                   <FaTag /> Tags:
                 </span>
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg font-medium"
+                    className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-lg font-medium"
                   >
                     #{tag}
                   </span>
@@ -203,8 +203,8 @@ export default async function SingleBlogPostPage({ params }) {
 
           {/* Social Share Sidebar (1 col) */}
           <aside className="space-y-6">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 sticky top-24">
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider border-b pb-2">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 space-y-4 sticky top-24">
+              <h3 className="text-sm font-bold text-orange-600 uppercase tracking-wider border-b pb-2">
                 Share Article
               </h3>
               <div className="flex flex-col gap-3">
@@ -248,7 +248,7 @@ export default async function SingleBlogPostPage({ params }) {
         {/* Related Posts Section */}
         {relatedPosts.length > 0 && (
           <section className="max-w-4xl mx-auto px-6 mt-16 space-y-6">
-            <h3 className="text-2xl font-extrabold text-gray-900 border-b pb-4">
+            <h3 className="text-2xl font-extrabold text-orange-600 border-b pb-4">
               Related Articles in {post.category}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
