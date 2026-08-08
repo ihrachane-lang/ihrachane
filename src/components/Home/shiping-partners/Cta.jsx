@@ -6,7 +6,7 @@ const Cta = () => {
   const router = useRouter();
   
   function goToContact() {
-    router.push("/sourcing#contact");
+    router.push("/#contact");
   }
   return (
     <div className="mt-16 text-center">
