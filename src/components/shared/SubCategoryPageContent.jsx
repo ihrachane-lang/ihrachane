@@ -30,7 +30,7 @@ export default function SubCategoryPageContent({ data, slug }) {
         secondaryLabel="View Solutions"
       />
       {breadcrumbItems.length > 0 && (
-        <div className="border-b border-orange-100/60 bg-white/90 backdrop-blur-sm">
+        <div className="border-b border-[#E2E8F0] bg-white">
           <Breadcrumbs items={breadcrumbItems} />
         </div>
       )}

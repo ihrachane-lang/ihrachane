@@ -88,14 +88,14 @@ function goToContact() {
       >
         {/* Unscrolled dark background layer */}
         <div
-          className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-400/70  transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 bg-gradient-to-r from-[#071D49] via-[#0B2A5B] to-[#071D49] transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-0" : "opacity-100"
           }`}
         />
 
         {/* Scrolled white glass background layer */}
         <div
-          className={`absolute inset-0 border-b border-orange-100/80 bg-white/90 backdrop-blur-xl transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 border-b border-[#E2E8F0] bg-white/90 backdrop-blur-xl transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-100" : "opacity-0"
           }`}
         />

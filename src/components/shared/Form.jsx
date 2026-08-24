@@ -113,14 +113,14 @@ const Form = () => {
   };
 
   return (
-    <section id="contact" className="site-section-muted overflow-hidden bg-orange-50/30 py-16">
+    <section id="contact" className="site-section-muted overflow-hidden bg-[#F5F7FA] py-16">
       <div className="site-container relative z-10">
         <SectionIntro
           badge="Direct Inquiry"
           title={
             <>
               Get Expert{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
                 Supply Solutions
               </span>
             </>
@@ -129,10 +129,10 @@ const Form = () => {
           className="mb-16"
         />
 
-        <div className="site-panel mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-orange-100 bg-white shadow-xl">
+        <div className="site-panel mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-[#E2E8F0] bg-white shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            {/* Left Box: Rich Orange Theme */}
-            <div className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 p-8 text-white sm:p-10 lg:col-span-5 lg:p-12">
+            {/* Left Box: Primary & Secondary Navy Gradient */}
+            <div className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#071D49] via-[#0B2A5B] to-[#071D49] p-8 text-white sm:p-10 lg:col-span-5 lg:p-12">
               <div className="site-grid-overlay absolute inset-0 opacity-10" />
 
               <div className="relative z-10 space-y-8">
@@ -143,7 +143,7 @@ const Form = () => {
                   <h3 className="text-3xl font-black tracking-tight text-white">
                     Premium sourcing support without the operational guesswork.
                   </h3>
-                  <p className="text-sm leading-7 text-orange-100">
+                  <p className="text-sm leading-7 text-slate-300">
                     Direct access to vetted supplier databases, verified quality control specialists, and coordinated international freight support.
                   </p>
                 </div>
@@ -155,28 +155,27 @@ const Form = () => {
                     "End-to-end sourcing, inspection, and logistics coordination",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white font-bold backdrop-blur-sm">
+                      <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#F56600] text-white font-bold backdrop-blur-sm">
                         ✓
                       </div>
-                      <span className="text-sm font-semibold text-white">{item}</span>
+                      <span className="text-sm leading-6 text-slate-200 font-medium">
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="relative z-10 mt-12 grid gap-4 pt-8 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
-                  <div className="text-2xl font-black text-white">24h</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-orange-100">
-                    Response Window
-                  </div>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
-                  <div className="text-2xl font-black text-white">Global</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-orange-100">
-                    Logistics Reach
-                  </div>
-                </div>
+              <div className="relative z-10 mt-10 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p className="text-xs font-medium text-slate-300">
+                  Prefer direct correspondence? Email us at{" "}
+                  <a
+                    href="mailto:info@ihrachane.com"
+                    className="font-bold text-[#FF7A00] underline hover:text-[#F56600]"
+                  >
+                    info@ihrachane.com
+                  </a>
+                </p>
               </div>
             </div>
 
@@ -185,7 +184,7 @@ const Form = () => {
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="firstName" className="block text-sm font-bold text-neutral-800">
+                    <label htmlFor="firstName" className="block text-sm font-bold text-[#334155]">
                       First Name *
                     </label>
                     <input
@@ -196,11 +195,10 @@ const Form = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Jane"
-                      className={`site-input ${
-                        errors.firstName
-                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
-                          : ""
-                      }`}
+                      className={`site-input ${errors.firstName
+                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                        : ""
+                        }`}
                     />
                     {errors.firstName && (
                       <p className="text-xs text-red-500 font-medium">{errors.firstName}</p>
@@ -208,7 +206,7 @@ const Form = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="lastName" className="block text-sm font-bold text-neutral-800">
+                    <label htmlFor="lastName" className="block text-sm font-bold text-[#334155]">
                       Last Name *
                     </label>
                     <input
@@ -219,11 +217,10 @@ const Form = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Doe"
-                      className={`site-input ${
-                        errors.lastName
-                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
-                          : ""
-                      }`}
+                      className={`site-input ${errors.lastName
+                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                        : ""
+                        }`}
                     />
                     {errors.lastName && (
                       <p className="text-xs text-red-500 font-medium">{errors.lastName}</p>
@@ -233,7 +230,7 @@ const Form = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="block text-sm font-bold text-neutral-800">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#334155]">
                       Phone Number *
                     </label>
                     <input
@@ -244,11 +241,10 @@ const Form = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="+1 (555) 000-0000"
-                      className={`site-input ${
-                        errors.phone
-                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
-                          : ""
-                      }`}
+                      className={`site-input ${errors.phone
+                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                        : ""
+                        }`}
                     />
                     {errors.phone && (
                       <p className="text-xs text-red-500 font-medium">{errors.phone}</p>
@@ -256,7 +252,7 @@ const Form = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-bold text-neutral-800">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#334155]">
                       Email Address *
                     </label>
                     <input
@@ -267,11 +263,10 @@ const Form = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="jane@company.com"
-                      className={`site-input ${
-                        errors.email
-                          ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
-                          : ""
-                      }`}
+                      className={`site-input ${errors.email
+                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                        : ""
+                        }`}
                     />
                     {errors.email && (
                       <p className="text-xs text-red-500 font-medium">{errors.email}</p>
@@ -280,7 +275,7 @@ const Form = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-bold text-neutral-800">
+                  <label htmlFor="message" className="block text-sm font-bold text-[#334155]">
                     How Can We Help You? *
                   </label>
                   <textarea
@@ -291,11 +286,10 @@ const Form = () => {
                     onBlur={handleBlur}
                     placeholder="Provide brief details regarding your products, estimated quantity, or shipping timeline..."
                     rows={4}
-                    className={`site-textarea min-h-36 ${
-                      errors.message
-                        ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
-                        : ""
-                    }`}
+                    className={`site-textarea min-h-36 ${errors.message
+                      ? "border-red-400 focus:border-red-500 focus:ring-red-500/15"
+                      : ""
+                      }`}
                   ></textarea>
                   {errors.message && (
                     <p className="text-xs text-red-500 font-medium">{errors.message}</p>
@@ -303,11 +297,11 @@ const Form = () => {
                 </div>
 
                 <div className="space-y-4">
-                  {/* Vibrant Orange Submit Button */}
+                  {/* Brand Orange Primary CTA Button */}
                   <button
                     disabled={loading}
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-500 hover:shadow-orange-500/40 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#F56600] px-6 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-[#D95400] hover:shadow-orange-500/40 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {loading ? (
                       <div className="flex items-center justify-center gap-2">
@@ -327,8 +321,8 @@ const Form = () => {
                     )}
                   </button>
 
-                  <p className="rounded-2xl bg-orange-50 px-4 py-3 text-center text-xs font-medium text-slate-600">
-                    Your information stays confidential and is only used to respond to your request.
+                  <p className="rounded-2xl bg-[#F5F7FA] px-4 py-3 text-center text-xs font-medium text-[#64748B]">
+                    🔒 Your information is secure. We keep all business details strictly confidential.
                   </p>
                 </div>
               </form>

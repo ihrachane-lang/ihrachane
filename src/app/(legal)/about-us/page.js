@@ -244,11 +244,6 @@ export default function About() {
       {/* Hero Section */}
       <section className="site-section-dark overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-20">
         <div className="site-container relative z-10">
-          <div className="mb-8">
-            <Link href="/" className="site-button-dark">
-              ← Back to Home
-            </Link>
-          </div>
 
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-6">
@@ -280,7 +275,7 @@ export default function About() {
                   key={idx}
                   className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
-                  <div className="text-3xl sm:text-4xl font-black text-slate-900/90">
+                  <div className="text-3xl sm:text-4xl font-black text-orange-400">
                     {stat.value}
                   </div>
                   <div className="mt-2 text-sm font-medium text-slate-200">

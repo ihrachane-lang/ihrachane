@@ -5,37 +5,37 @@ const SingleService = ({ index, service }) => {
   return (
     <div
       key={index}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-orange-100 bg-white/90 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 sm:p-10"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#E2E8F0] bg-white p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 sm:p-10"
     >
-      {/* Subtle orange hover highlight */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      {/* Subtle brand orange hover highlight */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F56600]/5 via-transparent to-[#FF7A00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div>
         <div className="flex items-center justify-between mb-6">
-          {/* Index badge with subtle orange styling */}
-          <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-orange-500 text-xl font-black text-white shadow-[0_10px_25px_-10px_rgba(249,115,22,0.5)] transition-transform duration-300 group-hover:scale-105">
+          {/* Index badge with Brand Orange styling */}
+          <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-[#0A2959] text-xl font-black text-white shadow-[0_10px_25px_-10px_rgba(245,102,0,0.4)] transition-transform duration-300 group-hover:scale-105">
             {index + 1}
           </div>
-          <span className="rounded-full border border-orange-500/20 bg-orange-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-600">
+          <span className="rounded-full border border-[#0F2D57]/20 bg-[#0F2D57]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0F2D57]">
             Solution
           </span>
         </div>
 
-        {/* Title in Black, turns Orange on card hover */}
-        <h3 className="mb-3 text-2xl font-extrabold text-black transition-colors group-hover:text-orange-600">
+        {/* Title in Primary Navy #071D49, turns Brand Orange on card hover */}
+        <h3 className="mb-3 text-2xl font-extrabold text-[#071D49] transition-colors group-hover:text-[#F56600]">
           {service?.title}
         </h3>
 
-        {/* Description in subtle Black/Dark slate tone */}
-        <p className="mb-8 text-sm leading-7 text-neutral-700 sm:text-base">
+        {/* Description in Main Text tone #334155 */}
+        <p className="mb-8 text-sm leading-7 text-[#334155] sm:text-base">
           {service?.description}
         </p>
       </div>
 
-      {/* Action link in Orange */}
+      {/* Action link in Brand Orange */}
       <Link
         href="/#contact"
-        className="group/link inline-flex items-center gap-2 border-t border-orange-100 pt-4 text-sm font-bold text-orange-600 transition-colors hover:text-orange-500"
+        className="group/link inline-flex items-center gap-2 border-t border-[#E2E8F0] pt-4 text-sm font-bold text-[#F56600] transition-colors hover:text-[#D95400]"
       >
         <span>Inquire About This Service</span>
         <svg

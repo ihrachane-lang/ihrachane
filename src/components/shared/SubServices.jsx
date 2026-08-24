@@ -10,7 +10,7 @@ export default function SubService({ services }) {
           title={
             <>
               Our{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
                 Detailed Solutions
               </span>
             </>
@@ -26,7 +26,7 @@ export default function SubService({ services }) {
               className="site-panel site-card-hover group flex flex-col justify-between overflow-hidden rounded-[2rem]"
             >
               <div>
-                <div className="relative h-60 w-full overflow-hidden bg-slate-900">
+                <div className="relative h-60 w-full overflow-hidden bg-[#071D49]">
                   {service.bannerImg ? (
                     <Image
                       src={service.bannerImg}
@@ -36,12 +36,12 @@ export default function SubService({ services }) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
-                    <div className="w-full h-full bg-slate-800 flex items-center justify-center text-slate-500 font-bold">
+                    <div className="w-full h-full bg-[#0B2A5B] flex items-center justify-center text-white/70 font-bold">
                       İhraçHane
                     </div>
                   )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071D49]/90 via-[#071D49]/20 to-transparent"></div>
 
                   <div className="absolute bottom-4 left-6 right-6">
                     <h3 className="text-lg uppercase font-extrabold text-white drop-shadow sm:text-xl">
@@ -51,8 +51,8 @@ export default function SubService({ services }) {
                 </div>
 
                 <div className="p-6 sm:p-8 space-y-4">
-                  <div className="w-10 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full group-hover:w-16 transition-all duration-300" />
-                  <p className="text-sm font-semibold leading-7 text-slate-600">
+                  <div className="w-10 h-1 bg-gradient-to-r from-[#F56600] to-[#FF7A00] rounded-full group-hover:w-16 transition-all duration-300" />
+                  <p className="text-sm font-semibold leading-7 text-[#334155]">
                     {service.description}
                   </p>
                 </div>

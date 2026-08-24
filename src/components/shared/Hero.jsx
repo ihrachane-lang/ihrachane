@@ -10,15 +10,15 @@ export default function Hero({
   secondaryLabel = "Explore Services",
 }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500/80 text-white py-20 lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[#071D49] via-[#0B2A5B] to-[#071D49] text-white py-20 lg:py-28">
 
       <div className="site-container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-12">
-          
+
           {/* Left Content */}
           <div className="space-y-6 text-center lg:col-span-6 lg:text-left">
             {info?.span && info?.span !== "undefined" && (
-              <span className="inline-block text-sm font-semibold tracking-wide text-orange-100 uppercase">
+              <span className="inline-block text-sm font-semibold tracking-wide text-[#FF7A00] uppercase">
                 {info?.span}
               </span>
             )}
@@ -27,7 +27,7 @@ export default function Hero({
               <h1 className="text-3xl font-extrabold capitalize tracking-tight text-white sm:text-4xl xl:text-5xl leading-tight">
                 {info?.title || "We find and ship the most affordable products for you"}
               </h1>
-              <p className="mx-auto max-w-xl text-base text-slate-100/90 sm:text-lg lg:mx-0">
+              <p className="mx-auto max-w-xl text-base text-slate-300 sm:text-lg lg:mx-0">
                 {info?.details ||
                   "Simplify your search for the right product, reduce shipping costs, and provide your customers with a great experience. Get a free quote now to grow your business!"}
               </p>
@@ -37,14 +37,14 @@ export default function Hero({
             <div className="flex flex-col items-center gap-4 pt-2 sm:flex-row sm:justify-center lg:justify-start">
               <Link
                 href={primaryHref}
-                className="rounded-full bg-slate-950 px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-slate-800 hover:shadow-xl focus:ring-2 focus:ring-slate-950 focus:outline-none"
+                className="site-button-primary"
               >
                 {primaryLabel}
               </Link>
               {secondaryHref && secondaryLabel && (
                 <Link
                   href={secondaryHref}
-                  className="rounded-full border border-white/40 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+                  className="site-button-dark"
                 >
                   {secondaryLabel}
                 </Link>
@@ -56,9 +56,9 @@ export default function Hero({
           <div className="lg:col-span-6">
             <div className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center items-center">
               {/* Hexagon Pattern Background Effect */}
-              <div 
+              <div
                 className="absolute -inset-10 bg-contain bg-center bg-no-repeat pointer-events-none"
-                style={{ backgroundImage: "url('/pattern/boxes.svg')" }}
+                style={{ backgroundImage: "url('/pattern/boxes.png')" }}
               />
 
               {img ? (

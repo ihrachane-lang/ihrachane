@@ -19,7 +19,7 @@ export default function CategoryPageContent({ data, slug }) {
         secondaryHref="#categories"
         secondaryLabel="Browse Categories"
       />
-      <div className="border-b border-orange-100/60 bg-white/90 backdrop-blur-sm">
+      <div className="border-b border-[#E2E8F0] bg-white">
         <Breadcrumbs items={[{ label: categoryName }]} />
       </div>
       {data?.subCategories?.length > 0 && (

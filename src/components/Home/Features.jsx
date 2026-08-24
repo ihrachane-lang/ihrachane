@@ -34,7 +34,7 @@ export default function Features() {
           title={
             <>
               Why Leading Businesses{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
                 Choose IHRACHANE
               </span>
             </>
@@ -50,15 +50,15 @@ export default function Features() {
               className="site-panel site-card-hover group relative flex flex-col items-center rounded-[2rem] p-8 text-center"
             >
               <div className="relative mb-6">
-                <div className="flex h-20 w-20 items-center justify-center rounded-[1.75rem] bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-[0_18px_50px_-20px_rgba(249,115,22,0.7)] transition-transform duration-500 group-hover:scale-110">
+                <div className="flex h-20 w-20 items-center justify-center rounded-[1.75rem] bg-gradient-to-br from-[#F56600] to-[#FF7A00] text-white shadow-[0_18px_50px_-20px_rgba(245,102,0,0.4)] transition-transform duration-500 group-hover:scale-110">
                   {feature.icon}
                 </div>
               </div>
 
-              <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+              <h3 className="mb-3 text-xl font-bold text-[#071D49] transition-colors group-hover:text-[#F56600]">
                 {feature.title}
               </h3>
-              <p className="text-sm leading-7 text-slate-600">
+              <p className="text-sm leading-7 text-[#334155]">
                 {feature.description}
               </p>
             </div>

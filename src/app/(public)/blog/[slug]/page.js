@@ -112,7 +112,7 @@ export default async function SingleBlogPostPage({ params }) {
 
       <article className="bg-slate-50 min-h-screen pb-20">
         {/* Article Header Banner */}
-        <header className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white py-16 px-6">
+        <header className="bg-gradient-to-r  bg-gradient-to-r from-[#071D49] via-[#0B2A5B] to-[#071D49] text-white py-16 px-6">
           <div className="max-w-4xl mx-auto space-y-6">
             <Link
               href="/blog"

@@ -9,7 +9,7 @@ export default function Breadcrumbs({ items = [] }) {
         <li>
           <Link
             href="/"
-            className="font-medium text-slate-500 transition-colors hover:text-orange-600"
+            className="font-medium text-[#64748B] transition-colors hover:text-[#F56600]"
           >
             Home
           </Link>
@@ -19,7 +19,7 @@ export default function Breadcrumbs({ items = [] }) {
           return (
             <li key={index} className="flex items-center gap-1.5">
               <svg
-                className="h-3.5 w-3.5 text-slate-400"
+                className="h-3.5 w-3.5 text-[#64748B]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -32,13 +32,13 @@ export default function Breadcrumbs({ items = [] }) {
                 />
               </svg>
               {isLast || !item.href ? (
-                <span className="font-semibold text-orange-600 truncate max-w-[200px] sm:max-w-none">
+                <span className="font-semibold text-[#F56600] truncate max-w-[200px] sm:max-w-none">
                   {item.label}
                 </span>
               ) : (
                 <Link
                   href={item.href}
-                  className="font-medium text-slate-500 transition-colors hover:text-orange-600 truncate max-w-[160px] sm:max-w-none"
+                  className="font-medium text-[#64748B] transition-colors hover:text-[#F56600] truncate max-w-[160px] sm:max-w-none"
                 >
                   {item.label}
                 </Link>
