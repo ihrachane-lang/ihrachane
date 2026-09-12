@@ -25,7 +25,7 @@ export default function Supplier() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="relative group">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#0A2959] to-[#0F2D57] blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#071D49] to-[#0B2A5B] blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
 
               <div className="site-panel relative p-6 sm:p-8 transition-all duration-500 group-hover:scale-[1.01]">
                 <Image
@@ -37,7 +37,7 @@ export default function Supplier() {
                 />
               </div>
 
-              <div className="absolute -right-4 -top-4 z-20 flex items-center gap-3 rounded-[1.5rem] bg-gradient-to-r from-[#0A2959] to-[#0F2D57] p-4 text-white shadow-[0_20px_55px_-25px_rgba(245,102,0,0.4)]">
+              <div className="absolute -right-4 -top-4 z-20 flex items-center gap-3 rounded-[1.5rem] bg-gradient-to-r from-[#071D49] to-[#0B2A5B] p-4 text-white shadow-[0_20px_55px_-25px_rgba(245,102,0,0.4)]">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 text-lg font-black">
                   500+
                 </div>

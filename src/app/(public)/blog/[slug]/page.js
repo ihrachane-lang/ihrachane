@@ -179,7 +179,7 @@ export default async function SingleBlogPostPage({ params }) {
           <div className="md:col-span-3 space-y-8 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
             {/* Formatted HTML Content */}
             <div
-              className="prose prose-lg max-w-none text-gray-800 leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-[#19203c] [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-gray-900 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:text-base [&_p]:leading-7 [&_strong]:text-gray-900"
+              className="prose prose-lg max-w-none text-[#334155] leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-[#071D49] [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-[#071D49] [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:text-base [&_p]:leading-7 [&_strong]:text-[#071D49]"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 

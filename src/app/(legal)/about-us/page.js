@@ -223,7 +223,7 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="brand-page min-h-screen">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"

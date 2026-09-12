@@ -13,10 +13,10 @@ const SingleService = ({ index, service }) => {
       <div>
         <div className="flex items-center justify-between mb-6">
           {/* Index badge with Brand Orange styling */}
-          <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-[#0A2959] text-xl font-black text-white shadow-[0_10px_25px_-10px_rgba(245,102,0,0.4)] transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-[#071D49] text-xl font-black text-white shadow-[0_10px_25px_-10px_rgba(245,102,0,0.4)] transition-transform duration-300 group-hover:scale-105">
             {index + 1}
           </div>
-          <span className="rounded-full border border-[#0F2D57]/20 bg-[#0F2D57]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0F2D57]">
+          <span className="rounded-full border border-[#0B2A5B]/20 bg-[#0B2A5B]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0B2A5B]">
             Solution
           </span>
         </div>

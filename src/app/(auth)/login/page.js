@@ -124,10 +124,10 @@ export default function Login() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-4">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#F5F7FA] to-white flex items-center justify-center p-4">
       {/* Background overlay when modal open */}
       {showForgotModal && (
-        <div className="absolute inset-0 bg-orange-100 bg-opacity-30 backdrop-blur-sm z-10"></div>
+        <div className="absolute inset-0 bg-[#071D49]/20 backdrop-blur-sm z-10"></div>
       )}
 
       <div
@@ -135,7 +135,7 @@ export default function Login() {
           showForgotModal ? "opacity-40" : "opacity-100"
         }`}
       >
-        <div className="py-6 px-8 bg-orange-500 text-white text-center">
+        <div className="py-6 px-8 bg-[#071D49] text-white text-center">
           <h1 className="text-3xl font-bold">Welcome Back</h1>
           <p className="mt-2">Sign in to access your account</p>
         </div>
@@ -151,7 +151,7 @@ export default function Login() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-[#334155] mb-1"
               >
                 Email Address
               </label>
@@ -162,8 +162,8 @@ export default function Login() {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300`}
+                  errors.email ? "border-red-500" : "border-[#E2E8F0]"
+                } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300`}
                 placeholder="leroy@jenkins.com"
               />
               {errors.email && (
@@ -175,14 +175,14 @@ export default function Login() {
               <div className="flex justify-between mb-1">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-[#334155]"
                 >
                   Password
                 </label>
                 <button
                   type="button"
                   onClick={() => setShowForgotModal(true)}
-                  className="text-xs text-orange-600 hover:text-orange-500 transition-colors"
+                  className="text-xs text-[#F56600] hover:text-[#D95400] transition-colors"
                 >
                   Forgot password?
                 </button>
@@ -195,13 +195,13 @@ export default function Login() {
                   value={formData.password}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border ${
-                    errors.password ? "border-red-500" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300 pr-10`}
+                    errors.password ? "border-red-500" : "border-[#E2E8F0]"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300 pr-10`}
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-orange-500 transition-colors"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748B] hover:text-[#F56600] transition-colors"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? "👁" : "🙈"}
@@ -219,11 +219,11 @@ export default function Login() {
                 type="checkbox"
                 checked={formData.rememberMe}
                 onChange={handleChange}
-                className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+                className="h-4 w-4 text-[#F56600] focus:ring-[#F56600] border-[#E2E8F0] rounded"
               />
               <label
                 htmlFor="rememberMe"
-                className="ml-2 block text-sm text-gray-700"
+                className="ml-2 block text-sm text-[#334155]"
               >
                 Remember me
               </label>
@@ -232,18 +232,18 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50 flex items-center justify-center"
+              className="w-full bg-[#F56600] hover:bg-[#D95400] disabled:bg-[#FF7A00] text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#F56600] focus:ring-opacity-50 flex items-center justify-center"
             >
               {isLoading ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-[#64748B]">
               Don&apos;t have an account yet?
               <Link
                 href="/register"
-                className="font-medium text-orange-600 hover:text-orange-500 ml-1"
+                className="font-medium text-[#F56600] hover:text-[#D95400] ml-1"
               >
                 Sign up
               </Link>
@@ -256,7 +256,7 @@ export default function Login() {
       {showForgotModal && (
         <div className="fixed inset-0 flex items-center justify-center px-4 z-30">
           <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg relative z-40">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
+            <h2 className="text-xl font-bold mb-4 text-[#071D49]">
               Reset Password
             </h2>
             <input
@@ -264,19 +264,19 @@ export default function Login() {
               value={forgotEmail}
               onChange={(e) => setForgotEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none mb-4"
+              className="w-full px-4 py-2 border border-[#E2E8F0] rounded-lg focus:ring-2 focus:ring-[#F56600] focus:outline-none mb-4"
             />
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setShowForgotModal(false)}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
+                className="px-4 py-2 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:bg-[#F5F7FA]"
               >
                 Cancel
               </button>
               <button
                 onClick={handleResetPassword}
                 disabled={isResetLoading}
-                className="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-400"
+                className="px-4 py-2 rounded-lg bg-[#F56600] text-white hover:bg-[#D95400] disabled:bg-[#FF7A00]"
               >
                 {isResetLoading ? "Sending..." : "Reset Password"}
               </button>

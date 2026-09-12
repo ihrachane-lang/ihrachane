@@ -90,9 +90,9 @@ export default function Register() {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center p-4'>
+    <div className='min-h-screen bg-[#F5F7FA] flex items-center justify-center p-4'>
       <div className='max-w-lg w-full bg-white rounded-2xl shadow-2xl overflow-hidden'>
-        <div className='py-6 px-8 bg-orange-500 text-white text-center'>
+        <div className='py-6 px-8 bg-[#071D49] text-white text-center'>
           <h1 className='text-3xl font-bold'>Create Account</h1>
           <p className='mt-2'>
             Join our community and unlock exclusive features
@@ -100,12 +100,12 @@ export default function Register() {
         </div>
 
         <div className='p-8'>
-          <form onSubmit={handleSubmit} className='space-y-6 text-orange-500'>
+          <form onSubmit={handleSubmit} className='space-y-6 text-[#334155]'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
               <div>
                 <label
                   htmlFor='firstName'
-                  className='block text-sm font-medium text-gray-700 mb-1'>
+                  className='block text-sm font-medium text-[#334155] mb-1'>
                   First Name
                 </label>
                 <input
@@ -115,8 +115,8 @@ export default function Register() {
                   value={formData.firstName}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border ${
-                    errors.firstName ? "border-red-500" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300`}
+                    errors.firstName ? "border-red-500" : "border-[#E2E8F0]"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300`}
                   placeholder='John'
                 />
                 {errors.firstName && (
@@ -129,7 +129,7 @@ export default function Register() {
               <div>
                 <label
                   htmlFor='lastName'
-                  className='block text-sm font-medium text-gray-700 mb-1'>
+                  className='block text-sm font-medium text-[#334155] mb-1'>
                   Last Name
                 </label>
                 <input
@@ -139,8 +139,8 @@ export default function Register() {
                   value={formData.lastName}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border ${
-                    errors.lastName ? "border-red-500" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300`}
+                    errors.lastName ? "border-red-500" : "border-[#E2E8F0]"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300`}
                   placeholder='Doe'
                 />
                 {errors.lastName && (
@@ -152,7 +152,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-gray-700 mb-1'>
+                className='block text-sm font-medium text-[#334155] mb-1'>
                 Email Address
               </label>
               <input
@@ -162,8 +162,8 @@ export default function Register() {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-3 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300`}
+                  errors.email ? "border-red-500" : "border-[#E2E8F0]"
+                } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300`}
                 placeholder='john.doe@example.com'
               />
               {errors.email && (
@@ -174,7 +174,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor='password'
-                className='block text-sm font-medium text-gray-700 mb-1'>
+                className='block text-sm font-medium text-[#334155] mb-1'>
                 Password
               </label>
               <div className='relative'>
@@ -185,13 +185,13 @@ export default function Register() {
                   value={formData.password}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border ${
-                    errors.password ? "border-red-500" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300 pr-10`}
+                    errors.password ? "border-red-500" : "border-[#E2E8F0]"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300 pr-10`}
                   placeholder='••••••••'
                 />
                 <button
                   type='button'
-                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-orange-500 transition-colors'
+                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748B] hover:text-[#F56600] transition-colors'
                   onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? (
                     <svg
@@ -230,7 +230,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor='confirmPassword'
-                className='block text-sm font-medium text-gray-700 mb-1'>
+                className='block text-sm font-medium text-[#334155] mb-1'>
                 Confirm Password
               </label>
               <div className='relative'>
@@ -243,13 +243,13 @@ export default function Register() {
                   className={`w-full px-4 py-3 border ${
                     errors.confirmPassword
                       ? "border-red-500"
-                      : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300 pr-10`}
+                      : "border-[#E2E8F0]"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-300 pr-10`}
                   placeholder='••••••••'
                 />
                 <button
                   type='button'
-                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-orange-500 transition-colors'
+                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-[#64748B] hover:text-[#F56600] transition-colors'
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
                   {showConfirmPassword ? (
                     <svg
@@ -295,18 +295,18 @@ export default function Register() {
                   type='checkbox'
                   checked={formData.agreeToTerms}
                   onChange={handleChange}
-                  className='focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 rounded'
+                  className='focus:ring-[#F56600] h-4 w-4 text-[#F56600] border-[#E2E8F0] rounded'
                 />
               </div>
               <div className='ml-3 text-sm'>
                 <label
                   htmlFor='agreeToTerms'
-                  className='font-medium text-gray-700'>
+                  className='font-medium text-[#334155]'>
                   I agree to the{" "}
                   
                   <Link
                     href='/privacy'
-                    className='text-orange-600 hover:text-orange-500'>
+                    className='text-[#F56600] hover:text-[#D95400]'>
                     Privacy Policy
                   </Link>
                 </label>
@@ -321,7 +321,7 @@ export default function Register() {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50 flex items-center justify-center'>
+              className='w-full bg-[#F56600] hover:bg-[#D95400] disabled:bg-[#FF7A00] text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#F56600] focus:ring-opacity-50 flex items-center justify-center'>
               {isLoading ? (
                 <>
                   <svg
@@ -350,11 +350,11 @@ export default function Register() {
           </form>
 
           <div className='mt-6 text-center'>
-            <p className='text-sm text-gray-600'>
+            <p className='text-sm text-[#64748B]'>
               Already have an account?
               <Link
                 href='/login'
-                className='font-medium text-orange-600 hover:text-orange-500 ml-1'>
+                className='font-medium text-[#F56600] hover:text-[#D95400] ml-1'>
                 Sign in
               </Link>
             </p>
