@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": "https://www.ihrachane.com/#organization", name: "IHRACHANE", url: "https://www.ihrachane.com", logo: "https://www.ihrachane.com/logo/siteLogo/logo.svg", description: "Global procurement, sourcing, quality control and logistics solutions." },
+      { "@type": "Organization", "@id": "https://www.ihrachane.com/#organization", name: "IHRACHANE", url: "https://www.ihrachane.com", logo: "https://www.ihrachane.com/favicon.png", description: "Global procurement, sourcing, quality control and logistics solutions." },
       { "@type": "WebSite", "@id": "https://www.ihrachane.com/#website", url: "https://www.ihrachane.com", name: "IHRACHANE", publisher: { "@id": "https://www.ihrachane.com/#organization" }, inLanguage: "en" },
       { "@type": "Service", "@id": "https://www.ihrachane.com/#service", name: "Global Supply Chain & Logistics Management", provider: { "@id": "https://www.ihrachane.com/#organization" }, serviceType: "Procurement and freight forwarding services", areaServed: "Worldwide" },
     ],
