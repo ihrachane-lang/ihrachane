@@ -233,7 +233,7 @@ function goToContact() {
             <div className="lg:hidden flex items-center space-x-2.5">
               <button
                 onClick={goToContact}
-                className="rounded-full bg-[#071D49] px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(245,102,0,0.95)] transition-transform active:scale-95"
+                className="rounded-full bg-orange-500 px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(245,102,0,0.95)] transition-transform active:scale-95"
               >
                 Get Offer
               </button>
