@@ -136,9 +136,9 @@ export default function VerifyOtp() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F5F7FA] flex items-center justify-center p-4">
       <div className="max-w-md w-full rounded-2xl shadow-lg overflow-hidden">
-        <div className="py-6 px-4 sm:px-8 bg-orange-500 text-white text-center">
+        <div className="py-6 px-4 sm:px-8 bg-[#071D49] text-white text-center">
           <h1 className="text-2xl sm:text-3xl font-bold">Verify Your Account</h1>
           <p className="mt-2 text-sm sm:text-base">
             Enter the 6-digit code sent to{" "}
@@ -155,7 +155,7 @@ export default function VerifyOtp() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex flex-col items-center">
-              <label className="block text-sm font-medium text-gray-700 mb-4 text-center">
+              <label className="block text-sm font-medium text-[#334155] mb-4 text-center">
                 Verification Code
               </label>
               <div
@@ -173,7 +173,7 @@ export default function VerifyOtp() {
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     onFocus={(e) => e.target.select()}
-                    className="w-10 h-10 sm:w-12 sm:h-12 text-center text-xl font-semibold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500  transition duration-200"
+                    className="w-10 h-10 sm:w-12 sm:h-12 text-center text-xl font-semibold border border-[#E2E8F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-200"
                   />
                 ))}
               </div>
@@ -182,7 +182,7 @@ export default function VerifyOtp() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50 flex items-center justify-center"
+              className="w-full bg-[#F56600] hover:bg-[#D95400] disabled:bg-[#FF7A00] text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#F56600] focus:ring-opacity-50 flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -221,7 +221,7 @@ export default function VerifyOtp() {
               onClick={handleResend}
               disabled={resendDisabled}
               className={`text-sm font-medium ${
-                resendDisabled ? "text-gray-400" : "text-orange-600 hover:text-orange-500"
+                resendDisabled ? "text-[#64748B]" : "text-[#F56600] hover:text-[#D95400]"
               }`}
             >
               {resendDisabled ? `Resend OTP in ${resendCooldown}s` : "Resend OTP"}

@@ -8,7 +8,7 @@ const Header = () => {
       title={
         <>
           Tell Us Your{" "}
-          <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
             Sourcing Needs
           </span>
         </>

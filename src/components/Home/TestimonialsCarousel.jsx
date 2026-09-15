@@ -92,19 +92,19 @@ export default function TestimonialsCarousel({ testimonials }) {
                 <div className="site-panel site-card-hover group flex h-full flex-col justify-between rounded-[2rem] p-6 sm:p-8">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="flex text-amber-400 gap-1 text-sm">
+                      <div className="flex text-[#F56600] gap-1 text-sm">
                         <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                       </div>
-                      <span className="text-4xl font-serif text-orange-400/40 leading-none">“</span>
+                      <span className="text-4xl font-serif text-[#FF7A00]/40 leading-none">“</span>
                     </div>
 
-                    <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic line-clamp-4">
+                    <p className="text-[#334155] text-sm sm:text-base leading-relaxed italic line-clamp-4">
                       "{item.clientFeedback}"
                     </p>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-200/60 mt-6 flex items-center gap-4">
-                    <div className="relative flex h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border-2 border-orange-500 shadow-md">
+                  <div className="pt-6 border-t border-[#E2E8F0] mt-6 flex items-center gap-4">
+                    <div className="relative flex h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border-2 border-[#F56600] shadow-md">
                       {item.clientImage ? (
                         <Image
                           src={item.clientImage}
@@ -113,21 +113,21 @@ export default function TestimonialsCarousel({ testimonials }) {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-orange-100 flex items-center justify-center font-bold text-orange-600">
+                        <div className="w-full h-full bg-orange-50 flex items-center justify-center font-bold text-[#F56600]">
                           {item.clientName?.charAt(0) || "C"}
                         </div>
                       )}
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h4 className="truncate text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-600 sm:text-base">
+                      <h4 className="truncate text-sm font-bold text-[#071D49] transition-colors group-hover:text-[#F56600] sm:text-base">
                         {item.clientName}
                       </h4>
-                      <p className="text-slate-500 text-xs truncate font-medium">
+                      <p className="text-[#64748B] text-xs truncate font-medium">
                         {item.clientDesignation}
                       </p>
                       {item.companyName && (
-                        <span className="inline-block mt-1 text-[11px] font-semibold text-orange-700 bg-orange-100/70 px-2 py-0.5 rounded-full truncate">
+                        <span className="inline-block mt-1 text-[11px] font-semibold text-[#F56600] bg-orange-50 px-2 py-0.5 rounded-full truncate">
                           {item.companyName}
                         </span>
                       )}
@@ -149,7 +149,7 @@ export default function TestimonialsCarousel({ testimonials }) {
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentIndex >= idx * slidesToShow &&
                 currentIndex < (idx + 1) * slidesToShow
-                  ? "bg-orange-500 w-8"
+                  ? "bg-[#F56600] w-8"
                   : "bg-slate-300 hover:bg-slate-400 w-2"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
@@ -158,37 +158,37 @@ export default function TestimonialsCarousel({ testimonials }) {
         </div>
       </div>
 
-<div className="rounded-[2rem] border border-orange-100 bg-white/90 p-8 text-black shadow-lg backdrop-blur-md sm:p-12">
-  <div className="grid grid-cols-2 gap-6 divide-y divide-orange-100 text-center md:grid-cols-4 md:divide-x md:divide-y-0 sm:gap-8">
+<div className="rounded-[2rem] border border-[#E2E8F0] bg-white p-8 text-[#334155] shadow-lg backdrop-blur-md sm:p-12">
+  <div className="grid grid-cols-2 gap-6 divide-y divide-[#E2E8F0] text-center md:grid-cols-4 md:divide-x md:divide-y-0 sm:gap-8">
     <div className="pt-4 md:pt-0">
-      <div className="mb-1 text-3xl font-black text-orange-600 sm:text-4xl lg:text-5xl">
+      <div className="mb-1 text-3xl font-black text-[#F56600] sm:text-4xl lg:text-5xl">
         500+
       </div>
-      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+      <div className="text-xs font-bold uppercase tracking-wider text-[#334155] sm:text-sm">
         Happy Clients
       </div>
     </div>
     <div className="pt-4 md:pt-0">
-      <div className="mb-1 text-3xl font-black text-black sm:text-4xl lg:text-5xl">
+      <div className="mb-1 text-3xl font-black text-[#071D49] sm:text-4xl lg:text-5xl">
         98%
       </div>
-      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+      <div className="text-xs font-bold uppercase tracking-wider text-[#334155] sm:text-sm">
         Satisfaction Rate
       </div>
     </div>
     <div className="pt-4 md:pt-0">
-      <div className="mb-1 text-3xl font-black text-orange-600 sm:text-4xl lg:text-5xl">
+      <div className="mb-1 text-3xl font-black text-[#F56600] sm:text-4xl lg:text-5xl">
         {experienceYears}+
       </div>
-      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+      <div className="text-xs font-bold uppercase tracking-wider text-[#334155] sm:text-sm">
         Years Experience
       </div>
     </div>
     <div className="pt-4 md:pt-0">
-      <div className="mb-1 text-3xl font-black text-black sm:text-4xl lg:text-5xl">
+      <div className="mb-1 text-3xl font-black text-[#071D49] sm:text-4xl lg:text-5xl">
         24/7
       </div>
-      <div className="text-xs font-bold uppercase tracking-wider text-slate-700 sm:text-sm">
+      <div className="text-xs font-bold uppercase tracking-wider text-[#334155] sm:text-sm">
         Dedicated Support
       </div>
     </div>

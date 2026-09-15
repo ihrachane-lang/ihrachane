@@ -61,15 +61,15 @@
   display: block;
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  color: #334155; /* slate-700 */
+  color: #334155; /* Main Text */
   font-weight: 500;
   font-size: 1.125rem;
   transition: all 0.3s;
 }
 
 .menu-item:hover {
-  background-color: #fff7ed; /* orange-50 */
-  color: #c2410c; /* orange-700 */
+  background-color: #f5f7fa; /* Light Background */
+  color: #f56600; /* Brand Orange */
   transform: scale(1.05);
 }
 
@@ -105,11 +105,11 @@
   }
 }
 
-/* Contact button animations + colors — orange-500 → orange-600/700 palette */
+/* Contact button animations + colors — Brand Orange #F56600 → Accent Orange #FF7A00, hover #D95400 */
 .contact-button {
   display: block;
   width: 100%;
-  background: linear-gradient(to right, #f97316, #ea580c);
+  background: linear-gradient(to right, #f56600, #ff7a00);
   color: white;
   text-align: center;
   padding: 1rem 1.5rem;
@@ -117,11 +117,11 @@
   font-weight: 500;
   font-size: 1.125rem;
   transition: all 0.3s;
-  box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.25);
+  box-shadow: 0 10px 15px -3px rgba(245, 102, 0, 0.3);
 }
 
 .contact-button:hover {
-  background: linear-gradient(to right, #ea580c, #c2410c);
+  background: linear-gradient(to right, #d95400, #f56600);
   transform: scale(1.05);
 }
 

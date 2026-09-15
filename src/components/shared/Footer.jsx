@@ -25,23 +25,23 @@ export default async function Footer() {
   ]);
 
   return (
-    <footer className="relative overflow-hidden border-t border-orange-500/20 bg-slate-950 pt-20 text-slate-300">
+    <footer className="relative overflow-hidden border-t border-[#E2E8F0] bg-[#071D49] pt-20 text-slate-300">
       {/* Soft Ambient Glows (Very subtle orange highlights) */}
-      <div className="absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-orange-600/10 blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-24 left-10 h-80 w-80 rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
+      <div className="absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-[#F56600]/10 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-24 left-10 h-80 w-80 rounded-full bg-[#FF7A00]/5 blur-[100px] pointer-events-none" />
 
       <div className="site-container relative z-10">
         {/* Top CTA Banner: Soft Warm Gradient Card */}
-        <div className="mb-16 overflow-hidden rounded-3xl border border-orange-500/20 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900 p-8 shadow-2xl backdrop-blur-xl sm:p-10 lg:p-12">
+        <div className="mb-16 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0B2A5B] via-[#071D49] to-[#0B2A5B] p-8 shadow-2xl backdrop-blur-xl sm:p-10 lg:p-12">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div className="space-y-4">
-              <div className="inline-block rounded-full border border-orange-500/30 bg-orange-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-orange-400">
+              <div className="inline-block rounded-full border border-orange-500/30 bg-orange-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-[#FF7A00]">
                 Built for sourcing, inspection, and delivery
               </div>
               <h2 className="text-3xl font-extrabold text-white lg:text-4xl">
                 Ready to streamline your global supply chain with one trusted partner?
               </h2>
-              <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+              <p className="max-w-2xl text-slate-300 text-sm leading-relaxed">
                 IHRACHANE helps teams source smarter, reduce risk, and move products faster with a fully managed procurement and logistics workflow.
               </p>
             </div>
@@ -49,13 +49,13 @@ export default async function Footer() {
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
               <Link
                 href="/sourcing#contact"
-                className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-500/30"
+                className="site-button-primary"
               >
                 Start a Project
               </Link>
               <Link
                 href="/shipping-partners"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800/60 px-6 py-3.5 text-sm font-semibold text-slate-200 transition-all duration-300 hover:border-orange-500/40 hover:bg-slate-800 hover:text-white"
+                className="site-button-dark"
               >
                 View Shipping Partners
               </Link>
@@ -65,7 +65,7 @@ export default async function Footer() {
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 gap-10 border-b border-slate-800/80 pb-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
-          
+
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
@@ -164,7 +164,7 @@ export default async function Footer() {
             </h4>
             <ul className="grid gap-2.5 text-sm">
               <li>
-                <Link href="/blog" className="block font-medium text-orange-400 transition-colors hover:text-orange-300">
+                <Link href="/blog" className="block font-medium text-slate-400 transition-colors hover:text-orange-400">
                   Blog & Insights
                 </Link>
               </li>

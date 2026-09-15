@@ -26,8 +26,8 @@ export default async function Partners() {
 
         {partners.length > 0 ? (
           <div className="relative py-4 overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#fff7ed] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#fff7ed] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#f5f7fa] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#f5f7fa] to-transparent z-10 pointer-events-none" />
 
             <div className="animate-marquee-smooth py-2">
               {[...partners, ...partners, ...partners].map((partner, index) => (

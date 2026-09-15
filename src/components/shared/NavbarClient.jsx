@@ -88,14 +88,14 @@ function goToContact() {
       >
         {/* Unscrolled dark background layer */}
         <div
-          className={`absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-400/70  transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 bg-gradient-to-r from-[#071D49] via-[#0B2A5B] to-[#071D49] transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-0" : "opacity-100"
           }`}
         />
 
         {/* Scrolled white glass background layer */}
         <div
-          className={`absolute inset-0 border-b border-orange-100/80 bg-white/90 backdrop-blur-xl transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 border-b border-[#E2E8F0] bg-white/90 backdrop-blur-xl transition-opacity duration-500 pointer-events-none ${
             isScrolled ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -233,7 +233,7 @@ function goToContact() {
             <div className="lg:hidden flex items-center space-x-2.5">
               <button
                 onClick={goToContact}
-                className="rounded-full bg-black px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(249,115,22,0.95)] transition-transform active:scale-95"
+                className="rounded-full bg-[#071D49] px-4 py-2 text-xs font-bold text-white shadow-[0_18px_34px_-18px_rgba(245,102,0,0.95)] transition-transform active:scale-95"
               >
                 Get Offer
               </button>

@@ -56,7 +56,7 @@ export default function BilingualSeoSection({
                 {enKeys.slice(0, 12).map((kw) => (
                   <span
                     key={kw}
-                    className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700"
+                    className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#F56600]"
                   >
                     {kw}
                   </span>
@@ -79,7 +79,7 @@ export default function BilingualSeoSection({
             dir="ltr"
             aria-label="Türkçe içerik özeti — IHRACHANE küresel tedarik zinciri hizmetleri"
           >
-            <div className="site-badge border-orange-200 bg-orange-500/10 text-orange-700 mb-5">
+            <div className="site-badge border-orange-200 bg-orange-50 text-[#F56600] mb-5">
               Türkçe Özet
             </div>
             <h2 className="site-title mb-5 text-2xl sm:text-3xl">
@@ -90,7 +90,7 @@ export default function BilingualSeoSection({
                   ? `${brand} | ${category} Tedarik, Kalite Kontrolü ve Uluslararası Lojistik`
                   : `${brand} | Küresel Tedarik Zinciri, Ürün Temin ve Lojistik Hizmetleri`)}
             </h2>
-            <div className="space-y-4 text-sm leading-7 text-slate-700 sm:text-base">
+            <div className="space-y-4 text-sm leading-7 text-[#334155] sm:text-base">
               {(trParagraphs && trParagraphs.length
                 ? trParagraphs
                 : category && subCategory
@@ -119,7 +119,7 @@ export default function BilingualSeoSection({
                 {trKeys.slice(0, 12).map((kw) => (
                   <span
                     key={kw}
-                    className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700"
+                    className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-[#F56600]"
                   >
                     {kw}
                   </span>
