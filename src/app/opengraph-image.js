@@ -7,10 +7,10 @@ export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "76px", color: "white", background: "linear-gradient(135deg, #111827 0%, #431407 100%)" }}>
-      <div style={{ color: "#fb923c", fontSize: 30, fontWeight: 700, letterSpacing: 5 }}>IHRACHANE</div>
+    <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "76px", color: "white", background: "linear-gradient(135deg, #071D49 0%, #0B2A5B 100%)" }}>
+      <div style={{ color: "#FF7A00", fontSize: 30, fontWeight: 700, letterSpacing: 5 }}>IHRACHANE</div>
       <div style={{ fontSize: 70, lineHeight: 1.1, fontWeight: 800, marginTop: 28 }}>Global Sourcing,<br />Quality Control & Logistics</div>
-      <div style={{ fontSize: 28, color: "#fed7aa", marginTop: 30 }}>From verified suppliers to international delivery.</div>
+      <div style={{ fontSize: 28, color: "#ffffff", marginTop: 30 }}>From verified suppliers to international delivery.</div>
     </div>,
     size,
   );

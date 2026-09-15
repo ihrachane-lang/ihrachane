@@ -53,14 +53,17 @@ export default async function BlogListingPage({ searchParams }) {
 
       <main className="bg-slate-50 min-h-screen py-20">
         {/* Hero Banner - Dark blue changed to vibrant Orange Theme */}
-        <section className="relative bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white py-20 px-6 overflow-hidden">
+        <section className="relative bg-gradient-to-r  bg-gradient-to-r from-[#071D49] via-[#0B2A5B] to-[#071D49] text-white py-20 px-6 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-300/30 via-transparent to-transparent opacity-70" />
           <div className="max-w-6xl mx-auto relative z-10 text-center space-y-4">
             <div className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white border border-white/30 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
               IHRACHANE Sourcing & Logistics Hub
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-              Insights & Supply Chain Guides
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+              <span className="text-orange-500">
+                Insights & {" "}
+              </span>
+              Supply Chain Guides
             </h1>
             <p className="max-w-2xl mx-auto text-orange-100 text-base md:text-lg">
               Proven strategies for factory sourcing, China supplier audits, quality inspection standards, and international freight logistics.
@@ -77,11 +80,10 @@ export default async function BlogListingPage({ searchParams }) {
                 <Link
                   key={cat}
                   href={cat === "All" ? "/blog" : `/blog?category=${encodeURIComponent(cat)}`}
-                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
-                    isActive
-                      ? "bg-orange-600 text-white shadow-md"
-                      : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
-                  }`}
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${isActive
+                    ? "bg-orange-600 text-white shadow-md"
+                    : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
+                    }`}
                 >
                   {cat}
                 </Link>

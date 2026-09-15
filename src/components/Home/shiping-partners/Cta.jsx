@@ -10,7 +10,7 @@ const Cta = () => {
   }
   return (
     <div className="mt-16 text-center">
-      <h3 className="mb-6 text-2xl font-bold text-slate-900 md:text-3xl">
+      <h3 className="mb-6 text-2xl font-bold text-[#071D49] md:text-3xl">
         Want to become a shipping partner?
       </h3>
       <button

@@ -1,7 +1,7 @@
 /* loading.css */
 .loading-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, white 0%, #fff5e6 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
 .loading-title {
   font-size: 3rem;
   font-weight: bold;
-  color: black;
+  color: #071d49;
   letter-spacing: 0.05em;
   margin-bottom: 2rem;
   position: relative;
@@ -36,7 +36,7 @@
   transform: translateX(-50%);
   width: 8rem;
   height: 0.375rem;
-  background-color: #f97316;
+  background-color: #f56600;
   border-radius: 9999px;
 }
 
@@ -47,7 +47,7 @@
   transform: translateX(-50%);
   width: 8rem;
   height: 0.375rem;
-  background-color: #f97316;
+  background-color: #f56600;
   border-radius: 9999px;
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
@@ -62,7 +62,7 @@
 .spinner-outer {
   position: absolute;
   inset: 0;
-  border: 4px solid #fed7aa;
+  border: 4px solid #e2e8f0;
   border-radius: 9999px;
 }
 
@@ -71,27 +71,27 @@
   inset: 0;
   border: 4px solid transparent;
   border-radius: 9999px;
-  border-top-color: #f97316;
+  border-top-color: #f56600;
   animation: spin 1s linear infinite;
 }
 
 .spinner-inner {
   position: absolute;
   inset: 1rem;
-  border: 4px solid #ffedd5;
+  border: 4px solid #f5f7fa;
   border-radius: 9999px;
 }
 
 .spinner-dot {
   position: absolute;
   inset: 1.5rem;
-  background-color: #f97316;
+  background-color: #f56600;
   border-radius: 9999px;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .loading-text {
-  color: #374151;
+  color: #334155;
   font-weight: 500;
   margin-bottom: 0.75rem;
 }
@@ -105,7 +105,7 @@
 .loading-dot {
   width: 0.625rem;
   height: 0.625rem;
-  background-color: #f97316;
+  background-color: #f56600;
   border-radius: 9999px;
 }
 
@@ -136,7 +136,7 @@
   left: 2rem;
   width: 6rem;
   height: 6rem;
-  background-color: #fed7aa;
+  background-color: #ff7a00;
 }
 
 .bg-element-2 {
@@ -144,7 +144,7 @@
   right: 2rem;
   width: 4rem;
   height: 4rem;
-  background-color: #fdba74;
+  background-color: #ff7a00;
   animation-delay: 1s;
 }
 
@@ -153,14 +153,14 @@
   left: 25%;
   width: 3rem;
   height: 3rem;
-  background-color: #fb923c;
+  background-color: #ff7a00;
   animation-delay: 0.5s;
 }
 
 .progress-container {
   margin-top: 3rem;
   width: 100%;
-  background-color: #e5e7eb;
+  background-color: #e2e8f0;
   border-radius: 9999px;
   height: 0.5rem;
   max-width: 20rem;
@@ -169,7 +169,7 @@
 }
 
 .progress-bar {
-  background-color: #f97316;
+  background-color: #f56600;
   height: 0.5rem;
   border-radius: 9999px;
   animation: progress 1.5s ease-in-out infinite;

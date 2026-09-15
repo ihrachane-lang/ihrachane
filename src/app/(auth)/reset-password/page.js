@@ -131,9 +131,9 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50 flex items-center justify-center p-4'>
+    <div className='min-h-screen bg-[#F5F7FA] flex items-center justify-center p-4'>
       <div className='max-w-md w-full rounded-2xl shadow-lg overflow-hidden'>
-        <div className='py-6 px-4 sm:px-8 bg-orange-500 text-white text-center'>
+        <div className='py-6 px-4 sm:px-8 bg-[#071D49] text-white text-center'>
           <h1 className='text-2xl sm:text-3xl font-bold'>Reset Password</h1>
           <p className='mt-2 text-sm sm:text-base'>
             Enter the code sent to <span className='underline'>{email}</span>
@@ -150,7 +150,7 @@ export default function ResetPassword() {
           <form onSubmit={handleSubmit} className='space-y-6'>
             {/* OTP Input */}
             <div className='flex flex-col items-center'>
-              <label className='block text-sm font-medium text-gray-700 mb-4 text-center'>
+              <label className='block text-sm font-medium text-[#334155] mb-4 text-center'>
                 Verification Code
               </label>
               <div
@@ -167,7 +167,7 @@ export default function ResetPassword() {
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     onFocus={(e) => e.target.select()}
-                    className='w-10 h-10 sm:w-12 sm:h-12 text-center text-xl font-semibold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200'
+                    className='w-10 h-10 sm:w-12 sm:h-12 text-center text-xl font-semibold border border-[#E2E8F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56600] transition duration-200'
                   />
                 ))}
               </div>
@@ -181,41 +181,41 @@ export default function ResetPassword() {
                   onClick={handleResendOtp}
                   className={`text-sm font-medium ${
                     timer > 0 || resendLoading
-                      ? "text-gray-400 cursor-not-allowed"
-                      : "text-orange-500 hover:underline"
+                      ? "text-[#64748B] cursor-not-allowed"
+                      : "text-[#F56600] hover:underline"
                   }`}>
                   {resendLoading ? "Resending..." : "Resend OTP"}
                 </button>
                 {timer > 0 && (
-                  <span className='text-sm text-gray-600'>({timer}s left)</span>
+                  <span className='text-sm text-[#64748B]'>({timer}s left)</span>
                 )}
               </div>
             </div>
 
             {/* New Password */}
             <div>
-              <label className='block text-sm font-medium text-gray-700 mb-2'>
+              <label className='block text-sm font-medium text-[#334155] mb-2'>
                 New Password
               </label>
               <input
                 type='password'
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none'
+                className='w-full px-4 py-2 border border-[#E2E8F0] rounded-lg focus:ring-2 focus:ring-[#F56600] focus:outline-none'
                 placeholder='Enter new password'
               />
             </div>
 
             {/* Confirm Password */}
             <div>
-              <label className='block text-sm font-medium text-gray-700 mb-2'>
+              <label className='block text-sm font-medium text-[#334155] mb-2'>
                 Confirm Password
               </label>
               <input
                 type='password'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none'
+                className='w-full px-4 py-2 border border-[#E2E8F0] rounded-lg focus:ring-2 focus:ring-[#F56600] focus:outline-none'
                 placeholder='Confirm new password'
               />
             </div>
@@ -223,7 +223,7 @@ export default function ResetPassword() {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-500 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50 flex items-center justify-center'>
+              className='w-full bg-[#F56600] hover:bg-[#D95400] disabled:bg-[#FF7A00] text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#F56600] focus:ring-opacity-50 flex items-center justify-center'>
               {isLoading ? (
                 <>
                   <svg

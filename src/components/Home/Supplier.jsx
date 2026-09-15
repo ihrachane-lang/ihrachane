@@ -13,7 +13,7 @@ export default function Supplier() {
           title={
             <>
               We Are{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
                 More Than a Supplier
               </span>
             </>
@@ -25,7 +25,7 @@ export default function Supplier() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="relative group">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#071D49] to-[#0B2A5B] blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
 
               <div className="site-panel relative p-6 sm:p-8 transition-all duration-500 group-hover:scale-[1.01]">
                 <Image
@@ -37,7 +37,7 @@ export default function Supplier() {
                 />
               </div>
 
-              <div className="absolute -right-4 -top-4 z-20 flex items-center gap-3 rounded-[1.5rem] bg-gradient-to-r from-orange-500 to-amber-500 p-4 text-white shadow-[0_20px_55px_-25px_rgba(249,115,22,0.95)]">
+              <div className="absolute -right-4 -top-4 z-20 flex items-center gap-3 rounded-[1.5rem] bg-gradient-to-r from-[#071D49] to-[#0B2A5B] p-4 text-white shadow-[0_20px_55px_-25px_rgba(245,102,0,0.4)]">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 text-lg font-black">
                   500+
                 </div>
@@ -51,7 +51,7 @@ export default function Supplier() {
 
           <div className="lg:col-span-6 order-1 lg:order-2 space-y-8">
             <div className="flex items-start gap-4 group">
-              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
+              <div className="rounded-2xl bg-gradient-to-br from-[#F56600] to-[#FF7A00] p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -68,17 +68,17 @@ export default function Supplier() {
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                <h3 className="text-xl font-bold text-[#071D49] transition-colors group-hover:text-[#F56600]">
                   Exclusive Pricing & Flexible Terms
                 </h3>
-                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                <p className="text-sm leading-7 text-[#334155] sm:text-base">
                   Your dedicated sourcing specialist negotiates optimal unit pricing and volume discounts directly with vetted manufacturers.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 group">
-              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
+              <div className="rounded-2xl bg-gradient-to-br from-[#F56600] to-[#FF7A00] p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -95,17 +95,17 @@ export default function Supplier() {
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                <h3 className="text-xl font-bold text-[#071D49] transition-colors group-hover:text-[#F56600]">
                   Rigorous Quality Control & Expedited Freight
                 </h3>
-                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                <p className="text-sm leading-7 text-[#334155] sm:text-base">
                   By leveraging the IHRACHANE network, we ensure strict quality compliance, defect reduction, and priority shipping schedules.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 group">
-              <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
+              <div className="rounded-2xl bg-gradient-to-br from-[#F56600] to-[#FF7A00] p-3.5 text-white shadow-md shadow-orange-500/20 transition-transform group-hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -122,10 +122,10 @@ export default function Supplier() {
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-orange-600">
+                <h3 className="text-xl font-bold text-[#071D49] transition-colors group-hover:text-[#F56600]">
                   Risk-Free Procurement Guarantee
                 </h3>
-                <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                <p className="text-sm leading-7 text-[#334155] sm:text-base">
                   IHRACHANE absorbs procurement risks. Protect your capital against payment fraud, sub-standard batches, or unexpected logistics delays.
                 </p>
               </div>

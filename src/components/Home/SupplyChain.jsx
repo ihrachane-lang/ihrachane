@@ -39,7 +39,7 @@ export default function SupplyChain() {
           title={
             <>
               Supply Chain{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F56600] to-[#FF7A00] bg-clip-text text-transparent">
                 Excellence
               </span>
             </>
@@ -56,8 +56,8 @@ export default function SupplyChain() {
                 key={index}
                 className={`flex items-center gap-2 rounded-full px-6 py-3 text-xs font-bold tracking-wide transition-all duration-300 sm:text-sm ${
                   isActive
-                    ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-[0_18px_40px_-18px_rgba(249,115,22,0.85)] scale-[1.02]"
-                    : "border border-slate-200 bg-white text-slate-700 shadow-sm hover:border-orange-300 hover:bg-orange-50/50"
+                    ? "bg-gradient-to-r from-[#F56600] to-[#FF7A00] text-white shadow-[0_18px_40px_-18px_rgba(245,102,0,0.5)] scale-[1.02]"
+                    : "border border-[#E2E8F0] bg-white text-[#334155] shadow-sm hover:border-orange-300 hover:bg-orange-50"
                 }`}
                 onClick={() => setActiveTab(index)}
               >
@@ -71,18 +71,18 @@ export default function SupplyChain() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
           <div className="lg:col-span-6 space-y-6">
             <div className="site-panel relative overflow-hidden p-8 sm:p-10 transition-all duration-500">
-              <div className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-orange-500 to-amber-500" />
+              <div className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[#F56600] to-[#FF7A00]" />
 
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-2xl text-orange-600 shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-2xl text-[#F56600] shadow-sm">
                   {tabs[activeTab].icon}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+                <h3 className="text-xl sm:text-2xl font-black text-[#071D49]">
                   {tabs[activeTab].title}
                 </h3>
               </div>
 
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              <p className="text-[#334155] text-base sm:text-lg leading-relaxed">
                 {tabs[activeTab].description}
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function SupplyChain() {
 
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative w-full max-w-lg group">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#F56600] to-[#FF7A00] blur-xl opacity-20 transition duration-500 group-hover:opacity-35" />
 
               <div className="site-panel relative overflow-hidden p-3 transition-all duration-500 group-hover:scale-[1.02]">
                 <Image

@@ -47,7 +47,7 @@ const ShippingPartners = ({ partners = [] }) => {
 
       <section className="site-section-soft py-16">
         <div className="site-container mx-auto px-4 max-w-7xl">
-          
+
           {/* Section Intro */}
           <SectionIntro
             badge="Shipping Network"
@@ -66,8 +66,8 @@ const ShippingPartners = ({ partners = [] }) => {
           {/* ----- NEW SECTION 1: Shipping Services Offered ----- */}
           <div className="mb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
             {shippingServices.map((service, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition text-center"
               >
                 <div className="mb-4 inline-flex p-4 bg-orange-50 rounded-2xl">
@@ -119,7 +119,7 @@ const ShippingPartners = ({ partners = [] }) => {
                         src={partner.partnerImage}
                         alt={partner.partnerName}
                         fill
-                        className="object-contain" 
+                        className="object-contain"
                         sizes="(max-width: 768px) 100vw, 300px"
                       />
                     </div>
@@ -147,7 +147,7 @@ const ShippingPartners = ({ partners = [] }) => {
           )}
 
           {/* ----- NEW SECTION 2: Key Partnership Advantages ----- */}
-          <div className="mt-20 bg-orange-200 p-8 md:p-12 rounded-[2rem] border border-slate-100 shadow-sm">
+          <div className="mt-20 bg-white/70 p-8 md:p-12 rounded-[2rem] shadow-sm">
             <h3 className="text-2xl font-bold text-slate-900 text-center mb-8">
               Why Our Logistics Network Matters
             </h3>

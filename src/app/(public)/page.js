@@ -212,7 +212,7 @@ const faqItems = [
 
 export default async function Home() {
   return (
-    <div className="">
+    <div className="brand-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: websiteJsonLd() }}

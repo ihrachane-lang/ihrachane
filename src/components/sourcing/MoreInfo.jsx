@@ -27,7 +27,7 @@ const MoreInfo = () => {
       description: "Comprehensive quality control and inspection",
     },
     {
-      icon: <FaGlobeAmericas className="w-6 h-6 text-orange-600" />,
+      icon: <FaGlobeAmericas className="w-6 h-6 text-[#F56600]" />,
       title: "Global Network",
       description: "Access to suppliers in 50+ countries",
     },
@@ -35,8 +35,8 @@ const MoreInfo = () => {
   return (
     <div className="space-y-6">
       <div className="site-panel max-w-xl rounded-[2rem] p-8">
-        <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
-          <span className="rounded-full bg-orange-100 p-2 text-orange-600">
+        <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#071D49]">
+          <span className="rounded-full bg-orange-50 p-2 text-[#F56600]">
             <HiOutlineGlobeAlt className="w-8 h-8" />
           </span>
           Why Choose Us?
@@ -48,19 +48,19 @@ const MoreInfo = () => {
                 {feature.icon}
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-slate-800">
+                <h4 className="text-lg font-semibold text-[#071D49]">
                   {feature.title}
                 </h4>
-                <p className="text-sm leading-7 text-slate-600">{feature.description}</p>
+                <p className="text-sm leading-7 text-[#334155]">{feature.description}</p>
               </div>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="rounded-[2rem] bg-gradient-to-br from-orange-500 via-orange-600 to-amber-500 p-6 text-white shadow-[0_24px_60px_-32px_rgba(249,115,22,0.9)]">
+      <div className="rounded-[2rem] bg-gradient-to-br from-[#071D49] via-[#0B2A5B] to-[#071D49] p-6 text-white shadow-[0_24px_60px_-32px_rgba(7,29,73,0.4)]">
         <h3 className="mb-4 text-xl font-bold">Need Help?</h3>
-        <p className="mb-4 text-orange-100">
+        <p className="mb-4 text-slate-300">
           Our sourcing experts are available 24/7 to assist you with your
           requirements.
         </p>
