@@ -15,7 +15,7 @@ export default async function Partners() {
           title={
             <>
               Our Trusted{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 to-orange-400/70 bg-clip-text text-transparent">
                 Strategic Partners
               </span>
             </>
