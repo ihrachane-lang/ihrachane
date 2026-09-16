@@ -19,7 +19,7 @@ export default async function OurServices() {
               <span className="text-orange-500">
                 Comprehensive{" "}
               </span>
-              <span className="bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 bg-clip-text text-transparent drop-shadow-sm">
+              <span className="text-gray-100 drop-shadow-sm">
                 Supply Chain Solutions
               </span>
             </>
