@@ -27,7 +27,14 @@ export const metadata = {
   },
   twitter: { card: "summary_large_image", title: "IHRACHANE | Global Sourcing & Logistics", description: "Factory sourcing, supplier verification, quality inspection and freight coordination.", images: ["/opengraph-image"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
-  icons: { icon: [{ url: "/favicon.png" }] },
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.png",
+    apple: [{ url: "/favicon.png", type: "image/png", sizes: "192x192" }],
+  },
   category: "business",
 };
 
